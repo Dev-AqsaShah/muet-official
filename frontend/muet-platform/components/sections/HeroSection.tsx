@@ -43,7 +43,7 @@ export default function HeroSection() {
             {...fadeUp(0.2)}
             className="text-white/75 text-lg md:text-xl leading-relaxed mb-4 max-w-2xl"
           >
-            MUET manages and executes government-funded training programmes across Sindh
+            MUET manages and executes certified training programmes across Sindh
             — partnering with BBSHRRDB, the Government of Sindh, and the Government of Pakistan
             to deliver certified digital skills training to over 5,000 graduates.
           </motion.p>

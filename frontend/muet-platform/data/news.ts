@@ -5,7 +5,7 @@ export const newsArticles: NewsArticle[] = [
     slug: 'pitp-phase-1-results-2025',
     title: "PITP Phase I Achieves 82% Completion Rate — 4,484 Sindh Youth Certified",
     excerpt: "MUET's Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase I concludes with 4,484 certified graduates, 1,448 active earners, and PKR 19M+ in cumulative freelance earnings across 8 Sindh districts.",
-    content: `Mehran University of Engineering & Technology (MUET), Jamshoro, has successfully concluded the Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase I — a landmark achievement in government-funded digital skills training in Sindh.
+    content: `Mehran University of Engineering & Technology (MUET), Jamshoro, has successfully concluded the Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase I — a landmark achievement in digital skills training in Sindh.
 
 ## Programme Outcomes
 

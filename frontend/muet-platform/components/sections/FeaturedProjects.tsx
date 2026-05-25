@@ -25,8 +25,8 @@ export default function FeaturedProjects() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="MUET's Project Portfolio"
-          title="Government-Mandated Projects"
-          description="MUET serves as the implementing institution for government-funded training programmes across Sindh — managing operations, instructor deployment, and certified programme delivery."
+          title="MUET's Active Projects"
+          description="MUET serves as the implementing institution for large-scale training programmes across Sindh — managing operations, instructor deployment, and certified programme delivery."
           action={
             <Link href="/projects" className="inline-flex items-center gap-1.5 text-brand-steel font-medium text-sm hover:underline shrink-0">
               View All <ArrowRight size={16} />

@@ -34,7 +34,7 @@ export default function ContactPage() {
               <div className="bg-brand-navy rounded-2xl p-6 text-white mb-6">
                 <p className="text-white/70 text-sm leading-relaxed mb-6">
                   For programme applications, eligibility queries, and general enquiries about
-                  MUET&apos;s government-funded training initiatives.
+                  MUET&apos;s training initiatives and programmes.
                 </p>
                 <ul className="space-y-4">
                   {contactDetails.map(({ icon: Icon, label, value }) => (

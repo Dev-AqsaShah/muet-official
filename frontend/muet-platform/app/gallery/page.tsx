@@ -52,7 +52,7 @@ export default function GalleryPage() {
     <>
       <PageHeader
         title="Media Gallery"
-        subtitle="Photos from MUET's government-funded training programmes and university campus."
+        subtitle="Photos from MUET's training programmes and university campus across Sindh."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Gallery' }]}
       />
 

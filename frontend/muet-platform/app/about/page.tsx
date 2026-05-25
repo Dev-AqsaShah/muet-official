@@ -38,7 +38,7 @@ export default function AboutPage() {
     <>
       <PageHeader
         title="About MUET"
-        subtitle="Mehran University of Engineering & Technology — Sindh's leading public university for engineering, technology, and government-funded training programs."
+        subtitle="Mehran University of Engineering & Technology — Sindh's leading public university for engineering, technology, and certified training programmes."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About' }]}
       />
 
@@ -51,7 +51,7 @@ export default function AboutPage() {
               <p className="text-gray-600 leading-relaxed">
                 Established in 1977, MUET is Sindh&apos;s leading public university for engineering and
                 technology. Through its Office of Research, Innovation &amp; Commercialization (ORIC), MUET
-                serves as an implementing partner for government-funded training mandates — managing
+                serves as an implementing partner for large-scale training mandates — managing
                 centre operations, instructor deployment, curriculum delivery, certification, and
                 programme reporting at scale across Sindh.
               </p>

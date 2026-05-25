@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     default: 'MUET Training Programs',
     template: '%s | MUET Training Programs',
   },
-  description: "Mehran University of Engineering & Technology — Government-funded digital skills training programs across 12 Sindh districts.",
+  description: "Mehran University of Engineering & Technology — Certified digital skills training programmes across 12 Sindh districts.",
   metadataBase: new URL('https://training.muet.edu.pk'),
   openGraph: {
     siteName: 'MUET Training Programs',

@@ -1,7 +1,7 @@
 export const siteConfig = {
   name:     'MUET Training & Projects',
   fullName: 'Mehran University of Engineering & Technology',
-  tagline:  'A Trusted University Partner for Government-Funded Training Initiatives',
+  tagline:  'A Trusted University Partner for Large-Scale Training Initiatives',
   url:      'https://training.muet.edu.pk',
   address:  'Indus Highway, Jamshoro 76062, Sindh, Pakistan',
   phone:    '+92-22-2771197',

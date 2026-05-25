@@ -139,7 +139,7 @@ The programme received 15,516 applications for Phase II — a direct indicator o
     shortDesc: 'MUET designated as the official NFTP training center for Sindh under the Government of Pakistan\'s national freelancing initiative.',
     description: `Mehran University of Engineering & Technology (MUET) has been selected as the official training center for the National Freelance Training Programme (NFTP) in Sindh — a federal Government of Pakistan initiative implemented by the Punjab Information Technology Board (PITB).
 
-MUET's selection as the sole NFTP center in this region reflects the university's recognized institutional capacity, infrastructure, and track record in managing government-funded training at scale. MUET provides its modern computer laboratories, experienced faculty, and administrative infrastructure to support NFTP programme delivery.
+MUET's selection as the sole NFTP center in this region reflects the university's recognized institutional capacity, infrastructure, and track record in managing large-scale training programmes. MUET provides its modern computer laboratories, experienced faculty, and administrative infrastructure to support NFTP programme delivery.
 
 The NFTP equips youth with market-ready freelancing skills across three domains — Technical (web and application development), Content Marketing & Advertising, and Creative Design — combining skill training with freelance business fundamentals including platform optimization, client acquisition, and financial management.
 

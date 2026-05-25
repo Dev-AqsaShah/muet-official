@@ -37,7 +37,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-4">
-              {siteConfig.tagline}. Empowering Sindh youth through government-funded digital skills training.
+              {siteConfig.tagline}. Empowering Sindh youth through certified digital skills programmes.
             </p>
           </div>
 
