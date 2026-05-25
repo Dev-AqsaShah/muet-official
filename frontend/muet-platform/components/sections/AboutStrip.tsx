@@ -105,7 +105,7 @@ export default function AboutStrip() {
             <div className="grid grid-cols-3 gap-3 mt-3">
               {[
                 { value: '1977', label: 'Established' },
-                { value: '12',   label: 'Districts' },
+                { value: '20+',  label: 'Instructors' },
                 { value: '4',    label: 'Active Projects' },
               ].map(stat => (
                 <div key={stat.label} className="bg-white/8 border border-white/10 rounded-xl p-4 text-center">
