@@ -17,8 +17,18 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "MUET Training Programs",
-  description: "Mehran University of Engineering & Technology — Government-funded training programs and projects for Sindh.",
+  title: {
+    default: 'MUET Training Programs',
+    template: '%s | MUET Training Programs',
+  },
+  description: "Mehran University of Engineering & Technology — Government-funded digital skills training programs across 12 Sindh districts.",
+  metadataBase: new URL('https://training.muet.edu.pk'),
+  openGraph: {
+    siteName: 'MUET Training Programs',
+    locale: 'en_PK',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image' },
 }
 
 export default function RootLayout({

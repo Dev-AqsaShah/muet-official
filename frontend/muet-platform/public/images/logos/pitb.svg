@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <rect width="200" height="120" fill="#003366" rx="6"/>
+  <text x="100" y="48" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle">PITB</text>
+  <line x1="20" y1="58" x2="180" y2="58" stroke="#89CFF0" stroke-width="1" opacity="0.5"/>
+  <text x="100" y="76" font-family="Arial, sans-serif" font-size="7.5" fill="#89CFF0" text-anchor="middle">PUNJAB INFORMATION</text>
+  <text x="100" y="89" font-family="Arial, sans-serif" font-size="7.5" fill="#89CFF0" text-anchor="middle">TECHNOLOGY BOARD</text>
+  <text x="100" y="108" font-family="Arial, sans-serif" font-size="7" fill="#FFFFFF" text-anchor="middle">Government of Pakistan</text>
+</svg>

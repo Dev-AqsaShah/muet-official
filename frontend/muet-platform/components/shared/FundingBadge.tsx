@@ -2,11 +2,11 @@ import { cn } from '@/lib/utils'
 import type { FundingBody } from '@/types'
 
 const fundingConfig: Record<FundingBody, { label: string; className: string }> = {
-  'BBSHRRDB':             { label: 'BBSHRRDB',         className: 'bg-sky-100 text-brand-navy' },
-  'Sindh Government':     { label: 'Sindh Gov',         className: 'bg-emerald-100 text-emerald-800' },
+  'BBSHRRDB':               { label: 'BBSHRRDB',         className: 'bg-emerald-100 text-emerald-800' },
+  'Sindh Government':       { label: 'Govt of Sindh',    className: 'bg-sky-100 text-brand-navy' },
   'Government of Pakistan': { label: 'Govt of Pakistan', className: 'bg-green-100 text-green-800' },
-  'MUET':                 { label: 'MUET',             className: 'bg-blue-100 text-brand-steel' },
-  'Other':                { label: 'Other',            className: 'bg-gray-100 text-gray-700' },
+  'MUET':                   { label: 'MUET',             className: 'bg-blue-100 text-brand-steel' },
+  'Other':                  { label: 'Other',            className: 'bg-gray-100 text-gray-700' },
 }
 
 interface FundingBadgeProps {

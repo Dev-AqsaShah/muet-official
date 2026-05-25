@@ -29,7 +29,6 @@ export default function Footer() {
                   width={36}
                   height={36}
                   className="object-contain"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                 />
               </div>
               <div>

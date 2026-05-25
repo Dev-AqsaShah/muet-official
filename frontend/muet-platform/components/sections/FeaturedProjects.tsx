@@ -9,9 +9,10 @@ import ProjectCard from '@/components/cards/ProjectCard'
 import type { FundingBody } from '@/types'
 
 const filters: { label: string; value: FundingBody | 'all' }[] = [
-  { label: 'All',                value: 'all' },
-  { label: 'Sindh Government',   value: 'Sindh Government' },
-  { label: 'Govt of Pakistan',   value: 'Government of Pakistan' },
+  { label: 'All',              value: 'all' },
+  { label: 'BBSHRRDB',         value: 'BBSHRRDB' },
+  { label: 'Govt of Sindh',    value: 'Sindh Government' },
+  { label: 'Govt of Pakistan', value: 'Government of Pakistan' },
 ]
 
 export default function FeaturedProjects() {
@@ -23,9 +24,9 @@ export default function FeaturedProjects() {
     <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="Our Work"
-          title="Government Projects"
-          description="Funded and implemented by MUET across Sindh's districts — delivering real skills to real communities."
+          eyebrow="MUET's Project Portfolio"
+          title="Government-Mandated Projects"
+          description="MUET serves as the implementing institution for government-funded training programmes across Sindh — managing operations, instructor deployment, and certified programme delivery."
           action={
             <Link href="/projects" className="inline-flex items-center gap-1.5 text-brand-steel font-medium text-sm hover:underline shrink-0">
               View All <ArrowRight size={16} />

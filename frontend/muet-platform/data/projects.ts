@@ -2,19 +2,52 @@ import { Project } from '@/types'
 
 export const projects: Project[] = [
   {
+    slug: 'bbshrrdb-skills-development',
+    title: 'BBSHRRDB Skills Development Programme — MUET',
+    shortDesc: 'Vocational and technical training across Sindh districts, executed by MUET under the Benazir Bhutto Shaheed Human Resource Research & Development Board.',
+    description: `Mehran University of Engineering & Technology (MUET) serves as an implementing partner for the Benazir Bhutto Shaheed Human Resource Research & Development Board (BBSHRRDB) — the Government of Sindh's flagship human resource development initiative.
+
+BBSHRRDB, established through an Act of the Sindh Assembly in 2013, was created to empower Sindh's youth with employable skill sets across 28 employment sectors and 414 trades and courses. MUET's role as an executing partner reflects the university's established capacity for large-scale, government-mandated programme delivery.
+
+Under this partnership, MUET manages training delivery, instructor deployment, trainee selection, curriculum alignment, and certification — ensuring quality and accountability in programme execution across assigned districts.
+
+BBSHRRDB's national reach includes over 525,000 registered trainees, 420,000+ graduates, and 170,000+ reported as employed — making it one of Pakistan's largest human resource development programmes. MUET's association with BBSHRRDB positions the university as a key institutional partner in Sindh's workforce development agenda.`,
+    status: 'active',
+    fundingBody: 'BBSHRRDB',
+    fundingSource: 'Benazir Bhutto Shaheed Human Resource Research & Development Board — Government of Sindh',
+    startDate: '2023-01-01',
+    coverImage: '/images/projects/bbshrrdb.jpg',
+    district: ['Jamshoro', 'Hyderabad', 'Dadu', 'Mirpurkhas', 'Thatta'],
+    objectives: [
+      'Execute government-mandated vocational and technical training on behalf of BBSHRRDB',
+      'Align MUET curriculum with BBSHRRDB-approved trades and skill standards',
+      'Deploy qualified instructors and maintain quality assurance across training centers',
+      'Issue BBSHRRDB and MUET co-certified credentials to graduates',
+      'Strengthen MUET\'s role as a preferred government training partner in Sindh',
+    ],
+    metrics: [
+      { label: 'Funding Body Reach',   value: '525,000+', icon: 'users' },
+      { label: 'Sectors Covered',      value: '28',       icon: 'layers' },
+      { label: 'Trades / Courses',     value: '414+',     icon: 'book-open' },
+      { label: 'Districts (National)', value: '30',       icon: 'map-pin' },
+    ],
+    programs: ['technical-freelancing'],
+    featured: true,
+  },
+  {
     slug: 'pitp-phase-1',
-    title: "People's Information Technology Programme — Phase I",
-    shortDesc: 'Free government-funded IT training for Sindh youth across 9 districts, producing 4,484 certified graduates in digital skills.',
-    description: `The People's Information Technology Programme (PITP) Phase I was a landmark initiative of the Government of Sindh, administered by Mehran University of Engineering & Technology (MUET), Jamshoro. Launched in September 2024, the programme provided completely free, certified IT training to eligible youth from across Sindh's underprivileged districts.
+    title: 'Presidential Initiative for Artificial Intelligence & Computing (PITP) — Phase I',
+    shortDesc: 'MUET administered free certified IT training across 8 Sindh districts — 4,484 graduates certified, PKR 19M+ in trainee earnings generated.',
+    description: `Mehran University of Engineering & Technology (MUET), Jamshoro was designated by the Government of Sindh as the primary implementing institution for the Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase I — a landmark public-sector investment in digital skills development.
 
-The programme operated across 9 training centers covering Jamshoro, Hyderabad, Mirpurkhas, Dadu, Thatta, Umerkot, Matiari, and Badin districts. Trainees attended classes Monday to Friday for 3 hours daily over two months, completing 120 contact hours per course.
+MUET managed end-to-end programme execution: training center operations across 9 centers, instructor recruitment and deployment, trainee selection and enrollment, curriculum delivery, assessment, and MUET-verified certificate issuance.
 
-A significant highlight was the economic impact: 1,448 graduates reported active income generation, with cumulative earnings exceeding PKR 19 million. The top earner — Muhammad Sarim from Graphic Design — reported PKR 100,000 monthly income. Additionally, 100 high-achieving trainees received Chromebook laptops along with Google Workspace training.
+The programme ran from September 2024 to May 2025, covering Jamshoro, Hyderabad, Mirpurkhas, Dadu, Thatta, Umerkot, Matiari, and Badin districts. Trainees attended structured classes over a two-month period completing 120 contact hours per course.
 
-The programme achieved a 31.4% female participation rate and reached 62.3% rural youth — directly addressing the digital divide in Sindh's remote communities.`,
+Programme outcomes demonstrated MUET's institutional capacity: out of 5,488 enrolled, 4,484 were certified (82.1% completion rate). Economic impact was measurable — 1,448 graduates reported active income, with cumulative earnings exceeding PKR 19 million. The highest-earning graduate reported PKR 100,000 per month. MUET awarded 100 Chromebook laptops to top performers. Female participation stood at 31.4%, with 62.3% of trainees from rural backgrounds — validating MUET's ability to reach underserved communities.`,
     status: 'completed',
     fundingBody: 'Sindh Government',
-    fundingSource: "Government of Sindh — People's IT Programme",
+    fundingSource: 'Government of Sindh — Presidential Initiative for Artificial Intelligence & Computing (PITP)',
     startDate: '2024-09-01',
     endDate: '2025-05-31',
     coverImage: '/images/projects/pitp-phase-1.jpg',
@@ -25,19 +58,19 @@ The programme achieved a 31.4% female participation rate and reached 62.3% rural
     ],
     district: ['Jamshoro', 'Hyderabad', 'Mirpurkhas', 'Dadu', 'Thatta', 'Umerkot', 'Matiari', 'Badin'],
     objectives: [
-      'Provide free, certified IT training to 5,000+ Sindh youth',
-      'Bridge the digital skills gap in rural and underserved communities',
-      'Improve youth employability and freelance earning potential',
-      'Achieve minimum 30% female trainee participation',
-      'Issue MUET & Government of Sindh verified digital certificates',
+      'Serve as the Government of Sindh\'s designated implementing university for PITP',
+      'Operate 9 training centers and deliver certified IT programmes to 5,000+ trainees',
+      'Ensure 80%+ programme completion rate through structured attendance and assessment',
+      'Achieve minimum 30% female trainee participation across all centers',
+      'Issue MUET-verified, Government of Sindh-endorsed digital certificates with online verification',
     ],
     metrics: [
-      { label: 'Trainees Enrolled',  value: '5,488',   icon: 'users' },
-      { label: 'Certified Graduates', value: '4,484',  icon: 'graduation-cap' },
-      { label: 'Completion Rate',    value: '82.1%',   icon: 'check-circle' },
-      { label: 'Districts Covered',  value: '8',       icon: 'map-pin' },
-      { label: 'Active Earners',     value: '1,448',   icon: 'trending-up' },
-      { label: 'Cumulative Earnings', value: 'PKR 19M+', icon: 'banknote' },
+      { label: 'Trainees Enrolled',    value: '5,488',    icon: 'users' },
+      { label: 'Certified Graduates',  value: '4,484',    icon: 'graduation-cap' },
+      { label: 'Completion Rate',      value: '82.1%',    icon: 'check-circle' },
+      { label: 'Districts Covered',    value: '8',        icon: 'map-pin' },
+      { label: 'Active Earners',       value: '1,448',    icon: 'trending-up' },
+      { label: 'Cumulative Earnings',  value: 'PKR 19M+', icon: 'banknote' },
     ],
     programs: [
       'web-development',
@@ -54,31 +87,27 @@ The programme achieved a 31.4% female participation rate and reached 62.3% rural
   },
   {
     slug: 'pitp-phase-2',
-    title: "People's Information Technology Programme — Phase II",
-    shortDesc: '12 certified IT tracks across 12 Sindh districts, with 4 rolling batches and 2,498 trainees enrolled in Batch 2 alone.',
-    description: `Building on the success of Phase I, the People's IT Programme Phase II (PITP-II) was launched by Chief Minister Syed Murad Ali Shah to scale free digital skills training across an expanded area of Sindh.
+    title: 'Presidential Initiative for Artificial Intelligence & Computing (PITP) — Phase II',
+    shortDesc: 'MUET scales digital training across 12 Sindh districts — 20 centers, 52 instructors, 15,516 applications, and 4 rolling batches annually.',
+    description: `Building on the verified success of Phase I, the Government of Sindh re-designated MUET as the implementing university for the Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase II — reflecting continued institutional confidence in MUET's programme delivery capacity.
 
-MUET Jamshoro administers Phase II across 12 districts — adding Tando Muhammad Khan, Tando Allahyar, Sujawal, and Hala to Phase I's coverage. The programme operates 20 training centers with 52 qualified instructors deployed across the region.
+Phase II represents a significant scale-up: coverage expanded from 8 to 12 districts (adding Tando Muhammad Khan, Tando Allahyar, Sujawal, and Hala), training centers increased from 9 to 20, and the course catalogue expanded from 9 to 12 certified IT specializations. MUET deployed 52 qualified instructors across all centers.
 
-Phase II expanded course offerings to 12 certified IT specializations and introduced a weekend batch option for working individuals and those with daytime constraints. With 15,516 applications received for Phase II, the programme demonstrates extraordinary demand for digital skills training in the region.
+A four-batch rolling model was introduced to maximize annual throughput — with batches starting in September 2025, November 2025, January 2026, and March 2026. This structure enables MUET to train significantly more youth per year while maintaining programme quality.
 
-Batch 2 alone enrolled 2,498 trainees, with 33.55% female participation — a significant increase over Phase I. All graduates receive certificates jointly issued by MUET and the Government of Sindh, with online verification available.`,
+The programme received 15,516 applications for Phase II — a direct indicator of community trust in MUET-administered training. Batch 2 alone enrolled 2,498 trainees with female participation rising to 33.55%. All certificates are jointly issued by MUET and the Government of Sindh with online verification.`,
     status: 'active',
     fundingBody: 'Sindh Government',
-    fundingSource: "Government of Sindh — People's IT Programme Phase II",
+    fundingSource: 'Government of Sindh — Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase II',
     startDate: '2025-09-22',
     coverImage: '/images/projects/pitp-phase-2.jpg',
-    gallery: [
-      '/images/projects/pitp-p2-g1.jpg',
-      '/images/projects/pitp-p2-g2.jpg',
-    ],
     district: ['Hyderabad', 'Jamshoro', 'Mirpurkhas', 'Dadu', 'Umerkot', 'Thatta', 'Tando Muhammad Khan', 'Tando Allahyar', 'Matiari', 'Sujawal', 'Badin', 'Hala'],
     objectives: [
-      'Scale free IT training to 12 districts across Sindh',
-      'Run 4 rolling batches to maximize yearly throughput',
-      'Achieve 35%+ female trainee participation',
-      'Deploy 20 training centers with standardized curriculum',
-      'Connect graduates with freelance and employment opportunities',
+      'Scale MUET\'s government training mandate to 12 districts and 20 training centers',
+      'Deliver 4 rolling batches annually to maximise trainee throughput',
+      'Expand IT curriculum to 12 certified specializations including Cloud and Cyber Security',
+      'Achieve 35%+ female participation across all centers',
+      'Maintain certificate verification standards through MUET\'s centralised LMS',
     ],
     metrics: [
       { label: 'Districts Covered',     value: '12',      icon: 'map-pin' },
@@ -106,13 +135,15 @@ Batch 2 alone enrolled 2,498 trainees, with 33.55% female participation — a si
   },
   {
     slug: 'nftp-muet',
-    title: 'National Freelance Training Programme — MUET Center',
-    shortDesc: 'Federal government initiative equipping Jamshoro youth with freelancing skills across technical, non-technical, and creative domains.',
-    description: `The National Freelance Training Programme (NFTP) is an initiative of the Government of Pakistan, implemented through the Punjab Information Technology Board (PITB), with MUET Jamshoro serving as the designated training center for Sindh.
+    title: 'National Freelance Training Programme (NFTP) — MUET Center',
+    shortDesc: 'MUET designated as the official NFTP training center for Sindh under the Government of Pakistan\'s national freelancing initiative.',
+    description: `Mehran University of Engineering & Technology (MUET) has been selected as the official training center for the National Freelance Training Programme (NFTP) in Sindh — a federal Government of Pakistan initiative implemented by the Punjab Information Technology Board (PITB).
 
-The programme targets youth across Pakistan, aiming to make them self-sustainable through freelancing. MUET's center in Jamshoro offers training across three broad domains: Technical (web development, app development, etc.), Non-Technical (content marketing, digital advertising), and Creative Design.
+MUET's selection as the sole NFTP center in this region reflects the university's recognized institutional capacity, infrastructure, and track record in managing government-funded training at scale. MUET provides its modern computer laboratories, experienced faculty, and administrative infrastructure to support NFTP programme delivery.
 
-With 20 state-of-the-art centers nationwide and a target of 22,000+ empowered freelancers, the NFTP represents Pakistan's commitment to positioning its youth in the global digital economy. MUET's center provides modern computer labs and experienced instructors to ensure quality delivery in Sindh.`,
+The NFTP equips youth with market-ready freelancing skills across three domains — Technical (web and application development), Content Marketing & Advertising, and Creative Design — combining skill training with freelance business fundamentals including platform optimization, client acquisition, and financial management.
+
+The programme is part of Pakistan's national effort to position its youth in the global digital economy. MUET's participation as a center connects Sindh's youth to this federal opportunity, and positions the university as a multi-government-level training institution — operating at both provincial (PITP, BBSHRRDB) and federal (NFTP) levels simultaneously.`,
     status: 'active',
     fundingBody: 'Government of Pakistan',
     fundingSource: 'Government of Pakistan — PITB National Freelance Training Programme',
@@ -120,15 +151,16 @@ With 20 state-of-the-art centers nationwide and a target of 22,000+ empowered fr
     coverImage: '/images/projects/nftp-muet.jpg',
     district: ['Jamshoro'],
     objectives: [
-      'Build freelancing skills across technical and creative domains',
-      'Connect Sindh youth to the global digital economy',
-      'Provide hands-on training in a modern computer lab environment',
-      'Issue nationally recognized freelancing certifications',
+      'Serve as PITB\'s designated NFTP training center for Sindh province',
+      'Deliver freelancing skills training across Technical, Non-Technical, and Creative domains',
+      'Connect Sindh youth to federal-level digital economy initiatives',
+      'Provide MUET-quality training infrastructure and faculty for NFTP delivery',
+      'Establish MUET as a multi-tier government training partner at provincial and federal levels',
     ],
     metrics: [
-      { label: 'National Target',    value: '22,000+', icon: 'users' },
-      { label: 'Training Domains',   value: '3',       icon: 'layers' },
-      { label: 'Nationwide Centers', value: '20',      icon: 'building' },
+      { label: 'National Target',     value: '22,000+', icon: 'users' },
+      { label: 'Training Domains',    value: '3',       icon: 'layers' },
+      { label: 'Nationwide Centers',  value: '20',      icon: 'building' },
     ],
     programs: [
       'technical-freelancing',

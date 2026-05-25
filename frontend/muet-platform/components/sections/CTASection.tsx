@@ -13,25 +13,25 @@ export default function CTASection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-white/70 text-sm font-medium uppercase tracking-widest mb-3">Get Started</p>
+          <p className="text-white/70 text-sm font-medium uppercase tracking-widest mb-3">Commission a Project</p>
           <h2 className="font-display text-3xl md:text-4xl text-white font-bold mb-4">
-            Interested in Our Programs?
+            Partner With MUET for Your Next Training Initiative
           </h2>
           <p className="text-white/70 text-base md:text-lg max-w-xl mx-auto mb-8">
-            Applications for the next batch are open. All programs are completely free for eligible Sindh youth aged 18–28.
+            Government departments, funding bodies, and institutions can engage MUET as their implementing partner for large-scale, multi-district training programmes across Sindh and Pakistan.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-7 py-3 bg-white text-brand-steel font-semibold rounded-lg hover:bg-white/90 transition-all hover:scale-[1.02]"
             >
-              Contact Us <ArrowRight size={18} />
+              Get In Touch <ArrowRight size={18} />
             </Link>
             <Link
-              href="/programs"
+              href="/projects"
               className="inline-flex items-center gap-2 px-7 py-3 border border-white/40 hover:border-white/80 text-white font-semibold rounded-lg transition-all hover:bg-white/10"
             >
-              Browse Programs
+              View Our Projects
             </Link>
           </div>
         </motion.div>

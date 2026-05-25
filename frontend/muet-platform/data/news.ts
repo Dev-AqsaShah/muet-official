@@ -4,8 +4,8 @@ export const newsArticles: NewsArticle[] = [
   {
     slug: 'pitp-phase-1-results-2025',
     title: "PITP Phase I Achieves 82% Completion Rate — 4,484 Sindh Youth Certified",
-    excerpt: "MUET's People's IT Programme Phase I concludes with 4,484 certified graduates, 1,448 active earners, and PKR 19M+ in cumulative freelance earnings across 8 Sindh districts.",
-    content: `Mehran University of Engineering & Technology (MUET), Jamshoro, has successfully concluded the People's Information Technology Programme (PITP) Phase I — a landmark achievement in government-funded digital skills training in Sindh.
+    excerpt: "MUET's Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase I concludes with 4,484 certified graduates, 1,448 active earners, and PKR 19M+ in cumulative freelance earnings across 8 Sindh districts.",
+    content: `Mehran University of Engineering & Technology (MUET), Jamshoro, has successfully concluded the Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase I — a landmark achievement in government-funded digital skills training in Sindh.
 
 ## Programme Outcomes
 
@@ -36,8 +36,8 @@ Building on Phase I's success, PITP Phase II has already launched with expanded 
   {
     slug: 'pitp-phase-2-launch',
     title: "CM Murad Ali Shah Launches PITP Phase II — 12 Districts, 20 Centers",
-    excerpt: "Chief Minister Syed Murad Ali Shah officially launches the People's IT Programme Phase II, expanding free digital training to 12 Sindh districts with 4 rolling batches and 52 instructors.",
-    content: `Chief Minister Syed Murad Ali Shah officially inaugurated the People's Information Technology Programme Phase II (PITP-II) at a ceremony held in Karachi, with MUET Jamshoro designated as the primary implementing university for the expanded initiative.
+    excerpt: "Chief Minister Syed Murad Ali Shah officially launches the Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase II, expanding digital training to 12 Sindh districts with 4 rolling batches and 52 instructors.",
+    content: `Chief Minister Syed Murad Ali Shah officially inaugurated the Presidential Initiative for Artificial Intelligence & Computing Phase II (PITP-II) at a ceremony held in Karachi, with MUET Jamshoro designated as the primary implementing university for the expanded initiative.
 
 ## Expanded Reach
 
@@ -102,7 +102,7 @@ Interested candidates can apply through the official NFTP portal or visit MUET's
     slug: 'muet-training-digital-divide',
     title: "62% Rural Participation: How PITP is Bridging Sindh's Digital Divide",
     excerpt: "Analysis of PITP Phase I data reveals that 62.3% of trainees came from rural areas — demonstrating the programme's reach into underserved communities across Sindh.",
-    content: `A deep analysis of People's IT Programme (PITP) Phase I data by MUET's programme management team has revealed a striking finding: **62.3% of all enrolled trainees came from rural backgrounds** — a remarkable indicator of the programme's reach into Sindh's most underserved communities.
+    content: `A deep analysis of Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase I data by MUET's programme management team has revealed a striking finding: **62.3% of all enrolled trainees came from rural backgrounds** — a remarkable indicator of the programme's reach into Sindh's most underserved communities.
 
 ## Breaking the Urban Barrier
 

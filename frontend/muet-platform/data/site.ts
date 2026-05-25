@@ -1,7 +1,7 @@
 export const siteConfig = {
-  name:     'MUET Training Programs',
+  name:     'MUET Training & Projects',
   fullName: 'Mehran University of Engineering & Technology',
-  tagline:  "Building Sindh's Future Through Education & Training",
+  tagline:  'A Trusted University Partner for Government-Funded Training Initiatives',
   url:      'https://training.muet.edu.pk',
   address:  'Indus Highway, Jamshoro 76062, Sindh, Pakistan',
   phone:    '+92-22-2771197',
@@ -9,31 +9,35 @@ export const siteConfig = {
 }
 
 export const siteStats = [
-  { label: 'Government Projects',  value: '3+',    icon: 'folder-open' },
-  { label: 'Trainees Trained',     value: '5,488+', icon: 'users' },
-  { label: 'Districts Covered',    value: '12',    icon: 'map-pin' },
-  { label: 'Training Programs',    value: '15+',   icon: 'book-open' },
+  { label: 'Government Projects',    value: '4+',     icon: 'folder-open' },
+  { label: 'Trainees Certified',     value: '5,488+', icon: 'users' },
+  { label: 'Districts Covered',      value: '12',     icon: 'map-pin' },
+  { label: 'Training Programs',      value: '15+',    icon: 'book-open' },
 ]
 
 export const partners = [
   {
-    name: 'Government of Sindh',
-    logo: '/images/logos/sindh-gov.png',
-    url:  'https://sindh.gov.pk',
+    name: 'BBSHRRDB',
+    logo: '/images/logos/bbshrrdb.svg',
+    url:  'https://bbshrrdb.gos.pk',
+    fullName: 'Benazir Bhutto Shaheed Human Resource Research & Development Board',
   },
   {
-    name: 'BBSHRRDB',
-    logo: '/images/logos/bbshrrdb.png',
-    url:  'https://bbshrrdb.gos.pk',
+    name: 'Government of Sindh',
+    logo: '/images/logos/sindh-gov.svg',
+    url:  'https://sindh.gov.pk',
+    fullName: 'Government of Sindh',
   },
   {
     name: 'PITB',
-    logo: '/images/logos/pitb.png',
+    logo: '/images/logos/pitb.svg',
     url:  'https://pitb.gov.pk',
+    fullName: 'Punjab Information Technology Board',
   },
   {
     name: 'MUET',
     logo: '/images/logos/muet.svg',
     url:  'https://muet.edu.pk',
+    fullName: 'Mehran University of Engineering & Technology',
   },
 ]

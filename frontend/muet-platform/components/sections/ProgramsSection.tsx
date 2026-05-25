@@ -13,12 +13,12 @@ export default function ProgramsSection() {
     <section className="bg-slate-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="Training Programs"
-          title="Learn In-Demand Digital Skills"
-          description="Free, certified courses open to Sindh youth aged 18–28. Apply for the next batch today."
+          eyebrow="Programme Curriculum"
+          title="Certified IT Programmes Delivered by MUET"
+          description="MUET delivers government-approved IT curricula across 12+ specializations — from Web Development and Data Science to Cloud Computing and Cyber Security — under PITP and NFTP mandates."
           action={
             <Link href="/programs" className="inline-flex items-center gap-1.5 text-brand-steel font-medium text-sm hover:underline shrink-0">
-              All Programs <ArrowRight size={16} />
+              All Programmes <ArrowRight size={16} />
             </Link>
           }
         />
