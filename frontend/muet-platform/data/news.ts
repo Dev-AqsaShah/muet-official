@@ -27,7 +27,7 @@ In recognition of outstanding academic performance, **100 top trainees** receive
 ## Looking Ahead
 
 Building on Phase I's success, PITP Phase II has already launched with expanded coverage across 12 districts and 20 training centers. Phase II introduced 3 additional IT courses and improved female participation to 33.55%.`,
-    coverImage: '/images/news/pitp-phase-1-results.jpg',
+    coverImage: '/images/projects/pitp-trainees.webp',
     category: 'Achievement',
     projectSlug: 'pitp-phase-1',
     publishedAt: '2025-06-15',
@@ -60,7 +60,7 @@ The programme received **15,516 applications** for Phase II — a testament to t
 ## 12 Certified Courses
 
 Phase II expanded the curriculum to 12 IT specializations, adding Cloud Computing, Cyber Security & Ethical Hacking, and Social Media Management to the original 9 courses.`,
-    coverImage: '/images/news/pitp-phase-2-launch.jpg',
+    coverImage: '/images/gallery/muet-auditorium.jpg',
     category: 'Project Update',
     projectSlug: 'pitp-phase-2',
     publishedAt: '2025-09-22',
@@ -92,7 +92,7 @@ The NFTP operates across 20 centers in Pakistan, with a national target of empow
 ## How to Apply
 
 Interested candidates can apply through the official NFTP portal or visit MUET's Directorate of Training for assistance with the application process.`,
-    coverImage: '/images/news/nftp-muet.jpg',
+    coverImage: '/images/hero/muet-gate-header.jpg',
     category: 'Announcement',
     projectSlug: 'nftp-muet',
     publishedAt: '2024-03-01',
@@ -127,7 +127,7 @@ The programme achieved **31.4% female participation in Phase I**, rising to **33
 ## What This Means
 
 These figures demonstrate that with the right infrastructure and zero-cost access, rural Sindh youth are eager and capable of acquiring digital skills. MUET remains committed to expanding this reach further in subsequent phases.`,
-    coverImage: '/images/news/digital-divide.jpg',
+    coverImage: '/images/gallery/muet-civil-dept.jpg',
     category: 'Impact Story',
     projectSlug: 'pitp-phase-1',
     publishedAt: '2025-07-10',
