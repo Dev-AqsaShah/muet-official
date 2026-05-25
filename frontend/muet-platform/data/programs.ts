@@ -9,7 +9,7 @@ export const programs: Program[] = [
     description: `This course equips trainees with end-to-end web development skills — from crafting responsive HTML/CSS layouts to building dynamic JavaScript applications. Students learn industry-standard tools and frameworks used by professional developers worldwide.
 
 The curriculum covers front-end fundamentals, modern JavaScript (ES6+), responsive design principles, and introductory back-end concepts. By the end of the course, trainees will have built real-world projects for their portfolio.`,
-    projectSlug: 'pitp-phase-2',
+    projectSlug: 'pitp',
     duration: '2 months',
     mode: 'physical',
     status: 'ongoing',
@@ -28,7 +28,7 @@ The curriculum covers front-end fundamentals, modern JavaScript (ES6+), responsi
     description: `This course covers the full spectrum of graphic design — from visual fundamentals like color theory and typography to professional UI/UX design using industry tools. Trainees learn to design for both print and digital media, and develop portfolios showcasing real client-ready work.
 
 The programme's graphic design graduates were among the top earners in Phase I, with the highest-earning trainee reporting PKR 100,000 per month from freelance projects.`,
-    projectSlug: 'pitp-phase-2',
+    projectSlug: 'pitp',
     duration: '2 months',
     mode: 'physical',
     status: 'ongoing',
@@ -47,7 +47,7 @@ The programme's graphic design graduates were among the top earners in Phase I, 
     description: `Digital marketing is one of the fastest-growing career fields globally. This course trains participants in all major digital marketing channels — search engine optimization (SEO), pay-per-click advertising, email marketing, and content marketing — using real tools and live campaigns.
 
 Trainees gain hands-on experience with Google Analytics, Google Ads, and popular SEO tools, preparing them for both employment and high-value freelance projects.`,
-    projectSlug: 'pitp-phase-2',
+    projectSlug: 'pitp',
     duration: '2 months',
     mode: 'physical',
     status: 'ongoing',
@@ -66,7 +66,7 @@ Trainees gain hands-on experience with Google Analytics, Google Ads, and popular
     description: `Python is the world's most in-demand programming language. This course takes trainees from complete beginner to writing practical Python applications. Topics include core Python syntax, object-oriented programming, file handling, APIs, and introductory automation scripting.
 
 Trainees complete hands-on projects and build a portfolio of Python scripts and small applications, directly applicable to freelance gigs and software development roles.`,
-    projectSlug: 'pitp-phase-2',
+    projectSlug: 'pitp',
     duration: '2 months',
     mode: 'physical',
     status: 'ongoing',
@@ -84,7 +84,7 @@ Trainees complete hands-on projects and build a portfolio of Python scripts and 
     description: `This course introduces trainees to mobile application development, covering both Android fundamentals and cross-platform development using modern tools. Students build real apps from scratch and learn to publish them to app stores.
 
 By course completion, trainees will have developed at least two complete mobile applications and gained the skills needed to take on freelance app development projects.`,
-    projectSlug: 'pitp-phase-2',
+    projectSlug: 'pitp',
     duration: '2 months',
     mode: 'physical',
     status: 'ongoing',
@@ -102,7 +102,7 @@ By course completion, trainees will have developed at least two complete mobile 
     description: `Data Science is one of the highest-paying fields in the global tech industry. This course covers the complete data science workflow — from data collection and cleaning to visualization and predictive modeling using Python.
 
 Trainees work with real datasets and popular libraries like Pandas, NumPy, Matplotlib, and Scikit-learn. By course end, each student will have completed a full data analysis project from raw data to actionable insights.`,
-    projectSlug: 'pitp-phase-2',
+    projectSlug: 'pitp',
     duration: '2 months',
     mode: 'physical',
     status: 'ongoing',
@@ -120,7 +120,7 @@ Trainees work with real datasets and popular libraries like Pandas, NumPy, Matpl
     description: `E-commerce is a booming industry offering tremendous opportunities for Pakistani youth to earn in dollars. This course teaches trainees how to set up, manage, and scale online stores — from product sourcing and listing to marketing and order fulfillment.
 
 The course covers major platforms including Daraz, Shopify, and Amazon FBA, giving trainees multiple pathways to start their own online businesses.`,
-    projectSlug: 'pitp-phase-2',
+    projectSlug: 'pitp',
     duration: '2 months',
     mode: 'physical',
     status: 'ongoing',
@@ -138,7 +138,7 @@ The course covers major platforms including Daraz, Shopify, and Amazon FBA, givi
     description: `Java remains one of the most widely used programming languages in enterprise software and Android development. This course builds a strong foundation in Java programming — covering syntax, OOP principles, data structures, and basic application development.
 
 Trainees complete projects including console applications and introductory GUI programs, preparing them for software development roles and further specialization.`,
-    projectSlug: 'pitp-phase-2',
+    projectSlug: 'pitp',
     duration: '2 months',
     mode: 'physical',
     status: 'ongoing',
@@ -156,7 +156,7 @@ Trainees complete projects including console applications and introductory GUI p
     description: `Every application relies on a database. This course trains participants in relational database design and SQL — the universal language for working with data. Trainees learn to design schemas, write complex queries, and manage data efficiently.
 
 The course covers MySQL and PostgreSQL, giving students skills applicable to web development, data analysis, and enterprise software careers.`,
-    projectSlug: 'pitp-phase-2',
+    projectSlug: 'pitp',
     duration: '2 months',
     mode: 'physical',
     status: 'ongoing',
@@ -174,7 +174,7 @@ The course covers MySQL and PostgreSQL, giving students skills applicable to web
     description: `Cloud computing is the backbone of modern technology. This course introduces trainees to cloud concepts, major platforms (AWS, Azure, Google Cloud), and practical skills in deploying and managing cloud-based services.
 
 Trainees learn to provision virtual machines, configure storage, manage networking, and understand cloud security fundamentals — skills that command premium salaries in Pakistan and globally.`,
-    projectSlug: 'pitp-phase-2',
+    projectSlug: 'pitp',
     duration: '2 months',
     mode: 'physical',
     status: 'upcoming',
@@ -192,7 +192,7 @@ Trainees learn to provision virtual machines, configure storage, manage networki
     description: `Cybersecurity is the most critical and fastest-growing field in global technology. This course covers both defensive security (protecting systems) and offensive security (ethical hacking) — giving trainees a complete picture of how attacks happen and how to prevent them.
 
 Using industry tools like Kali Linux, Wireshark, and Metasploit in controlled lab environments, trainees develop real penetration testing and security auditing skills valued by employers worldwide.`,
-    projectSlug: 'pitp-phase-2',
+    projectSlug: 'pitp',
     duration: '2 months',
     mode: 'physical',
     status: 'upcoming',
@@ -210,7 +210,7 @@ Using industry tools like Kali Linux, Wireshark, and Metasploit in controlled la
     description: `Social media management is a high-demand freelance skill that businesses of all sizes need. This course trains participants to build and manage professional social media presences — from developing a content strategy and creating engaging posts to running paid campaigns and analyzing performance data.
 
 Trainees learn to work with major platforms including Instagram, Facebook, LinkedIn, TikTok, and Twitter/X, and graduate ready to manage accounts for clients or businesses.`,
-    projectSlug: 'pitp-phase-2',
+    projectSlug: 'pitp',
     duration: '2 months',
     mode: 'physical',
     status: 'ongoing',

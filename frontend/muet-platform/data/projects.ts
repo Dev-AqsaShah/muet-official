@@ -35,87 +35,37 @@ BBSHRRDB's national reach includes over 525,000 registered trainees, 420,000+ gr
     featured: true,
   },
   {
-    slug: 'pitp-phase-1',
-    title: 'Presidential Initiative for Artificial Intelligence & Computing (PITP) — Phase I',
-    shortDesc: 'MUET administered free certified IT training across 8 Sindh districts — 4,484 graduates certified, PKR 19M+ in trainee earnings generated.',
-    description: `Mehran University of Engineering & Technology (MUET), Jamshoro was designated by the Government of Sindh as the primary implementing institution for the Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase I — a landmark public-sector investment in digital skills development.
+    slug: 'pitp',
+    title: 'Presidential Initiative for Artificial Intelligence & Computing (PITP)',
+    shortDesc: 'MUET is the designated implementing university for PITP — delivering certified IT training across 12 Sindh districts through 20 centers and 52 instructors.',
+    description: `Mehran University of Engineering & Technology (MUET), Jamshoro has been designated by the Government of Sindh as the primary implementing institution for the Presidential Initiative for Artificial Intelligence & Computing (PITP) — a flagship public-sector investment in digital skills development across Sindh.
 
-MUET managed end-to-end programme execution: training center operations across 9 centers, instructor recruitment and deployment, trainee selection and enrollment, curriculum delivery, assessment, and MUET-verified certificate issuance.
+MUET manages end-to-end programme execution: training center operations, instructor recruitment and deployment, trainee selection and enrollment, curriculum delivery, assessment, and MUET-verified certificate issuance jointly endorsed by the Government of Sindh.
 
-The programme ran from September 2024 to May 2025, covering Jamshoro, Hyderabad, Mirpurkhas, Dadu, Thatta, Umerkot, Matiari, and Badin districts. Trainees attended structured classes over a two-month period completing 120 contact hours per course.
+The programme has grown significantly since inception — expanding from 8 to 12 districts and from 9 to 20 training centers. MUET deployed 52 qualified instructors and introduced a four-batch rolling model (September, November, January, March) to maximise annual trainee throughput across Hyderabad, Jamshoro, Mirpurkhas, Dadu, Umerkot, Thatta, Tando Muhammad Khan, Tando Allahyar, Matiari, Sujawal, Badin, and Hala.
 
-Programme outcomes demonstrated MUET's institutional capacity: out of 5,488 enrolled, 4,484 were certified (82.1% completion rate). Economic impact was measurable — 1,448 graduates reported active income, with cumulative earnings exceeding PKR 19 million. The highest-earning graduate reported PKR 100,000 per month. MUET awarded 100 Chromebook laptops to top performers. Female participation stood at 31.4%, with 62.3% of trainees from rural backgrounds — validating MUET's ability to reach underserved communities.`,
-    status: 'completed',
+Programme outcomes validate MUET's institutional capacity: out of 5,488 enrolled in the inaugural batch, 4,484 were certified — an 82.1% completion rate. Economic impact was measurable — 1,448 graduates reported active income with cumulative freelance earnings exceeding PKR 19 million. The programme received 15,516 applications for the expanded phase, with female participation rising to 33.55% and 62.3% of trainees from rural backgrounds.`,
+    status: 'active',
     fundingBody: 'Sindh Government',
     fundingSource: 'Government of Sindh — Presidential Initiative for Artificial Intelligence & Computing (PITP)',
     startDate: '2024-09-01',
-    endDate: '2025-05-31',
     coverImage: '/images/projects/pitp-trainees.webp',
-    gallery: [
-      '/images/projects/pitp-p1-g1.jpg',
-      '/images/projects/pitp-p1-g2.jpg',
-      '/images/projects/pitp-p1-g3.jpg',
-    ],
-    district: ['Jamshoro', 'Hyderabad', 'Mirpurkhas', 'Dadu', 'Thatta', 'Umerkot', 'Matiari', 'Badin'],
+    district: ['Jamshoro', 'Hyderabad', 'Mirpurkhas', 'Dadu', 'Thatta', 'Umerkot', 'Tando Muhammad Khan', 'Tando Allahyar', 'Matiari', 'Sujawal', 'Badin', 'Hala'],
     objectives: [
       'Serve as the Government of Sindh\'s designated implementing university for PITP',
-      'Operate 9 training centers and deliver certified IT programmes to 5,000+ trainees',
-      'Ensure 80%+ programme completion rate through structured attendance and assessment',
-      'Achieve minimum 30% female trainee participation across all centers',
-      'Issue MUET-verified, Government of Sindh-endorsed digital certificates with online verification',
+      'Operate 20 training centers across 12 districts with 52 qualified instructors',
+      'Deliver 4 rolling batches annually across 12 certified IT specializations',
+      'Maintain 80%+ programme completion rate through structured attendance and assessment',
+      'Achieve 35%+ female participation and broad rural coverage across all centers',
+      'Issue MUET-verified, Government of Sindh-endorsed certificates with online verification',
     ],
     metrics: [
-      { label: 'Trainees Enrolled',    value: '5,488',    icon: 'users' },
-      { label: 'Certified Graduates',  value: '4,484',    icon: 'graduation-cap' },
-      { label: 'Completion Rate',      value: '82.1%',    icon: 'check-circle' },
-      { label: 'Districts Covered',    value: '8',        icon: 'map-pin' },
-      { label: 'Active Earners',       value: '1,448',    icon: 'trending-up' },
-      { label: 'Cumulative Earnings',  value: 'PKR 19M+', icon: 'banknote' },
-    ],
-    programs: [
-      'web-development',
-      'graphic-designing-ui-ux',
-      'digital-marketing-seo',
-      'python-development',
-      'mobile-app-development',
-      'data-science',
-      'e-commerce',
-      'java-development',
-      'database-management',
-    ],
-    featured: true,
-  },
-  {
-    slug: 'pitp-phase-2',
-    title: 'Presidential Initiative for Artificial Intelligence & Computing (PITP) — Phase II',
-    shortDesc: 'MUET scales digital training across 12 Sindh districts — 20 centers, 52 instructors, 15,516 applications, and 4 rolling batches annually.',
-    description: `Building on the verified success of Phase I, the Government of Sindh re-designated MUET as the implementing university for the Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase II — reflecting continued institutional confidence in MUET's programme delivery capacity.
-
-Phase II represents a significant scale-up: coverage expanded from 8 to 12 districts (adding Tando Muhammad Khan, Tando Allahyar, Sujawal, and Hala), training centers increased from 9 to 20, and the course catalogue expanded from 9 to 12 certified IT specializations. MUET deployed 52 qualified instructors across all centers.
-
-A four-batch rolling model was introduced to maximize annual throughput — with batches starting in September 2025, November 2025, January 2026, and March 2026. This structure enables MUET to train significantly more youth per year while maintaining programme quality.
-
-The programme received 15,516 applications for Phase II — a direct indicator of community trust in MUET-administered training. Batch 2 alone enrolled 2,498 trainees with female participation rising to 33.55%. All certificates are jointly issued by MUET and the Government of Sindh with online verification.`,
-    status: 'active',
-    fundingBody: 'Sindh Government',
-    fundingSource: 'Government of Sindh — Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase II',
-    startDate: '2025-09-22',
-    coverImage: '/images/gallery/muet-auditorium.jpg',
-    district: ['Hyderabad', 'Jamshoro', 'Mirpurkhas', 'Dadu', 'Umerkot', 'Thatta', 'Tando Muhammad Khan', 'Tando Allahyar', 'Matiari', 'Sujawal', 'Badin', 'Hala'],
-    objectives: [
-      'Scale MUET\'s government training mandate to 12 districts and 20 training centers',
-      'Deliver 4 rolling batches annually to maximise trainee throughput',
-      'Expand IT curriculum to 12 certified specializations including Cloud and Cyber Security',
-      'Achieve 35%+ female participation across all centers',
-      'Maintain certificate verification standards through MUET\'s centralised LMS',
-    ],
-    metrics: [
-      { label: 'Districts Covered',     value: '12',      icon: 'map-pin' },
-      { label: 'Training Centers',      value: '20',      icon: 'building' },
-      { label: 'Instructors Deployed',  value: '52',      icon: 'users' },
-      { label: 'Batch 2 Enrollment',    value: '2,498',   icon: 'user-check' },
-      { label: 'Applications Received', value: '15,516',  icon: 'file-text' },
-      { label: 'Female Participation',  value: '33.55%',  icon: 'heart' },
+      { label: 'Trainees Certified',    value: '4,484',    icon: 'graduation-cap' },
+      { label: 'Completion Rate',       value: '82.1%',    icon: 'check-circle' },
+      { label: 'Districts Covered',     value: '12',       icon: 'map-pin' },
+      { label: 'Training Centers',      value: '20',       icon: 'building' },
+      { label: 'Instructors Deployed',  value: '52',       icon: 'users' },
+      { label: 'Graduate Earnings',     value: 'PKR 19M+', icon: 'banknote' },
     ],
     programs: [
       'web-development',
