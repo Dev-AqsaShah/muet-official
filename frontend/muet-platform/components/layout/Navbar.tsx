@@ -25,8 +25,8 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 shrink-0">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shadow">
+            <Link href="/" className="flex items-center gap-2.5 shrink-0">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shadow shrink-0">
                 <Image
                   src="/images/logos/muet-official.svg"
                   alt="MUET"
@@ -36,9 +36,19 @@ export default function Navbar() {
                   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                 />
               </div>
-              <div className="hidden sm:block">
+              {/* Short name on small screens */}
+              <div className="sm:hidden">
                 <p className="text-white font-bold text-sm leading-tight">MUET</p>
-                <p className="text-brand-baby text-xs leading-tight">Mehran University</p>
+              </div>
+              {/* Full official name on sm–md */}
+              <div className="hidden sm:block lg:hidden">
+                <p className="text-white font-bold text-sm leading-tight">Mehran University</p>
+                <p className="text-brand-baby text-xs leading-tight">of Engineering &amp; Technology</p>
+              </div>
+              {/* Full two-line official name on lg+ */}
+              <div className="hidden lg:block">
+                <p className="text-white font-bold text-sm leading-snug">Mehran University of Engineering &amp; Technology</p>
+                <p className="text-brand-baby text-xs leading-tight tracking-wide">Jamshoro, Sindh, Pakistan</p>
               </div>
             </Link>
 
