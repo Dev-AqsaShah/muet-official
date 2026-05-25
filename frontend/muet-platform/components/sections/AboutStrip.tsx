@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
 
@@ -66,27 +67,53 @@ export default function AboutStrip() {
             </div>
           </motion.div>
 
-          {/* Stats panel */}
+          {/* Campus image panel */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid grid-cols-2 gap-4"
+            className="relative"
           >
-            {[
-              { value: '1977',    label: 'Year Established' },
-              { value: '12',      label: 'Districts Covered' },
-              { value: '5,488+',  label: 'Trainees Certified' },
-              { value: '4',       label: 'Active Govt Projects' },
-              { value: '82.1%',   label: 'Completion Rate' },
-              { value: '20',      label: 'Training Centers' },
-            ].map(stat => (
-              <div key={stat.label} className="bg-white/8 border border-white/10 rounded-xl p-5 text-center">
-                <p className="text-2xl font-bold text-white mb-1">{stat.value}</p>
-                <p className="text-white/55 text-xs font-medium">{stat.label}</p>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
+              <Image
+                src="/images/hero/muet-gate-header.jpg"
+                alt="Mehran University of Engineering & Technology — Jamshoro Campus"
+                fill
+                className="object-cover object-right"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              {/* gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent" />
+
+              {/* Stats row overlaid at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 grid grid-cols-3 gap-2">
+                {[
+                  { value: '5,488+', label: 'Certified' },
+                  { value: '82.1%',  label: 'Completion' },
+                  { value: '20',     label: 'Centers' },
+                ].map(stat => (
+                  <div key={stat.label} className="bg-black/40 backdrop-blur-sm border border-white/20 rounded-xl p-3 text-center">
+                    <p className="text-xl font-bold text-white">{stat.value}</p>
+                    <p className="text-white/70 text-xs font-medium">{stat.label}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Extra stats below image */}
+            <div className="grid grid-cols-3 gap-3 mt-3">
+              {[
+                { value: '1977', label: 'Established' },
+                { value: '12',   label: 'Districts' },
+                { value: '4',    label: 'Active Projects' },
+              ].map(stat => (
+                <div key={stat.label} className="bg-white/8 border border-white/10 rounded-xl p-4 text-center">
+                  <p className="text-xl font-bold text-white">{stat.value}</p>
+                  <p className="text-white/55 text-xs font-medium">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
