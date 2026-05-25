@@ -1,13 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="266" viewBox="0 0 400 266">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#c026d3"/>
-      <stop offset="100%" stop-color="#701a75"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#120520"/>
+      <stop offset="100%" stop-color="#200a3a"/>
     </linearGradient>
   </defs>
-  <rect width="400" height="266" fill="url(#g)"/>
-  <text x="200" y="188" text-anchor="middle" font-size="76" fill="white" opacity="0.9">🎨</text>
-  <rect x="0" y="206" width="400" height="60" fill="black" opacity="0.38"/>
-  <text x="18" y="234" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white">Creative Design Freelancing</text>
-  <text x="18" y="252" font-family="Arial,sans-serif" font-size="10" fill="white" opacity="0.55">MUET Training Programme</text>
+
+  <!-- Background -->
+  <rect width="400" height="266" fill="url(#bg)"/>
+
+  <!-- Subtle large ring top-right -->
+  <circle cx="360" cy="50" r="110" fill="none" stroke="white" stroke-width="1" opacity="0.04"/>
+  <circle cx="360" cy="50" r="75"  fill="none" stroke="white" stroke-width="1" opacity="0.04"/>
+
+  <!-- Accent top bar -->
+  <rect x="0" y="0" width="400" height="3" fill="#d8b4fe"/>
+
+  <!-- Accent dot top-left -->
+  <circle cx="28" cy="28" r="5" fill="#d8b4fe" opacity="0.7"/>
+
+  <!-- Icon group -->
+  <g>
+      <polygon points="200,105 232,148 220,195 180,195 168,148" fill="none" stroke="white" stroke-width="4" stroke-linejoin="round" opacity="0.9"/>
+      <polygon points="200,120 224,154 215,185 185,185 176,154" fill="none" stroke="white" stroke-width="2" opacity="0.3"/>
+      <line x1="200" y1="105" x2="200" y2="120" stroke="white" stroke-width="2" opacity="0.5"/>
+      <line x1="232" y1="148" x2="224" y2="154" stroke="white" stroke-width="2" opacity="0.5"/>
+      <line x1="220" y1="195" x2="215" y2="185" stroke="white" stroke-width="2" opacity="0.5"/>
+      <line x1="180" y1="195" x2="185" y2="185" stroke="white" stroke-width="2" opacity="0.5"/>
+      <line x1="168" y1="148" x2="176" y2="154" stroke="white" stroke-width="2" opacity="0.5"/>
+      <circle cx="200" cy="153" r="8" fill="white" opacity="0.9"/>
+  </g>
+
+  <!-- Bottom label bar -->
+  <rect x="0" y="212" width="400" height="54" fill="black" opacity="0.42"/>
+  <!-- Accent left stripe -->
+  <rect x="0" y="212" width="3" height="54" fill="#d8b4fe"/>
+  <text x="18" y="238" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white">Creative Design</text>
+  <text x="18" y="254" font-family="Arial,sans-serif" font-size="10" fill="#d8b4fe" opacity="0.75">MUET Training Programme</text>
 </svg>

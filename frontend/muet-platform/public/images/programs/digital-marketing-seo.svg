@@ -1,16 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="266" viewBox="0 0 400 266">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ea580c"/>
-      <stop offset="100%" stop-color="#7c2d12"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1f14"/>
+      <stop offset="100%" stop-color="#0d2e1e"/>
     </linearGradient>
   </defs>
-  <rect width="400" height="266" fill="url(#g)"/>
-  <rect x="108" y="195" width="32" height="60" rx="4" fill="white" opacity="0.4"/>
-<rect x="156" y="165" width="32" height="90" rx="4" fill="white" opacity="0.6"/>
-<rect x="204" y="140" width="32" height="115" rx="4" fill="white" opacity="0.8"/>
-<rect x="252" y="115" width="32" height="140" rx="4" fill="white" opacity="1"/>
-  <rect x="0" y="206" width="400" height="60" fill="black" opacity="0.38"/>
-  <text x="18" y="234" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white">Digital Marketing &amp; SEO</text>
-  <text x="18" y="252" font-family="Arial,sans-serif" font-size="10" fill="white" opacity="0.55">MUET Training Programme</text>
+
+  <!-- Background -->
+  <rect width="400" height="266" fill="url(#bg)"/>
+
+  <!-- Subtle large ring top-right -->
+  <circle cx="360" cy="50" r="110" fill="none" stroke="white" stroke-width="1" opacity="0.04"/>
+  <circle cx="360" cy="50" r="75"  fill="none" stroke="white" stroke-width="1" opacity="0.04"/>
+
+  <!-- Accent top bar -->
+  <rect x="0" y="0" width="400" height="3" fill="#34d399"/>
+
+  <!-- Accent dot top-left -->
+  <circle cx="28" cy="28" r="5" fill="#34d399" opacity="0.7"/>
+
+  <!-- Icon group -->
+  <g>
+      <polyline points="120,195 160,160 188,175 240,120 275,135" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+      <polyline points="255,110 280,110 280,135" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="120" y1="205" x2="280" y2="205" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+  </g>
+
+  <!-- Bottom label bar -->
+  <rect x="0" y="212" width="400" height="54" fill="black" opacity="0.42"/>
+  <!-- Accent left stripe -->
+  <rect x="0" y="212" width="3" height="54" fill="#34d399"/>
+  <text x="18" y="238" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white">Digital Marketing & SEO</text>
+  <text x="18" y="254" font-family="Arial,sans-serif" font-size="10" fill="#34d399" opacity="0.75">MUET Training Programme</text>
 </svg>
