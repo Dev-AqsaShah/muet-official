@@ -38,7 +38,7 @@ export default function Navbar() {
               </div>
               <div className="hidden sm:block">
                 <p className="text-white font-bold text-sm leading-tight">MUET</p>
-                <p className="text-brand-baby text-xs leading-tight">Training &amp; Projects</p>
+                <p className="text-brand-baby text-xs leading-tight">Mehran University</p>
               </div>
             </Link>
 
@@ -66,7 +66,7 @@ export default function Navbar() {
                 href="/contact"
                 className="hidden sm:inline-flex items-center px-4 py-2 rounded-md text-sm font-medium bg-brand-steel hover:bg-brand-steel/90 text-white transition-colors"
               >
-                Partner With Us
+                Contact Us
               </Link>
               <button
                 className="md:hidden text-white/80 hover:text-white p-2 rounded-md hover:bg-white/10 transition-colors"

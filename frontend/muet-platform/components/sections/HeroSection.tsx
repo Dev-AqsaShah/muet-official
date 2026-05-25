@@ -26,7 +26,7 @@ export default function HeroSection() {
         <div className="max-w-3xl">
           <motion.p
             {...fadeUp(0)}
-            className="text-brand-baby text-sm font-medium uppercase tracking-widest mb-4"
+            className="text-brand-baby text-base font-bold uppercase tracking-widest mb-4"
           >
             Mehran University of Engineering &amp; Technology — Jamshoro
           </motion.p>
@@ -35,8 +35,8 @@ export default function HeroSection() {
             {...fadeUp(0.1)}
             className="font-display text-4xl md:text-5xl lg:text-6xl text-white font-bold leading-tight mb-6"
           >
-            A Trusted University Partner for{' '}
-            <span className="text-brand-baby">Government Training Initiatives</span>
+            Where Ambition Meets{' '}
+            <span className="text-brand-baby">Certified Excellence</span>
           </motion.h1>
 
           <motion.p
