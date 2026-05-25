@@ -26,19 +26,19 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 shrink-0">
-              <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shadow">
                 <Image
-                  src="/images/logos/muet.svg"
+                  src="/images/logos/muet-official.svg"
                   alt="MUET"
-                  width={32}
-                  height={32}
+                  width={38}
+                  height={38}
                   className="object-contain"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                 />
               </div>
               <div className="hidden sm:block">
-                <p className="text-white font-semibold text-sm leading-tight">MUET</p>
-                <p className="text-brand-baby text-xs leading-tight">Training Programs</p>
+                <p className="text-white font-bold text-sm leading-tight">MUET</p>
+                <p className="text-brand-baby text-xs leading-tight">Training &amp; Projects</p>
               </div>
             </Link>
 
@@ -66,7 +66,7 @@ export default function Navbar() {
                 href="/contact"
                 className="hidden sm:inline-flex items-center px-4 py-2 rounded-md text-sm font-medium bg-brand-steel hover:bg-brand-steel/90 text-white transition-colors"
               >
-                Apply Now
+                Partner With Us
               </Link>
               <button
                 className="md:hidden text-white/80 hover:text-white p-2 rounded-md hover:bg-white/10 transition-colors"

@@ -36,7 +36,7 @@ export const partners = [
   },
   {
     name: 'MUET',
-    logo: '/images/logos/muet.svg',
+    logo: '/images/logos/muet-official.svg',
     url:  'https://muet.edu.pk',
     fullName: 'Mehran University of Engineering & Technology',
   },

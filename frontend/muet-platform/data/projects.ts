@@ -16,7 +16,7 @@ BBSHRRDB's national reach includes over 525,000 registered trainees, 420,000+ gr
     fundingBody: 'BBSHRRDB',
     fundingSource: 'Benazir Bhutto Shaheed Human Resource Research & Development Board — Government of Sindh',
     startDate: '2023-01-01',
-    coverImage: '/images/projects/bbshrrdb.jpg',
+    coverImage: '/images/hero/muet-campus.jpg',
     district: ['Jamshoro', 'Hyderabad', 'Dadu', 'Mirpurkhas', 'Thatta'],
     objectives: [
       'Execute government-mandated vocational and technical training on behalf of BBSHRRDB',
@@ -50,7 +50,7 @@ Programme outcomes demonstrated MUET's institutional capacity: out of 5,488 enro
     fundingSource: 'Government of Sindh — Presidential Initiative for Artificial Intelligence & Computing (PITP)',
     startDate: '2024-09-01',
     endDate: '2025-05-31',
-    coverImage: '/images/projects/pitp-phase-1.jpg',
+    coverImage: '/images/projects/pitp-trainees.webp',
     gallery: [
       '/images/projects/pitp-p1-g1.jpg',
       '/images/projects/pitp-p1-g2.jpg',
@@ -100,7 +100,7 @@ The programme received 15,516 applications for Phase II — a direct indicator o
     fundingBody: 'Sindh Government',
     fundingSource: 'Government of Sindh — Presidential Initiative for Artificial Intelligence & Computing (PITP) Phase II',
     startDate: '2025-09-22',
-    coverImage: '/images/projects/pitp-phase-2.jpg',
+    coverImage: '/images/gallery/muet-auditorium.jpg',
     district: ['Hyderabad', 'Jamshoro', 'Mirpurkhas', 'Dadu', 'Umerkot', 'Thatta', 'Tando Muhammad Khan', 'Tando Allahyar', 'Matiari', 'Sujawal', 'Badin', 'Hala'],
     objectives: [
       'Scale MUET\'s government training mandate to 12 districts and 20 training centers',
@@ -148,7 +148,7 @@ The programme is part of Pakistan's national effort to position its youth in the
     fundingBody: 'Government of Pakistan',
     fundingSource: 'Government of Pakistan — PITB National Freelance Training Programme',
     startDate: '2024-01-01',
-    coverImage: '/images/projects/nftp-muet.jpg',
+    coverImage: '/images/gallery/muet-civil-dept.jpg',
     district: ['Jamshoro'],
     objectives: [
       'Serve as PITB\'s designated NFTP training center for Sindh province',

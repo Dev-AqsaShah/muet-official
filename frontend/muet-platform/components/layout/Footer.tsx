@@ -22,12 +22,12 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
+              <div className="w-11 h-11 rounded-full bg-white flex items-center justify-center overflow-hidden shadow">
                 <Image
-                  src="/images/logos/muet.svg"
+                  src="/images/logos/muet-official.svg"
                   alt="MUET"
-                  width={36}
-                  height={36}
+                  width={40}
+                  height={40}
                   className="object-contain"
                 />
               </div>
