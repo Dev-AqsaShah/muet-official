@@ -19,9 +19,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 const roleColor: Record<string, string> = {
-  head:       '#059669',
-  senior:     '#34d399',
-  instructor: '#047857',
+  head:       '#1B3A6B',
+  senior:     '#4682B4',
+  instructor: '#4682B4',
 }
 
 const roleLabel: Record<string, string> = {
@@ -39,13 +39,13 @@ export default async function InstructorDetailPage({ params }: { params: Promise
   const taughtPrograms = programs.filter(p => ins.programSlugs.includes(p.slug))
 
   return (
-    <div className="min-h-screen" style={{ background: '#f0fdf4' }}>
+    <div className="min-h-screen" style={{ background: '#F8FAFC' }}>
 
       {/* Hero */}
-      <div className="relative pt-28 pb-14 px-4 overflow-hidden" style={{ background: '#064e3b' }}>
+      <div className="relative pt-28 pb-14 px-4 overflow-hidden" style={{ background: '#1B3A6B' }}>
         <div className="absolute inset-0 opacity-[0.05]"
-          style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #34d399 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-0.5" style={{ background: accent }} />
+          style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #89CFF0 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-0.5" style={{ background: '#4682B4' }} />
         <div className="relative max-w-5xl mx-auto">
           <Link href="/instructors" className="inline-flex items-center gap-1.5 text-white/40 hover:text-white text-sm mb-8 transition-colors">
             <ArrowLeft size={14} /> All Instructors
@@ -77,7 +77,7 @@ export default async function InstructorDetailPage({ params }: { params: Promise
               <p className="text-white/55 text-base mb-4">{ins.title}</p>
 
               <div className="flex flex-wrap gap-4 text-sm text-white/50">
-                <a href={`mailto:${ins.email}`} className="flex items-center gap-1.5 hover:text-brand-light transition-colors">
+                <a href={`mailto:${ins.email}`} className="flex items-center gap-1.5 hover:text-brand-baby transition-colors">
                   <Mail size={14} style={{ color: accent }} /> {ins.email}
                 </a>
                 <span className="flex items-center gap-1.5">
@@ -98,18 +98,18 @@ export default async function InstructorDetailPage({ params }: { params: Promise
 
             {/* Bio */}
             <section className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm">
-              <h2 className="text-base font-bold text-brand-forest mb-4 flex items-center gap-2">
-                <span className="w-1 h-4 rounded-full" style={{ background: accent }} />
+              <h2 className="text-base font-bold mb-4 flex items-center gap-2" style={{ color: '#1B3A6B' }}>
+                <span className="w-1 h-4 rounded-full" style={{ background: '#4682B4' }} />
                 About
               </h2>
-              <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">{ins.bio}</p>
+              <p className="text-brand-gray text-sm leading-relaxed whitespace-pre-line">{ins.bio}</p>
             </section>
 
             {/* Programmes taught */}
             {taughtPrograms.length > 0 && (
               <section className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm">
-                <h2 className="text-base font-bold text-brand-forest mb-5 flex items-center gap-2">
-                  <span className="w-1 h-4 rounded-full" style={{ background: accent }} />
+                <h2 className="text-base font-bold mb-5 flex items-center gap-2" style={{ color: '#1B3A6B' }}>
+                  <span className="w-1 h-4 rounded-full" style={{ background: '#4682B4' }} />
                   Programmes Taught
                 </h2>
                 <div className="space-y-3">
@@ -117,13 +117,13 @@ export default async function InstructorDetailPage({ params }: { params: Promise
                     <Link
                       key={p.slug}
                       href={`/programs/${p.slug}`}
-                      className="group flex items-center justify-between p-4 rounded-xl border border-gray-100 bg-gray-50 hover:bg-white hover:border-gray-200 hover:shadow-sm transition-all"
+                      className="group flex items-center justify-between p-4 rounded-xl border border-gray-100 bg-gray-50 hover:bg-white hover:border-brand-steel/30 hover:shadow-sm transition-all"
                     >
                       <div>
-                        <p className="font-semibold text-brand-forest text-sm group-hover:text-brand-green transition-colors">{p.title}</p>
+                        <p className="font-semibold text-sm group-hover:text-brand-steel transition-colors" style={{ color: '#1B3A6B' }}>{p.title}</p>
                         <p className="text-gray-400 text-xs mt-0.5">{p.duration} · {p.seats} seats</p>
                       </div>
-                      <ChevronRight size={15} className="text-gray-300 group-hover:text-brand-green transition-colors" />
+                      <ChevronRight size={15} className="text-gray-300 group-hover:text-brand-steel transition-colors" />
                     </Link>
                   ))}
                 </div>
@@ -136,15 +136,15 @@ export default async function InstructorDetailPage({ params }: { params: Promise
 
             {/* Specializations */}
             <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-              <h3 className="text-sm font-bold text-brand-navy mb-4 flex items-center gap-2">
-                <Briefcase size={14} style={{ color: accent }} /> Specializations
+              <h3 className="text-sm font-bold mb-4 flex items-center gap-2" style={{ color: '#1B3A6B' }}>
+                <Briefcase size={14} className="text-brand-steel" /> Specializations
               </h3>
               <div className="flex flex-wrap gap-2">
                 {ins.specialization.map(s => (
                   <span
                     key={s}
                     className="text-xs px-2.5 py-1 rounded-full font-medium"
-                    style={{ background: accent + '15', color: accent, border: `1px solid ${accent}30` }}
+                    style={{ background: '#dbeafe', color: '#1B3A6B', border: '1px solid #bfdbfe' }}
                   >
                     {s}
                   </span>
@@ -154,20 +154,20 @@ export default async function InstructorDetailPage({ params }: { params: Promise
 
             {/* Quick stats */}
             <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-              <h3 className="text-sm font-bold text-brand-navy mb-4">Quick Info</h3>
-              <div className="space-y-3 text-sm text-gray-600">
+              <h3 className="text-sm font-bold mb-4" style={{ color: '#1B3A6B' }}>Quick Info</h3>
+              <div className="space-y-3 text-sm text-brand-gray">
                 <div className="flex items-center gap-2">
-                  <Award size={14} style={{ color: accent }} className="shrink-0" />
+                  <Award size={14} className="text-brand-steel shrink-0" />
                   <span>{ins.experience} experience</span>
                 </div>
                 {taughtPrograms.length > 0 && (
                   <div className="flex items-center gap-2">
-                    <BookOpen size={14} style={{ color: accent }} className="shrink-0" />
+                    <BookOpen size={14} className="text-brand-steel shrink-0" />
                     <span>{taughtPrograms.length} programme{taughtPrograms.length > 1 ? 's' : ''}</span>
                   </div>
                 )}
                 <div className="flex items-center gap-2">
-                  <Mail size={14} style={{ color: accent }} className="shrink-0" />
+                  <Mail size={14} className="text-brand-steel shrink-0" />
                   <a href={`mailto:${ins.email}`} className="text-brand-steel hover:underline break-all">{ins.email}</a>
                 </div>
               </div>
@@ -177,7 +177,7 @@ export default async function InstructorDetailPage({ params }: { params: Promise
             <a
               href={`mailto:${ins.email}`}
               className="block w-full text-center py-3 rounded-xl font-semibold text-white text-sm transition-opacity hover:opacity-90"
-              style={{ background: accent }}
+              style={{ background: '#4682B4' }}
             >
               Send Email
             </a>

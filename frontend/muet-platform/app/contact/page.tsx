@@ -26,10 +26,10 @@ export default function ContactPage() {
             {/* Form */}
             <div>
               <div className="mb-8">
-                <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-green mb-3 px-3 py-1 rounded-full bg-brand-green/10">
+                <span className="inline-block text-xs font-bold uppercase tracking-widest mb-3 px-3 py-1 rounded-full" style={{ background: '#dbeafe', color: '#1B3A6B' }}>
                   Send a Message
                 </span>
-                <h2 className="text-2xl font-bold text-brand-forest">We&apos;ll respond within 1–2 business days</h2>
+                <h2 className="font-display text-2xl font-bold" style={{ color: '#1B3A6B' }}>We&apos;ll respond within 1–2 business days</h2>
               </div>
               <ContactForm />
             </div>
@@ -38,13 +38,13 @@ export default function ContactPage() {
             <div className="space-y-5">
               {/* Info card */}
               <div className="rounded-3xl overflow-hidden shadow-lg">
-                <div className="p-7 text-white" style={{ background: 'linear-gradient(135deg, #064e3b 0%, #052e16 100%)' }}>
-                  <p className="text-brand-light font-bold text-xs uppercase tracking-widest mb-5">Contact Information</p>
+                <div className="p-7 text-white" style={{ background: 'linear-gradient(135deg, #1B3A6B 0%, #4682B4 100%)' }}>
+                  <p className="text-brand-baby font-bold text-xs uppercase tracking-widest mb-5">Contact Information</p>
                   <ul className="space-y-5">
                     {contactDetails.map(({ icon: Icon, label, value }) => (
                       <li key={label} className="flex items-start gap-4">
-                        <div className="w-9 h-9 rounded-xl bg-brand-green/25 flex items-center justify-center shrink-0 mt-0.5">
-                          <Icon size={15} className="text-brand-light" />
+                        <div className="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center shrink-0 mt-0.5">
+                          <Icon size={15} className="text-brand-baby" />
                         </div>
                         <div>
                           <p className="text-white/40 text-xs mb-0.5 font-medium">{label}</p>
@@ -57,26 +57,26 @@ export default function ContactPage() {
               </div>
 
               {/* Application note */}
-              <div className="rounded-2xl p-5 border border-brand-green/20 bg-brand-green/5">
-                <p className="font-bold text-brand-forest text-sm mb-2">Programme Applications</p>
+              <div className="rounded-2xl p-5 border" style={{ borderColor: '#bfdbfe', background: '#eff6ff' }}>
+                <p className="font-bold text-sm mb-2" style={{ color: '#1B3A6B' }}>Programme Applications</p>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
                   Include the programme name and your district in your message. We&apos;ll share eligibility details and next steps within 48 hours.
                 </p>
-                <a href={`mailto:${siteConfig.email}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green hover:text-brand-mid transition-colors">
+                <a href={`mailto:${siteConfig.email}`} className="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors" style={{ color: '#4682B4' }}>
                   Email directly <ArrowRight size={13} />
                 </a>
               </div>
 
               {/* Location */}
               <div className="rounded-2xl overflow-hidden border border-gray-200">
-                <div className="h-32 relative" style={{ background: 'linear-gradient(135deg, #064e3b, #059669)' }}>
+                <div className="h-32 relative" style={{ background: 'linear-gradient(135deg, #1B3A6B, #4682B4)' }}>
                   <div className="absolute inset-0 opacity-[0.08]"
-                    style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+                    style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #89CFF0 1px, transparent 0)', backgroundSize: '20px 20px' }} />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <MapPin size={28} className="text-brand-light mx-auto mb-1" />
+                      <MapPin size={28} className="text-brand-baby mx-auto mb-1" />
                       <p className="text-white font-bold text-sm">MUET — Jamshoro</p>
-                      <p className="text-brand-light text-xs">Sindh, Pakistan</p>
+                      <p className="text-brand-baby text-xs">Sindh, Pakistan</p>
                     </div>
                   </div>
                 </div>

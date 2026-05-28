@@ -74,18 +74,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div>
             {/* Description */}
             <section className="mb-10">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">About the Project</h2>
-              <div className="prose prose-gray max-w-none text-gray-600 leading-relaxed whitespace-pre-line">
+              <h2 className="font-display text-xl font-bold mb-4" style={{ color: '#1B3A6B' }}>About the Project</h2>
+              <div className="text-brand-gray leading-relaxed whitespace-pre-line text-sm">
                 {project.description}
               </div>
             </section>
 
             {/* Objectives */}
             <section className="mb-10">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Key Objectives</h2>
+              <h2 className="font-display text-xl font-bold mb-4" style={{ color: '#1B3A6B' }}>Key Objectives</h2>
               <ul className="space-y-3">
                 {project.objectives.map((obj, i) => (
-                  <li key={i} className="flex items-start gap-3 text-gray-600">
+                  <li key={i} className="flex items-start gap-3 text-brand-gray text-sm">
                     <CheckCircle2 size={18} className="text-brand-steel shrink-0 mt-0.5" />
                     {obj}
                   </li>
@@ -95,10 +95,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
             {/* Districts */}
             <section className="mb-10">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Districts Covered</h2>
+              <h2 className="font-display text-xl font-bold mb-4" style={{ color: '#1B3A6B' }}>Districts Covered</h2>
               <div className="flex flex-wrap gap-2">
                 {project.district.map(d => (
-                  <span key={d} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-baby/15 text-brand-navy text-sm font-medium rounded-full">
+                  <span key={d} className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-full" style={{ background: '#dbeafe', color: '#1B3A6B' }}>
                     <MapPin size={12} />
                     {d}
                   </span>
@@ -111,15 +111,15 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           {/* ── Sidebar ── */}
           <aside className="space-y-6">
             {/* Impact Metrics */}
-            <div className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
+              <h3 className="font-bold mb-4 flex items-center gap-2 text-sm" style={{ color: '#1B3A6B' }}>
                 <TrendingUp size={16} className="text-brand-steel" />
                 Impact Metrics
               </h3>
               <div className="grid grid-cols-2 gap-3">
                 {project.metrics.map(m => (
-                  <div key={m.label} className="bg-slate-50 rounded-lg p-3 text-center">
-                    <p className="text-lg font-bold text-brand-navy">{m.value}</p>
+                  <div key={m.label} className="rounded-xl p-3 text-center" style={{ background: '#F8FAFC' }}>
+                    <p className="text-lg font-bold font-display" style={{ color: '#D97706' }}>{m.value}</p>
                     <p className="text-xs text-gray-500 mt-0.5">{m.label}</p>
                   </div>
                 ))}
@@ -127,12 +127,12 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </div>
 
             {/* Funding Info */}
-            <div className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+            <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
+              <h3 className="font-bold mb-3 flex items-center gap-2 text-sm" style={{ color: '#1B3A6B' }}>
                 <FileText size={16} className="text-brand-steel" />
                 Funding Details
               </h3>
-              <div className="space-y-2 text-sm text-gray-600">
+              <div className="space-y-2 text-sm text-brand-gray">
                 <div className="flex justify-between">
                   <span className="text-gray-400">Funded by</span>
                   <span className="font-medium text-right">{project.fundingBody}</span>

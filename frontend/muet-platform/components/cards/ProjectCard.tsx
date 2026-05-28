@@ -1,110 +1,90 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { MapPin, ArrowRight, CalendarDays } from 'lucide-react'
 import type { Project } from '@/types'
 
 type Props = Pick<Project, 'slug' | 'title' | 'shortDesc' | 'coverImage' | 'status' | 'fundingBody' | 'district' | 'startDate' | 'featured'>
 
-const config: Record<string, { bg: string; accent: string; acronym: string; logo: string; funderLogo: string }> = {
-  'bbshrrdb-skills-development': {
-    bg:         '#064e3b',
-    accent:     '#34d399',
-    acronym:    'BBSHRRDB',
-    logo:       '/images/logos/muet-logo-official.png',
-    funderLogo: '/images/logos/bbshrrdb-official.png',
-  },
-  'pitp': {
-    bg:         '#052e16',
-    accent:     '#4ade80',
-    acronym:    'PITP',
-    logo:       '/images/logos/muet-logo-official.png',
-    funderLogo: '/images/logos/sindh-gov-official.png',
-  },
-  'nftp-muet': {
-    bg:         '#065f46',
-    accent:     '#34d399',
-    acronym:    'NFTP',
-    logo:       '/images/logos/muet-logo-official.png',
-    funderLogo: '/images/logos/nftp-official.png',
-  },
+const statusConfig: Record<string, { bg: string; text: string; label: string }> = {
+  active:    { bg: '#dcfce7', text: '#166534', label: 'Active' },
+  ongoing:   { bg: '#dcfce7', text: '#166534', label: 'Ongoing' },
+  completed: { bg: '#f1f5f9', text: '#475569', label: 'Completed' },
+  upcoming:  { bg: '#fef3c7', text: '#92400e', label: 'Upcoming' },
 }
 
-const statusColor: Record<string, string> = {
-  open:      '#4ade80',
-  ongoing:   '#34d399',
-  upcoming:  '#fbbf24',
-  completed: '#94a3b8',
+const fundingConfig: Record<string, { bg: string; text: string }> = {
+  'BBSHRRDB':             { bg: '#dbeafe', text: '#1e40af' },
+  'Sindh Government':     { bg: '#d1fae5', text: '#065f46' },
+  'Government of Pakistan': { bg: '#e0e7ff', text: '#3730a3' },
+  'MUET':                 { bg: '#f0f9ff', text: '#0369a1' },
 }
 
-export default function ProjectCard({ slug, title, shortDesc, status, district, startDate }: Props) {
-  const c = config[slug]
-  if (!c) return null
+const coverFallback: Record<string, string> = {
+  'bbshrrdb-skills-development': '/images/projects/bbshrrdb-banner.png',
+  'pitp':                         '/images/projects/pitp-trainees.webp',
+  'nftp-muet':                    '/images/hero/muet-campus.jpg',
+}
+
+export default function ProjectCard({ slug, title, shortDesc, coverImage, status, fundingBody, district, startDate }: Props) {
+  const sc = statusConfig[status]   ?? statusConfig.active
+  const fc = fundingConfig[fundingBody] ?? { bg: '#f1f5f9', text: '#475569' }
+  const imgSrc = coverImage || coverFallback[slug] || '/images/hero/muet-campus.jpg'
 
   return (
     <Link
       href={`/projects/${slug}`}
-      className="group relative flex flex-col rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-brand-green/20"
-      style={{ background: c.bg }}
+      className="group flex flex-col bg-white rounded-2xl border border-gray-200 overflow-hidden hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
+      style={{ boxShadow: '0 2px 12px rgba(70,130,180,0.08)' }}
     >
-      {/* Accent top line */}
-      <div className="h-0.5 w-full" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }} />
-
-      {/* Hover glow overlay */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400"
-        style={{ background: `radial-gradient(ellipse at top right, ${c.accent}15 0%, transparent 60%)` }} />
-
-      {/* Watermark acronym */}
-      <div className="absolute bottom-0 right-0 font-black leading-none select-none pointer-events-none"
-        style={{ fontSize: 'clamp(56px, 10vw, 88px)', color: c.accent, opacity: 0.06,
-          transform: 'translate(10%, 10%)', letterSpacing: '-3px' }}>
-        {c.acronym}
+      {/* Cover image — 16:9 */}
+      <div className="relative aspect-video overflow-hidden bg-brand-offwhite shrink-0">
+        <Image
+          src={imgSrc}
+          alt={title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
       </div>
 
-      <div className="relative flex flex-col flex-1 p-6">
-
-        {/* Logo row */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center ring-1 ring-white/10">
-              <img src={c.logo} alt="MUET" className="w-5 h-5 object-contain" />
-            </div>
-            <span className="text-white/35 text-[10px] font-bold tracking-widest uppercase">MUET</span>
-          </div>
-          <div className="px-2.5 py-1 rounded-lg bg-white/95 shadow-sm">
-            <img src={c.funderLogo} alt={c.acronym} className="h-5 w-auto object-contain" />
-          </div>
-        </div>
-
-        {/* Status */}
-        <div className="flex items-center gap-2 mb-3">
-          <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: statusColor[status] ?? '#94a3b8' }} />
-          <span className="text-[11px] font-semibold capitalize" style={{ color: statusColor[status] ?? '#94a3b8' }}>{status}</span>
+      {/* Content */}
+      <div className="flex flex-col flex-1 p-5">
+        {/* Badges */}
+        <div className="flex items-center gap-2 mb-3 flex-wrap">
+          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: sc.bg, color: sc.text }}>
+            {sc.label}
+          </span>
+          <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full" style={{ background: fc.bg, color: fc.text }}>
+            {fundingBody}
+          </span>
         </div>
 
         {/* Title */}
-        <h3 className="font-bold text-white text-lg leading-snug mb-2 line-clamp-2">
+        <h3 className="font-semibold text-base leading-snug mb-2 line-clamp-2 group-hover:text-brand-steel transition-colors" style={{ color: '#1B3A6B' }}>
           {title}
         </h3>
 
         {/* Desc */}
-        <p className="text-white/40 text-sm leading-relaxed line-clamp-2 flex-1 mb-5">
+        <p className="text-brand-gray text-sm leading-relaxed line-clamp-2 flex-1 mb-4">
           {shortDesc}
         </p>
 
         {/* Footer */}
-        <div className="flex items-center justify-between pt-4 border-t border-white/10">
-          <div className="flex items-center gap-3 text-xs text-white/30">
+        <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+          <div className="flex items-center gap-3 text-xs text-gray-400">
             <span className="flex items-center gap-1.5">
-              <MapPin size={11} style={{ color: c.accent }} />
-              {district.length} districts
+              <MapPin size={11} className="text-brand-steel" />
+              {district.length} district{district.length !== 1 ? 's' : ''}
             </span>
             {startDate && (
               <span className="flex items-center gap-1.5">
-                <CalendarDays size={11} style={{ color: c.accent }} />
+                <CalendarDays size={11} className="text-brand-steel" />
                 {new Date(startDate).getFullYear()}
               </span>
             )}
           </div>
-          <span className="flex items-center gap-1 text-xs font-semibold group-hover:gap-2 transition-all" style={{ color: c.accent }}>
+          <span className="flex items-center gap-1 text-xs font-semibold group-hover:gap-2 transition-all" style={{ color: '#4682B4' }}>
             View Project <ArrowRight size={12} />
           </span>
         </div>

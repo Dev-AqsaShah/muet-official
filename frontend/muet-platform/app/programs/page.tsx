@@ -67,21 +67,20 @@ export default function ProgramsPage() {
   }), [query, active])
 
   return (
-    <div className="min-h-screen" style={{ background: '#f0fdf4' }}>
+    <div className="min-h-screen" style={{ background: '#F8FAFC' }}>
 
       {/* Header */}
-      <div className="relative pt-28 pb-16 px-4 overflow-hidden" style={{ background: '#064e3b' }}>
+      <div className="relative pt-28 pb-16 px-4 overflow-hidden" style={{ background: '#1B3A6B' }}>
         <div className="absolute inset-0 opacity-[0.05]"
-          style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #34d399 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+          style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #89CFF0 1px, transparent 0)', backgroundSize: '32px 32px' }} />
         <div className="absolute -top-20 right-0 w-96 h-96 rounded-full blur-[90px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(5,150,105,0.3) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(circle, rgba(70,130,180,0.35) 0%, transparent 70%)' }} />
         <div className="relative max-w-7xl mx-auto">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-light mb-4 px-3 py-1 rounded-full bg-brand-light/10 border border-brand-light/20">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-baby mb-4 px-3 py-1 rounded-full bg-brand-baby/10 border border-brand-baby/20">
             Programme Catalogue
           </span>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
-            All{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-light to-brand-green">15 Programmes</span>
+            All 15 Programmes
           </h1>
           <p className="text-white/50 text-base max-w-lg leading-relaxed">
             Free, certified IT and digital skills programmes for Sindh youth. Government-approved, zero cost — apply today.
@@ -100,7 +99,7 @@ export default function ProgramsPage() {
                 placeholder="Search programmes…"
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-green/25 focus:border-brand-green transition-all"
+                className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-steel/25 focus:border-brand-steel transition-all"
               />
             </div>
             <div className="flex items-center gap-1.5 flex-wrap">
@@ -111,9 +110,10 @@ export default function ProgramsPage() {
                   onClick={() => setActive(f.value)}
                   className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
                     active === f.value
-                      ? 'bg-brand-green text-white shadow-sm shadow-brand-green/30'
-                      : 'text-gray-500 border border-gray-200 hover:border-brand-green hover:text-brand-green bg-white'
+                      ? 'text-white shadow-sm'
+                      : 'text-gray-500 border border-gray-200 hover:border-brand-steel hover:text-brand-steel bg-white'
                   }`}
+                  style={active === f.value ? { background: '#4682B4' } : {}}
                 >
                   {f.label}
                 </button>
@@ -151,20 +151,21 @@ export default function ProgramsPage() {
                 >
                   <Link
                     href={`/programs/${program.slug}`}
-                    className="group flex flex-col h-full rounded-2xl border border-gray-100 bg-white hover:border-gray-200 hover:shadow-2xl hover:shadow-brand-green/8 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                    className="group flex flex-col h-full rounded-2xl border border-gray-200 bg-white hover:border-brand-steel/40 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                    style={{ boxShadow: '0 2px 8px rgba(70,130,180,0.06)' }}
                   >
-                    <div className="h-1 w-full shrink-0" style={{ background: accent }} />
+                    <div className="h-1 w-full shrink-0" style={{ background: 'linear-gradient(90deg, #4682B4, #89CFF0)' }} />
 
                     <div className="flex flex-col flex-1 p-6">
                       <div className="flex items-start justify-between mb-5">
                         <div
                           className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl shadow-sm"
-                          style={{ background: accent + '18', border: `1px solid ${accent}30` }}
+                          style={{ background: '#dbeafe', border: '1px solid #bfdbfe' }}
                         >
                           {emoji}
                         </div>
                         <div className="flex flex-col items-end gap-1.5">
-                          <span className="text-[11px] font-bold px-2.5 py-1 rounded-full capitalize" style={{ background: accent + '18', color: accent }}>
+                          <span className="text-[11px] font-bold px-2.5 py-1 rounded-full capitalize" style={{ background: '#dbeafe', color: '#1B3A6B' }}>
                             {program.status}
                           </span>
                           <span className="text-[10px] text-gray-400 border border-gray-100 px-2 py-0.5 rounded-full">
@@ -173,19 +174,19 @@ export default function ProgramsPage() {
                         </div>
                       </div>
 
-                      <h3 className="font-bold text-brand-forest text-base leading-snug mb-2 group-hover:text-brand-green transition-colors">
+                      <h3 className="font-semibold text-base leading-snug mb-2 group-hover:text-brand-steel transition-colors" style={{ color: '#1B3A6B' }}>
                         {program.title}
                       </h3>
-                      <p className="text-gray-400 text-sm leading-relaxed line-clamp-2 flex-1 mb-5">
+                      <p className="text-brand-gray text-sm leading-relaxed line-clamp-2 flex-1 mb-5">
                         {program.shortDesc}
                       </p>
 
                       <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                         <div className="flex items-center gap-3 text-xs text-gray-400">
-                          <span className="flex items-center gap-1.5"><Clock size={11} style={{ color: accent }} />{program.duration}</span>
-                          <span className="flex items-center gap-1.5"><Users size={11} style={{ color: accent }} />{program.seats}</span>
+                          <span className="flex items-center gap-1.5"><Clock size={11} className="text-brand-steel" />{program.duration}</span>
+                          <span className="flex items-center gap-1.5"><Users size={11} className="text-brand-steel" />{program.seats}</span>
                         </div>
-                        <ChevronRight size={15} className="group-hover:translate-x-1 transition-transform duration-300" style={{ color: accent }} />
+                        <ChevronRight size={15} className="text-brand-steel group-hover:translate-x-1 transition-transform duration-300" />
                       </div>
                     </div>
                   </Link>

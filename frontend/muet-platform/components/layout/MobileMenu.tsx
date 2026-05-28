@@ -36,13 +36,12 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
           />
           <motion.div
             className="fixed top-0 left-0 right-0 z-50 md:hidden overflow-hidden"
-            style={{ background: '#064e3b' }}
+            style={{ background: '#1B3A6B' }}
             initial={{ y: '-100%' }}
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
             transition={{ type: 'tween', duration: 0.28, ease: 'easeInOut' }}
           >
-            {/* Top dot pattern */}
             <div className="absolute inset-0 opacity-[0.04]"
               style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
 
@@ -50,7 +49,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
               <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
                 <div>
                   <p className="text-white font-bold text-sm">MUET Training</p>
-                  <p className="text-brand-light text-xs">Mehran University</p>
+                  <p className="text-brand-baby text-xs">Mehran University</p>
                 </div>
                 <button onClick={onClose} className="text-white/60 hover:text-white transition-colors p-1.5 rounded-lg hover:bg-white/10">
                   <X size={20} />
@@ -69,7 +68,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
                       className={cn(
                         'flex items-center px-5 py-3.5 text-sm font-medium transition-all',
                         pathname === link.href
-                          ? 'text-brand-light bg-white/10 border-l-2 border-brand-light'
+                          ? 'text-brand-baby bg-white/10 border-l-2 border-brand-baby'
                           : 'text-white/75 hover:text-white hover:bg-white/5 border-l-2 border-transparent'
                       )}
                     >
@@ -82,7 +81,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
                 <Link href="/auth/signin" className="flex-1 py-2.5 text-center text-sm font-medium text-white border border-white/25 rounded-lg hover:bg-white/10 transition-colors">
                   Sign In
                 </Link>
-                <Link href="/auth/signup" className="flex-1 py-2.5 text-center text-sm font-semibold text-white bg-brand-green hover:bg-brand-mid rounded-lg transition-colors">
+                <Link href="/auth/signup" className="flex-1 py-2.5 text-center text-sm font-semibold text-white rounded-lg transition-colors" style={{ background: '#4682B4' }}>
                   Register
                 </Link>
               </div>

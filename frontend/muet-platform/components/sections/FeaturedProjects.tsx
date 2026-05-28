@@ -20,7 +20,7 @@ export default function FeaturedProjects() {
   const shown = active === 'all' ? all : all.filter(p => p.fundingBody === active)
 
   return (
-    <section className="py-20" style={{ background: '#f0fdf4' }}>
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Heading row */}
@@ -31,17 +31,17 @@ export default function FeaturedProjects() {
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
           >
-            <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-green mb-3 px-3 py-1 rounded-full bg-brand-green/10">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest mb-3 px-3 py-1 rounded-full" style={{ background: '#dbeafe', color: '#1B3A6B' }}>
               Project Portfolio
             </span>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-forest leading-tight">
+            <h2 className="font-display text-3xl md:text-4xl font-bold leading-tight" style={{ color: '#1B3A6B' }}>
               MUET&apos;s Active Projects
             </h2>
-            <p className="text-gray-500 text-sm mt-2 max-w-xl leading-relaxed">
+            <p className="text-brand-gray text-sm mt-2 max-w-xl leading-relaxed">
               Serving as implementing institution for large-scale training programmes across Sindh.
             </p>
           </motion.div>
-          <Link href="/projects" className="inline-flex items-center gap-1.5 text-brand-green font-semibold text-sm hover:text-brand-mid transition-colors shrink-0 mb-1">
+          <Link href="/projects" className="inline-flex items-center gap-1.5 font-semibold text-sm hover:underline shrink-0 mb-1" style={{ color: '#4682B4' }}>
             View All <ArrowRight size={16} />
           </Link>
         </div>
@@ -52,11 +52,12 @@ export default function FeaturedProjects() {
             <button
               key={f.value}
               onClick={() => setActive(f.value)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all ${
+              className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all ${
                 active === f.value
-                  ? 'bg-brand-green text-white border-brand-green shadow-sm shadow-brand-green/30'
-                  : 'bg-white text-gray-600 border-gray-200 hover:border-brand-green hover:text-brand-green'
+                  ? 'text-white border-transparent shadow-md'
+                  : 'bg-white text-gray-600 border-gray-200 hover:border-brand-steel hover:text-brand-steel'
               }`}
+              style={active === f.value ? { background: '#4682B4' } : {}}
             >
               {f.label}
             </button>

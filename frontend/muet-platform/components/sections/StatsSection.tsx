@@ -11,61 +11,31 @@ const iconMap: Record<string, LucideIcon> = {
   'book-open':   BookOpen,
 }
 
-const cardAccents = ['#34d399', '#4ade80', '#6ee7b7', '#a7f3d0']
-
 export default function StatsSection() {
   return (
-    <section className="relative py-20 overflow-hidden" style={{ background: '#064e3b' }}>
-      {/* Grid pattern */}
-      <div className="absolute inset-0 opacity-[0.04]"
-        style={{ backgroundImage: 'linear-gradient(rgba(52,211,153,1) 1px, transparent 1px), linear-gradient(90deg, rgba(52,211,153,1) 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
+    <section className="relative py-16 overflow-hidden" style={{ background: '#4682B4' }}>
+      {/* Subtle dot pattern */}
+      <div className="absolute inset-0 opacity-[0.06]"
+        style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Section label */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center text-xs font-bold uppercase tracking-[0.22em] text-brand-light/60 mb-10"
-        >
-          Impact By The Numbers
-        </motion.p>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {siteStats.map((stat, i) => {
             const Icon = iconMap[stat.icon] ?? FolderOpen
-            const accent = cardAccents[i % cardAccents.length]
             return (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 28 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: i * 0.1 }}
-                className="group relative rounded-2xl p-6 overflow-hidden cursor-default"
-                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group flex flex-col items-center text-center p-6 rounded-2xl bg-white/10 hover:bg-white/18 border border-white/15 hover:border-white/30 transition-all duration-300 cursor-default"
               >
-                {/* Hover glow */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 rounded-2xl"
-                  style={{ background: `radial-gradient(ellipse at top left, ${accent}14 0%, transparent 65%)` }}
-                />
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
-
-                <div className="relative">
-                  <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
-                    style={{ background: `${accent}18`, border: `1px solid ${accent}30` }}
-                  >
-                    <Icon size={20} style={{ color: accent }} />
-                  </div>
-                  <p className="text-4xl font-black text-white mb-1.5 leading-none">{stat.value}</p>
-                  <p className="text-sm font-medium" style={{ color: `${accent}aa` }}>{stat.label}</p>
+                <div className="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center mb-4 group-hover:bg-white/25 transition-colors">
+                  <Icon size={22} className="text-white" />
                 </div>
+                <p className="font-display text-4xl font-bold text-brand-amber mb-1.5 leading-none">{stat.value}</p>
+                <p className="text-white/75 text-sm font-medium leading-tight">{stat.label}</p>
               </motion.div>
             )
           })}

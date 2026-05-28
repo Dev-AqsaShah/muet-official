@@ -7,18 +7,16 @@ interface PageHeaderProps { title: string; subtitle?: string; breadcrumbs: Bread
 
 export default function PageHeader({ title, subtitle, breadcrumbs, className }: PageHeaderProps) {
   return (
-    <section className={cn('relative pt-28 pb-16 px-4 overflow-hidden', className)} style={{ background: '#064e3b' }}>
+    <section className={cn('relative pt-28 pb-16 px-4 overflow-hidden', className)} style={{ background: '#1B3A6B' }}>
       {/* Dot grid */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
-        style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #34d399 1.5px, transparent 0)', backgroundSize: '32px 32px' }} />
-      {/* Gradient glow blobs */}
+        style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #89CFF0 1.5px, transparent 0)', backgroundSize: '32px 32px' }} />
+      {/* Glow */}
       <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-[100px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(5,150,105,0.28) 0%, transparent 70%)' }} />
-      <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full blur-[80px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(52,211,153,0.1) 0%, transparent 70%)' }} />
-      {/* Bottom gradient fade */}
+        style={{ background: 'radial-gradient(circle, rgba(70,130,180,0.35) 0%, transparent 70%)' }} />
+      {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-12 pointer-events-none"
-        style={{ background: 'linear-gradient(to bottom, transparent, rgba(6,78,59,0.5))' }} />
+        style={{ background: 'linear-gradient(to bottom, transparent, rgba(27,58,107,0.4))' }} />
 
       <div className="relative max-w-7xl mx-auto">
         {/* Breadcrumbs */}
@@ -28,17 +26,15 @@ export default function PageHeader({ title, subtitle, breadcrumbs, className }: 
             <span key={i} className="flex items-center gap-1">
               {i > 0 && <ChevronRight size={11} className="shrink-0" />}
               {crumb.href
-                ? <Link href={crumb.href} className="hover:text-brand-light transition-colors font-medium">{crumb.label}</Link>
+                ? <Link href={crumb.href} className="hover:text-brand-baby transition-colors font-medium">{crumb.label}</Link>
                 : <span className="text-white/75 font-semibold">{crumb.label}</span>
               }
             </span>
           ))}
         </nav>
 
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-brand-light">
-            {title}
-          </span>
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+          {title}
         </h1>
         {subtitle && (
           <p className="text-white/55 text-base md:text-lg max-w-2xl leading-relaxed mt-3">{subtitle}</p>

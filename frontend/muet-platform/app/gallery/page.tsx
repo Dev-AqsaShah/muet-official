@@ -29,7 +29,7 @@ export default function GalleryPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Gallery' }]}
       />
 
-      <section className="py-16" style={{ background: '#f0fdf4' }}>
+      <section className="py-16" style={{ background: '#F8FAFC' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Header row */}
@@ -41,9 +41,10 @@ export default function GalleryPage() {
                   onClick={() => setActiveTag(tag)}
                   className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all ${
                     activeTag === tag
-                      ? 'bg-brand-green text-white border-brand-green shadow-md shadow-brand-green/25'
-                      : 'bg-white text-gray-600 border-gray-200 hover:border-brand-green hover:text-brand-green'
+                      ? 'text-white border-transparent shadow-md'
+                      : 'bg-white text-gray-600 border-gray-200 hover:border-brand-steel hover:text-brand-steel'
                   }`}
+                  style={activeTag === tag ? { background: '#4682B4' } : {}}
                 >
                   {tag}
                 </button>
@@ -70,8 +71,8 @@ export default function GalleryPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
                 onClick={() => setLightbox(img)}
-                className={`group relative aspect-video rounded-2xl overflow-hidden cursor-zoom-in shadow-md hover:shadow-xl hover:shadow-brand-green/15 hover:-translate-y-1 transition-all duration-300 ${img.span}`}
-                style={{ background: '#064e3b' }}
+                className={`group relative aspect-video rounded-2xl overflow-hidden cursor-zoom-in shadow-md hover:shadow-xl hover:shadow-brand-steel/15 hover:-translate-y-1 transition-all duration-300 ${img.span}`}
+                style={{ background: '#1B3A6B' }}
               >
                 <Image
                   src={img.src}
@@ -80,9 +81,9 @@ export default function GalleryPage() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#052e16]/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                  <span className="inline-block text-[10px] font-bold text-brand-light mb-1 uppercase tracking-wide">{img.tag}</span>
+                  <span className="inline-block text-[10px] font-bold text-brand-baby mb-1 uppercase tracking-wide">{img.tag}</span>
                   <p className="text-white text-sm font-semibold leading-snug">{img.caption}</p>
                 </div>
               </motion.div>

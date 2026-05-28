@@ -13,16 +13,12 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         brand: {
-          dark:   "#052e16",
-          forest: "#064e3b",
-          green:  "#059669",
-          mid:    "#047857",
-          light:  "#34d399",
-          pale:   "#d1fae5",
-          // legacy aliases (kept for gradual migration)
-          navy:   "#064e3b",
-          steel:  "#059669",
-          baby:   "#34d399",
+          navy:     "#1B3A6B",   // primary dark — hero, footer, dark sections
+          steel:    "#4682B4",   // primary brand — navbar, buttons, links
+          baby:     "#89CFF0",   // accent on dark backgrounds
+          amber:    "#D97706",   // impact numbers, CTA accents, badges
+          offwhite: "#F8FAFC",   // alternating section backgrounds
+          gray:     "#64748B",   // body text, captions
         },
         border: "hsl(var(--border))",
         input:  "hsl(var(--input))",

@@ -35,9 +35,10 @@ export default function NewsPage() {
                 onClick={() => setActive(cat)}
                 className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all ${
                   active === cat
-                    ? 'bg-brand-green text-white border-brand-green shadow-md shadow-brand-green/25'
-                    : 'bg-white text-gray-600 border-gray-200 hover:border-brand-green hover:text-brand-green'
+                    ? 'text-white border-transparent shadow-md'
+                    : 'bg-white text-gray-600 border-gray-200 hover:border-brand-steel hover:text-brand-steel'
                 }`}
+                style={active === cat ? { background: '#4682B4' } : {}}
               >
                 {cat}
               </button>

@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MUET Training & Projects — Sindh's Digital Skills Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#020b18;
+  --bg2:#061224;
+  --bg3:#0c1e35;
+  --teal:#00e5c8;
+  --teal2:#00b8a3;
+  --cyan:#38bdf8;
+  --gold:#fbbf24;
+  --violet:#818cf8;
+  --white:#e8f4ff;
+  --muted:#607896;
+  --border:rgba(0,229,200,.12);
+  --border2:rgba(0,229,200,.22);
+  --glow:0 0 40px rgba(0,229,200,.18);
+  --glow2:0 0 80px rgba(0,229,200,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{background:var(--bg);color:var(--white);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;}
+
+/* CANVAS */
+#bgc{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* GLOW ORBS */
+.orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;animation:orbFloat 12s ease-in-out infinite;}
+.orb1{width:600px;height:600px;background:rgba(0,229,200,.07);top:-200px;left:-100px;animation-delay:0s;}
+.orb2{width:500px;height:500px;background:rgba(56,189,248,.05);top:40%;right:-150px;animation-delay:-4s;}
+.orb3{width:400px;height:400px;background:rgba(129,140,248,.06);bottom:-100px;left:30%;animation-delay:-8s;}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-40px) scale(1.05);}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px 72px;background:rgba(2,11,24,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding .3s;}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.logo-seal{width:52px;height:52px;flex-shrink:0;filter:drop-shadow(0 0 10px rgba(0,229,200,.35));}
+.logo-wordmark{display:flex;flex-direction:column;gap:1px;}
+.logo-muet{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--teal);letter-spacing:.06em;line-height:1;text-shadow:0 0 16px rgba(0,229,200,.4);}
+.logo-fullname{font-family:'Plus Jakarta Sans',sans-serif;font-size:9.5px;font-weight:500;color:rgba(232,244,255,.55);letter-spacing:.04em;line-height:1;white-space:nowrap;}
+.logo-divider{width:1px;height:32px;background:linear-gradient(to bottom,transparent,rgba(0,229,200,.3),transparent);margin:0 4px;}
+nav ul{list-style:none;display:flex;gap:32px;align-items:center;}
+nav a{color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:500;letter-spacing:.02em;transition:color .2s;}
+nav a:hover{color:var(--teal);}
+.nav-btn{background:linear-gradient(135deg,var(--teal),var(--cyan));color:#020b18!important;padding:9px 24px;border-radius:8px;font-weight:700!important;font-size:13px!important;box-shadow:0 0 24px rgba(0,229,200,.3);transition:all .2s!important;}
+.nav-btn:hover{box-shadow:0 0 40px rgba(0,229,200,.5);transform:translateY(-2px);}
+
+/* HERO */
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 40px 100px;}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,200,.08);border:1px solid rgba(0,229,200,.3);color:var(--teal);font-size:12px;font-weight:600;letter-spacing:.12em;padding:7px 20px;border-radius:50px;margin-bottom:32px;text-transform:uppercase;animation:fadeUp .9s ease both;}
+.hero-chip .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:blink 1.8s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 8px var(--teal);}50%{opacity:.3;box-shadow:none;}}
+
+h1.hero-h{font-family:'Syne',sans-serif;font-size:clamp(52px,8vw,110px);font-weight:800;line-height:.95;letter-spacing:-.04em;margin-bottom:28px;animation:fadeUp .9s .1s ease both;}
+h1.hero-h em{font-style:normal;background:linear-gradient(120deg,var(--teal) 0%,var(--cyan) 40%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 30px rgba(0,229,200,.4));}
+.hero-sub{font-size:19px;line-height:1.75;color:rgba(232,244,255,.6);max-width:640px;margin-bottom:48px;font-weight:300;animation:fadeUp .9s .2s ease both;}
+
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeUp .9s .3s ease both;}
+.btn-glow{background:linear-gradient(135deg,var(--teal),var(--cyan));color:#020b18;padding:16px 38px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 0 30px rgba(0,229,200,.35),inset 0 1px 0 rgba(255,255,255,.2);transition:all .25s;display:inline-flex;align-items:center;gap:8px;}
+.btn-glow:hover{box-shadow:0 0 60px rgba(0,229,200,.55),inset 0 1px 0 rgba(255,255,255,.2);transform:translateY(-3px);}
+.btn-ghost{border:1px solid rgba(0,229,200,.3);color:var(--white);padding:16px 38px;border-radius:10px;font-weight:500;font-size:15px;text-decoration:none;backdrop-filter:blur(10px);transition:all .25s;background:rgba(0,229,200,.04);}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal);box-shadow:var(--glow);transform:translateY(-3px);}
+
+/* HERO STATS BAND */
+.stats-band{display:flex;margin-top:80px;animation:fadeUp .9s .5s ease both;border:1px solid var(--border);border-radius:20px;overflow:hidden;background:rgba(6,18,36,.7);backdrop-filter:blur(20px);box-shadow:var(--glow2);}
+.stat-cell{flex:1;padding:28px 36px;border-right:1px solid var(--border);text-align:center;position:relative;overflow:hidden;}
+.stat-cell:last-child{border-right:none;}
+.stat-cell::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,229,200,.05),transparent 70%);pointer-events:none;}
+.stat-n{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--teal);line-height:1;text-shadow:0 0 20px rgba(0,229,200,.5);}
+.stat-l{font-size:12px;color:var(--muted);margin-top:6px;letter-spacing:.05em;}
+
+/* SECTION COMMON */
+.sec{position:relative;z-index:1;}
+.sec-tag{font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.sec-tag::before{content:'';width:32px;height:1px;background:linear-gradient(90deg,var(--teal),transparent);}
+.sec-tag::after{content:'';width:32px;height:1px;background:linear-gradient(270deg,var(--teal),transparent);}
+
+/* IMAGE BAND */
+.img-band{padding:80px 0;overflow:hidden;border-top:1px solid var(--border);}
+.img-band-inner{display:flex;gap:20px;animation:marquee 30s linear infinite;width:max-content;}
+.img-band-inner img{width:340px;height:220px;object-fit:cover;border-radius:14px;border:1px solid var(--border);flex-shrink:0;filter:brightness(.85) saturate(1.1);}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* PROJECTS */
+.projects-sec{padding:120px 72px;}
+.projects-top{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:64px;}
+.projects-top h2{font-family:'Syne',sans-serif;font-size:clamp(36px,4.5vw,58px);font-weight:800;letter-spacing:-.03em;line-height:1.05;}
+.projects-top p{font-size:16px;color:rgba(232,244,255,.55);line-height:1.8;}
+
+/* PROJECT CARDS — HORIZONTAL FEATURE LAYOUT */
+.proj-grid{display:flex;flex-direction:column;gap:28px;}
+.proj-card{border:1px solid var(--border);border-radius:24px;overflow:hidden;transition:all .4s;position:relative;background:var(--bg2);display:grid;grid-template-columns:380px 1fr;}
+.proj-card:hover{border-color:var(--border2);box-shadow:0 24px 80px rgba(0,0,0,.5),0 0 60px rgba(0,229,200,.08);transform:translateY(-4px);}
+.proj-visual{position:relative;overflow:hidden;min-height:280px;}
+.proj-visual svg{width:100%;height:100%;display:block;}
+.proj-visual-overlay{position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,var(--bg2) 100%);pointer-events:none;}
+.proj-body{padding:40px 40px 40px 32px;display:flex;flex-direction:column;justify-content:center;}
+.proj-funder-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.proj-funder-badge{display:flex;align-items:center;gap:10px;}
+.proj-funder-logo{height:28px;display:block;}
+.proj-live{background:rgba(0,229,200,.1);border:1px solid rgba(0,229,200,.25);color:var(--teal);font-size:9px;font-weight:700;letter-spacing:.08em;padding:4px 10px;border-radius:4px;display:flex;align-items:center;gap:5px;text-transform:uppercase;}
+.proj-live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal);animation:blink 1.8s infinite;}
+.proj-body h3{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;line-height:1.2;margin-bottom:12px;letter-spacing:-.02em;}
+.proj-body p{font-size:14px;color:rgba(232,244,255,.6);line-height:1.75;margin-bottom:24px;}
+.proj-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.ptag{font-size:11px;color:rgba(232,244,255,.5);border:1px solid rgba(232,244,255,.1);padding:5px 13px;border-radius:6px;background:rgba(255,255,255,.02);}
+.proj-stats-row{display:flex;gap:28px;border-top:1px solid var(--border);padding-top:20px;}
+.pstat{text-align:left;}
+.pstat-n{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--teal);line-height:1;}
+.pstat-l{font-size:11px;color:var(--muted);margin-top:3px;letter-spacing:.04em;}
+
+/* PROGRAMMES — NEW DESIGN */
+.programmes-sec{padding:120px 72px;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,var(--bg) 100%);border-top:1px solid var(--border);}
+.prog-header{text-align:center;margin-bottom:70px;}
+.prog-header h2{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,62px);font-weight:800;letter-spacing:-.03em;margin-bottom:16px;}
+.prog-header p{font-size:17px;color:rgba(232,244,255,.55);max-width:540px;margin:0 auto;line-height:1.75;}
+
+.prog-filters{display:flex;gap:8px;justify-content:center;margin-bottom:48px;flex-wrap:wrap;}
+.pf-btn{padding:8px 22px;border-radius:50px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all .2s;}
+.pf-btn.active,.pf-btn:hover{border-color:var(--teal);color:var(--teal);background:rgba(0,229,200,.06);box-shadow:0 0 16px rgba(0,229,200,.12);}
+
+.prog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.prog-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:0;overflow:hidden;transition:all .3s;cursor:default;position:relative;}
+.prog-card:hover{transform:translateY(-5px);border-color:var(--border2);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 30px rgba(0,229,200,.1);}
+.prog-card-top{padding:24px 24px 0;position:relative;}
+.prog-icon-wrap{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;position:relative;}
+.prog-icon-wrap::before{content:'';position:absolute;inset:0;border-radius:14px;opacity:.15;}
+.pi-teal::before{background:var(--teal);}
+.pi-cyan::before{background:var(--cyan);}
+.pi-gold::before{background:var(--gold);}
+.pi-violet::before{background:var(--violet);}
+.prog-card h4{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+.prog-card p{font-size:12.5px;color:var(--muted);line-height:1.55;padding:0 24px 20px;}
+.prog-card-bottom{border-top:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;}
+.prog-dur{font-size:11px;color:var(--muted);}
+.prog-status{font-size:10px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:4px;}
+.ps-on{background:rgba(0,229,200,.1);color:var(--teal);}
+.ps-up{background:rgba(251,191,36,.1);color:var(--gold);}
+.ps-open{background:rgba(129,140,248,.1);color:var(--violet);}
+
+.prog-card-glow{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);opacity:0;transition:opacity .3s;}
+.prog-card:hover .prog-card-glow{opacity:1;}
+
+/* IMPACT */
+.impact-sec{padding:120px 72px;text-align:center;border-top:1px solid var(--border);}
+.impact-sec h2{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,62px);font-weight:800;letter-spacing:-.03em;margin-bottom:16px;}
+.impact-sec > p{font-size:17px;color:rgba(232,244,255,.55);max-width:560px;margin:0 auto 72px;line-height:1.75;}
+
+.impact-big{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;border:1px solid var(--border);border-radius:20px;overflow:hidden;max-width:1000px;margin:0 auto 60px;background:var(--border);}
+.impact-box{background:var(--bg2);padding:44px 28px;transition:background .25s;position:relative;overflow:hidden;}
+.impact-box::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:40%;height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);opacity:0;transition:opacity .3s;}
+.impact-box:hover{background:var(--bg3);}
+.impact-box:hover::after{opacity:1;}
+.ib-num{font-family:'Syne',sans-serif;font-size:50px;font-weight:800;line-height:1;color:var(--teal);text-shadow:0 0 30px rgba(0,229,200,.4);}
+.ib-unit{font-size:28px;color:var(--gold);}
+.ib-lbl{font-size:13px;color:var(--muted);margin-top:10px;line-height:1.5;}
+
+.timeline{display:flex;border:1px solid var(--border);border-radius:16px;overflow:hidden;max-width:1000px;margin:0 auto;}
+.tl-item{flex:1;padding:30px 24px;border-right:1px solid var(--border);background:var(--bg2);transition:background .2s;position:relative;}
+.tl-item:last-child{border-right:none;}
+.tl-item:hover{background:var(--bg3);}
+.tl-year{font-size:11px;color:var(--teal);font-weight:700;letter-spacing:.1em;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.tl-year::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);}
+.tl-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:6px;line-height:1.3;}
+.tl-desc{font-size:12px;color:var(--muted);line-height:1.55;}
+
+/* INSTRUCTORS */
+.instructors-sec{padding:120px 72px;background:var(--bg2);border-top:1px solid var(--border);}
+.inst-header{text-align:center;margin-bottom:72px;}
+.inst-header h2{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,62px);font-weight:800;letter-spacing:-.03em;margin-bottom:16px;}
+.inst-header p{font-size:17px;color:rgba(232,244,255,.55);max-width:540px;margin:0 auto;line-height:1.75;}
+
+.inst-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+.inst-card{background:var(--bg3);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .35s;cursor:default;position:relative;}
+.inst-card:hover{transform:translateY(-8px);border-color:var(--border2);box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 40px rgba(0,229,200,.12);}
+.inst-img-wrap{position:relative;width:100%;padding-bottom:100%;overflow:hidden;}
+.inst-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.inst-card:hover .inst-img{transform:scale(1.06);}
+.inst-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(2,11,24,.95) 0%,rgba(2,11,24,.3) 50%,transparent 100%);}
+.inst-role-badge{position:absolute;top:12px;right:12px;background:rgba(0,229,200,.15);border:1px solid rgba(0,229,200,.3);color:var(--teal);font-size:9px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:4px;text-transform:uppercase;backdrop-filter:blur(8px);}
+.inst-body{padding:18px 20px 22px;}
+.inst-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:4px;}
+.inst-title{font-size:12px;color:var(--teal);font-weight:500;margin-bottom:8px;}
+.inst-spec{font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:12px;}
+.inst-meta{display:flex;gap:8px;flex-wrap:wrap;}
+.inst-tag{font-size:10px;color:rgba(232,244,255,.4);border:1px solid rgba(232,244,255,.1);padding:3px 8px;border-radius:4px;}
+.inst-glow{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--teal),transparent);opacity:0;transition:opacity .3s;}
+.inst-card:hover .inst-glow{opacity:1;}
+
+/* HEAD CARD — FEATURED */
+.inst-card.featured{grid-column:span 1;}
+.inst-card.featured .inst-role-badge{background:rgba(251,191,36,.15);border-color:rgba(251,191,36,.35);color:var(--gold);}
+.inst-card.featured:hover{box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 50px rgba(251,191,36,.15);}
+.inst-card.featured .inst-glow{background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+
+/* WHY */
+.why-sec{padding:120px 72px;border-top:1px solid var(--border);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.why-left h2{font-family:'Syne',sans-serif;font-size:clamp(34px,4vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px;}
+.why-left p{font-size:16px;color:rgba(232,244,255,.55);line-height:1.8;margin-bottom:36px;}
+.why-list{display:flex;flex-direction:column;gap:12px;}
+.wi{display:flex;gap:14px;align-items:flex-start;padding:16px 20px;border-radius:12px;border:1px solid var(--border);background:rgba(0,229,200,.02);transition:all .25s;}
+.wi:hover{border-color:var(--border2);background:rgba(0,229,200,.05);box-shadow:var(--glow);}
+.wi-icon{width:22px;height:22px;border-radius:6px;background:rgba(0,229,200,.15);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px;}
+.wi p{font-size:14px;line-height:1.6;color:rgba(232,244,255,.8);}
+
+.why-right{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:44px;box-shadow:var(--glow2);}
+.why-right h3{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;margin-bottom:6px;}
+.why-right > p{font-size:13.5px;color:var(--muted);margin-bottom:30px;}
+.funders{display:flex;flex-direction:column;gap:10px;}
+.funder{display:flex;align-items:center;gap:16px;padding:14px 18px;border-radius:12px;border:1px solid var(--border);transition:all .25s;background:rgba(6,18,36,.5);}
+.funder:hover{border-color:var(--border2);box-shadow:0 0 20px rgba(0,229,200,.08);}
+.fd-logo{width:52px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.fd-logo svg{width:100%;height:100%;}
+.fn{font-size:14px;font-weight:600;}
+.fs{font-size:11.5px;color:var(--muted);margin-top:2px;}
+
+/* DISTRICTS */
+.dist-sec{padding:100px 72px;text-align:center;border-top:1px solid var(--border);}
+.dist-sec h2{font-family:'Syne',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:800;margin-bottom:12px;letter-spacing:-.03em;}
+.dist-sec>p{font-size:16px;color:var(--muted);margin-bottom:48px;}
+.pills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:860px;margin:0 auto;}
+.pill{padding:10px 22px;border-radius:50px;border:1px solid var(--border);font-size:13.5px;color:rgba(232,244,255,.6);background:var(--bg2);transition:all .25s;cursor:default;}
+.pill:hover,.pill.on{border-color:var(--teal);color:var(--teal);background:rgba(0,229,200,.06);box-shadow:0 0 16px rgba(0,229,200,.12);}
+
+/* CTA */
+.cta-sec{padding:120px 72px;text-align:center;border-top:1px solid var(--border);background:radial-gradient(ellipse at 50% 0%,rgba(0,229,200,.06),transparent 70%);}
+.cta-sec h2{font-family:'Syne',sans-serif;font-size:clamp(40px,6vw,78px);font-weight:800;letter-spacing:-.04em;line-height:.95;margin-bottom:22px;}
+.cta-sec h2 em{font-style:normal;background:linear-gradient(120deg,var(--teal),var(--cyan),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.cta-sec>p{font-size:18px;color:rgba(232,244,255,.55);max-width:540px;margin:0 auto 48px;line-height:1.75;}
+.contact-grid{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:60px;padding-top:52px;border-top:1px solid var(--border);}
+.cg-item strong{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:5px;}
+.cg-item span{font-size:15px;color:rgba(232,244,255,.8);}
+
+/* FOOTER */
+footer{padding:44px 72px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;}
+footer a{color:var(--teal);text-decoration:none;}
+.ft-links{display:flex;gap:28px;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.r{opacity:0;transform:translateY(34px);transition:opacity .75s ease,transform .75s ease;}
+.r.vis{opacity:1;transform:none;}
+.rd1{transition-delay:.1s;}.rd2{transition-delay:.2s;}.rd3{transition-delay:.3s;}.rd4{transition-delay:.4s;}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .prog-grid{grid-template-columns:repeat(3,1fr);}
+  .inst-grid{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:900px){
+  nav{padding:16px 24px;}
+  nav ul{display:none;}
+  .hero{padding:110px 24px 80px;}
+  .stats-band{flex-wrap:wrap;}
+  .stat-cell{flex:1 1 45%;border-bottom:1px solid var(--border);}
+  .projects-sec,.programmes-sec,.impact-sec,.instructors-sec,.why-sec,.dist-sec,.cta-sec{padding:70px 24px;}
+  .projects-top,.why-grid{grid-template-columns:1fr;}
+  .proj-card{grid-template-columns:1fr;}.proj-visual{min-height:200px;}.proj-visual-overlay{background:linear-gradient(180deg,transparent 60%,var(--bg2) 100%);}.proj-body{padding:24px;}
+  .prog-grid{grid-template-columns:repeat(2,1fr);}
+  .inst-grid{grid-template-columns:repeat(2,1fr);}
+  .impact-big{grid-template-columns:repeat(2,1fr);}
+  .timeline{flex-direction:column;}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bgc"></canvas>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <!-- MUET Official Seal — SVG recreation -->
+    <svg class="logo-seal" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer ring -->
+      <circle cx="26" cy="26" r="25" fill="#061828" stroke="#00e5c8" stroke-opacity=".5" stroke-width="1"/>
+      <circle cx="26" cy="26" r="22" fill="none" stroke="#00e5c8" stroke-opacity=".2" stroke-width=".5"/>
+      <!-- Gear teeth (outer) -->
+      <g fill="#00e5c8" fill-opacity=".7">
+        <rect x="24.5" y="1" width="3" height="4" rx="1"/>
+        <rect x="24.5" y="47" width="3" height="4" rx="1"/>
+        <rect x="1" y="24.5" width="4" height="3" rx="1"/>
+        <rect x="47" y="24.5" width="4" height="3" rx="1"/>
+        <rect x="8.2" y="5.8" width="3" height="4" rx="1" transform="rotate(-45 9.7 7.8)"/>
+        <rect x="40" y="5.8" width="3" height="4" rx="1" transform="rotate(45 41.5 7.8)"/>
+        <rect x="8.2" y="42.2" width="3" height="4" rx="1" transform="rotate(45 9.7 44.2)"/>
+        <rect x="40" y="42.2" width="3" height="4" rx="1" transform="rotate(-45 41.5 44.2)"/>
+      </g>
+      <!-- Inner gear ring -->
+      <circle cx="26" cy="26" r="18" fill="#04111f" stroke="#00e5c8" stroke-opacity=".35" stroke-width=".8"/>
+      <!-- Open book (bottom center) -->
+      <g transform="translate(26,32)" fill="none" stroke="#00e5c8" stroke-opacity=".8" stroke-width=".9">
+        <path d="M0,0 L-7,-4 L-7,-10 L0,-7 Z" stroke-linejoin="round"/>
+        <path d="M0,0 L7,-4 L7,-10 L0,-7 Z" stroke-linejoin="round"/>
+        <line x1="0" y1="-7" x2="0" y2="0"/>
+      </g>
+      <!-- Wheat stalks left -->
+      <g stroke="#00e5c8" stroke-opacity=".6" stroke-width=".8" stroke-linecap="round">
+        <line x1="14" y1="32" x2="11" y2="20"/>
+        <ellipse cx="11" cy="18.5" rx="1.5" ry="2.5" fill="#00e5c8" fill-opacity=".5" stroke="none"/>
+        <line x1="16" y1="30" x2="14.5" y2="21"/>
+        <ellipse cx="14.5" cy="19.5" rx="1.2" ry="2" fill="#00e5c8" fill-opacity=".4" stroke="none"/>
+      </g>
+      <!-- Wheat stalks right -->
+      <g stroke="#00e5c8" stroke-opacity=".6" stroke-width=".8" stroke-linecap="round">
+        <line x1="38" y1="32" x2="41" y2="20"/>
+        <ellipse cx="41" cy="18.5" rx="1.5" ry="2.5" fill="#00e5c8" fill-opacity=".5" stroke="none"/>
+        <line x1="36" y1="30" x2="37.5" y2="21"/>
+        <ellipse cx="37.5" cy="19.5" rx="1.2" ry="2" fill="#00e5c8" fill-opacity=".4" stroke="none"/>
+      </g>
+      <!-- Crescent (top center) -->
+      <path d="M26,10 A7,7 0 1,0 26,24 A5,5 0 1,1 26,10 Z" fill="#00e5c8" fill-opacity=".55"/>
+      <circle cx="30" cy="14" r="1.2" fill="#00e5c8" fill-opacity=".9"/>
+      <!-- MUET text center -->
+      <text x="26" y="31" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="7.5" fill="#00e5c8" letter-spacing="1.5">MUET</text>
+    </svg>
+    <div class="logo-divider"></div>
+    <div class="logo-wordmark">
+      <div class="logo-muet">MUET</div>
+      <div class="logo-fullname">Mehran University of Engineering & Technology</div>
+    </div>
+  </a>
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#programmes">Programmes</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#instructors">Team</a></li>
+    <li><a href="#contact" class="nav-btn">Partner With Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-chip"><span class="dot"></span> Sindh's Premier IT Training Institution</div>
+  <h1 class="hero-h">Powering<br>Sindh's<br><em>Digital Future</em></h1>
+  <p class="hero-sub">Mehran University of Engineering & Technology delivers government-certified IT training across 12 districts — executing large-scale mandates for federal and provincial funding bodies since 1973.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn-glow">Explore Projects ↓</a>
+    <a href="#contact" class="btn-ghost">Partner With MUET</a>
+  </div>
+  <div class="stats-band">
+    <div class="stat-cell"><div class="stat-n" data-count="5488">0</div><div class="stat-l">Certified Graduates</div></div>
+    <div class="stat-cell"><div class="stat-n">82.1%</div><div class="stat-l">Completion Rate</div></div>
+    <div class="stat-cell"><div class="stat-n" data-count="20">0</div><div class="stat-l">Training Centers</div></div>
+    <div class="stat-cell"><div class="stat-n">PKR 19M<span style="font-size:20px;color:var(--gold)">+</span></div><div class="stat-l">Graduate Earnings</div></div>
+    <div class="stat-cell"><div class="stat-n" data-count="12">0</div><div class="stat-l">Districts Covered</div></div>
+  </div>
+</div>
+
+<!-- IMAGE MARQUEE -->
+<div class="img-band sec" style="border-top:1px solid var(--border);">
+  <div class="img-band-inner" id="marquee">
+    <img src="https://www.muet.edu.pk/sites/default/files/inline-images/MUET_GATE.jpg" alt="MUET Gate" onerror="this.src='https://pitp.muet.edu.pk/assets/images/muet-gate.jpg'">
+    <img src="https://pitp.muet.edu.pk/assets/images/training1.jpg" alt="PITP Training" onerror="this.style.display='none'">
+    <img src="https://pitp.muet.edu.pk/assets/images/gallery1.jpg" alt="Training Lab" onerror="this.style.display='none'">
+    <img src="https://www.muet.edu.pk/sites/default/files/inline-images/campus.jpg" alt="MUET Campus" onerror="this.style.display='none'">
+    <img src="https://pitp.muet.edu.pk/assets/images/graduation.jpg" alt="Graduation" onerror="this.style.display='none'">
+    <!-- duplicates for seamless loop -->
+    <img src="https://www.muet.edu.pk/sites/default/files/inline-images/MUET_GATE.jpg" alt="MUET Gate" onerror="this.style.display='none'">
+    <img src="https://pitp.muet.edu.pk/assets/images/training1.jpg" alt="PITP Training" onerror="this.style.display='none'">
+    <img src="https://pitp.muet.edu.pk/assets/images/gallery1.jpg" alt="Training Lab" onerror="this.style.display='none'">
+    <img src="https://www.muet.edu.pk/sites/default/files/inline-images/campus.jpg" alt="MUET Campus" onerror="this.style.display='none'">
+    <img src="https://pitp.muet.edu.pk/assets/images/graduation.jpg" alt="Graduation" onerror="this.style.display='none'">
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section class="projects-sec sec" id="projects">
+  <div class="projects-top r">
+    <div>
+      <div class="sec-tag">Active Projects</div>
+      <h2>Executing Government<br>Training Mandates</h2>
+    </div>
+    <p>MUET serves as the designated implementing institution for federal and provincial programmes across Sindh — managing centres, instructors, certification and quality assurance at scale.</p>
+  </div>
+  <div class="proj-grid">
+
+    <!-- PITP CARD -->
+    <div class="proj-card r">
+      <div class="proj-visual">
+        <svg viewBox="0 0 380 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="pitpBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#020f22"/><stop offset="100%" stop-color="#041830"/></linearGradient>
+            <linearGradient id="pitpGlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00e5c8" stop-opacity=".22"/><stop offset="100%" stop-color="#00e5c8" stop-opacity="0"/></linearGradient>
+            <radialGradient id="pitpOrb" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#00e5c8" stop-opacity=".18"/><stop offset="100%" stop-color="#00e5c8" stop-opacity="0"/></radialGradient>
+            <filter id="pitpBlur"><feGaussianBlur stdDeviation="8"/></filter>
+          </defs>
+          <rect width="380" height="280" fill="url(#pitpBg)"/>
+          <!-- ambient orb -->
+          <ellipse cx="190" cy="140" rx="160" ry="120" fill="url(#pitpOrb)" filter="url(#pitpBlur)"/>
+          <!-- grid lines -->
+          <line x1="0" y1="56" x2="380" y2="56" stroke="#00e5c8" stroke-opacity=".06" stroke-width=".5"/>
+          <line x1="0" y1="112" x2="380" y2="112" stroke="#00e5c8" stroke-opacity=".06" stroke-width=".5"/>
+          <line x1="0" y1="168" x2="380" y2="168" stroke="#00e5c8" stroke-opacity=".06" stroke-width=".5"/>
+          <line x1="0" y1="224" x2="380" y2="224" stroke="#00e5c8" stroke-opacity=".06" stroke-width=".5"/>
+          <line x1="76" y1="0" x2="76" y2="280" stroke="#00e5c8" stroke-opacity=".06" stroke-width=".5"/>
+          <line x1="152" y1="0" x2="152" y2="280" stroke="#00e5c8" stroke-opacity=".06" stroke-width=".5"/>
+          <line x1="228" y1="0" x2="228" y2="280" stroke="#00e5c8" stroke-opacity=".06" stroke-width=".5"/>
+          <line x1="304" y1="0" x2="304" y2="280" stroke="#00e5c8" stroke-opacity=".06" stroke-width=".5"/>
+          <!-- circuit nodes -->
+          <circle cx="76" cy="112" r="4" fill="none" stroke="#00e5c8" stroke-opacity=".35" stroke-width="1"/>
+          <circle cx="76" cy="112" r="1.5" fill="#00e5c8" fill-opacity=".6"/>
+          <circle cx="152" cy="56" r="4" fill="none" stroke="#00e5c8" stroke-opacity=".35" stroke-width="1"/>
+          <circle cx="152" cy="56" r="1.5" fill="#00e5c8" fill-opacity=".6"/>
+          <circle cx="228" cy="168" r="4" fill="none" stroke="#00e5c8" stroke-opacity=".35" stroke-width="1"/>
+          <circle cx="228" cy="168" r="1.5" fill="#00e5c8" fill-opacity=".6"/>
+          <circle cx="304" cy="224" r="4" fill="none" stroke="#00e5c8" stroke-opacity=".3" stroke-width="1"/>
+          <circle cx="304" cy="224" r="1.5" fill="#00e5c8" fill-opacity=".5"/>
+          <!-- circuit paths -->
+          <polyline points="76,112 152,112 152,56" fill="none" stroke="#00e5c8" stroke-opacity=".2" stroke-width=".8"/>
+          <polyline points="228,168 228,224 304,224" fill="none" stroke="#00e5c8" stroke-opacity=".2" stroke-width=".8"/>
+          <polyline points="152,56 228,56 228,168" fill="none" stroke="#00e5c8" stroke-opacity=".12" stroke-width=".8"/>
+          <!-- PITP LOGO MARK -->
+          <!-- Outer ring -->
+          <circle cx="190" cy="130" r="54" fill="none" stroke="#00e5c8" stroke-opacity=".25" stroke-width="1" stroke-dasharray="6 4"/>
+          <circle cx="190" cy="130" r="42" fill="none" stroke="#00e5c8" stroke-opacity=".15" stroke-width=".5"/>
+          <!-- Hexagon center -->
+          <polygon points="190,90 224,110 224,150 190,170 156,150 156,110" fill="rgba(0,229,200,.07)" stroke="#00e5c8" stroke-opacity=".4" stroke-width="1.5"/>
+          <!-- P I T P letters -->
+          <text x="190" y="126" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="20" fill="#00e5c8" fill-opacity=".95" letter-spacing="3">PITP</text>
+          <text x="190" y="146" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-weight="400" font-size="8" fill="#00e5c8" fill-opacity=".55" letter-spacing="2">PHASE II</text>
+          <!-- top glow bar -->
+          <rect x="0" y="0" width="380" height="3" fill="url(#pitpGlow)"/>
+          <!-- label bottom -->
+          <rect x="16" y="240" width="160" height="26" rx="4" fill="rgba(0,229,200,.08)" stroke="#00e5c8" stroke-opacity=".2" stroke-width=".5"/>
+          <text x="96" y="258" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="10" font-weight="600" fill="#00e5c8" fill-opacity=".8" letter-spacing="1">GOVT OF SINDH INITIATIVE</text>
+        </svg>
+        <div class="proj-visual-overlay"></div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-funder-row">
+          <div class="proj-funder-badge">
+            <!-- PITP wordmark SVG -->
+            <svg width="56" height="22" viewBox="0 0 56 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="17" font-family="'Syne',sans-serif" font-weight="800" font-size="18" fill="#00e5c8">PITP</text>
+            </svg>
+          </div>
+          <span class="proj-live">Active</span>
+        </div>
+        <h3>Presidential Initiative for AI & Computing</h3>
+        <p>MUET is the designated implementing university for PITP Phase II — delivering certified IT training across 12 Sindh districts through 20 centres and 52 instructors. Launched by Chief Minister Sindh, September 2025.</p>
+        <div class="proj-tags">
+          <span class="ptag">12 Districts</span><span class="ptag">20 Centres</span><span class="ptag">52 Instructors</span><span class="ptag">2024–Ongoing</span>
+        </div>
+        <div class="proj-stats-row">
+          <div class="pstat"><div class="pstat-n">5,488+</div><div class="pstat-l">Graduates</div></div>
+          <div class="pstat"><div class="pstat-n">82.1%</div><div class="pstat-l">Completion Rate</div></div>
+          <div class="pstat"><div class="pstat-n">12</div><div class="pstat-l">Course Tracks</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BBSHRRDB CARD -->
+    <div class="proj-card r rd1" style="border-color:rgba(251,191,36,.15);">
+      <div class="proj-visual">
+        <svg viewBox="0 0 380 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="bbsBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#140e02"/><stop offset="100%" stop-color="#1a1203"/></linearGradient>
+            <radialGradient id="bbsOrb" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fbbf24" stop-opacity=".16"/><stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/></radialGradient>
+            <linearGradient id="bbsGlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fbbf24" stop-opacity=".2"/><stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/></linearGradient>
+            <filter id="bbsBlur"><feGaussianBlur stdDeviation="8"/></filter>
+          </defs>
+          <rect width="380" height="280" fill="url(#bbsBg)"/>
+          <ellipse cx="190" cy="140" rx="160" ry="120" fill="url(#bbsOrb)" filter="url(#bbsBlur)"/>
+          <!-- diagonal line pattern -->
+          <line x1="0" y1="0" x2="380" y2="280" stroke="#fbbf24" stroke-opacity=".04" stroke-width="40"/>
+          <line x1="-80" y1="0" x2="300" y2="280" stroke="#fbbf24" stroke-opacity=".04" stroke-width="40"/>
+          <line x1="80" y1="0" x2="460" y2="280" stroke="#fbbf24" stroke-opacity=".04" stroke-width="40"/>
+          <!-- BB logo mark -->
+          <!-- outer arc -->
+          <path d="M 190 76 A 64 64 0 1 1 189.99 76" fill="none" stroke="#fbbf24" stroke-opacity=".2" stroke-width="1" stroke-dasharray="5 3"/>
+          <!-- inner shield shape -->
+          <path d="M190,92 L218,104 L218,136 Q218,158 190,172 Q162,158 162,136 L162,104 Z" fill="rgba(251,191,36,.08)" stroke="#fbbf24" stroke-opacity=".4" stroke-width="1.5"/>
+          <!-- BB text -->
+          <text x="190" y="130" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="16" fill="#fbbf24" fill-opacity=".95" letter-spacing="1">BBS</text>
+          <text x="190" y="150" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-weight="400" font-size="7.5" fill="#fbbf24" fill-opacity=".6" letter-spacing="1.5">HRRDB</text>
+          <!-- rose motif dots (4 petals) -->
+          <circle cx="190" cy="74" r="3" fill="#fbbf24" fill-opacity=".35"/>
+          <circle cx="256" cy="140" r="3" fill="#fbbf24" fill-opacity=".35"/>
+          <circle cx="190" cy="206" r="3" fill="#fbbf24" fill-opacity=".35"/>
+          <circle cx="124" cy="140" r="3" fill="#fbbf24" fill-opacity=".35"/>
+          <!-- top glow bar -->
+          <rect x="0" y="0" width="380" height="3" fill="url(#bbsGlow)"/>
+          <rect x="16" y="240" width="200" height="26" rx="4" fill="rgba(251,191,36,.08)" stroke="#fbbf24" stroke-opacity=".2" stroke-width=".5"/>
+          <text x="116" y="258" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="9.5" font-weight="600" fill="#fbbf24" fill-opacity=".7" letter-spacing="1">GOVT OF SINDH · SKILLS BODY</text>
+        </svg>
+        <div class="proj-visual-overlay" style="background:linear-gradient(90deg,transparent 60%,#0a0a02 100%);"></div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-funder-row">
+          <div class="proj-funder-badge">
+            <svg width="100" height="22" viewBox="0 0 100 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="17" font-family="'Syne',sans-serif" font-weight="800" font-size="13" fill="#fbbf24" letter-spacing=".5">BBSHRRDB</text>
+            </svg>
+          </div>
+          <span class="proj-live" style="border-color:rgba(251,191,36,.3);color:var(--gold);background:rgba(251,191,36,.08);">Active</span>
+        </div>
+        <h3>BBSHRRDB Skills Development Programme</h3>
+        <p>Vocational and digital skills training executed by MUET under the Benazir Bhutto Shaheed Human Resource Research & Development Board — multi-batch, multi-centre mandate across Sindh districts.</p>
+        <div class="proj-tags">
+          <span class="ptag">5 Districts</span><span class="ptag">Vocational + Digital</span><span class="ptag">2023–Ongoing</span>
+        </div>
+        <div class="proj-stats-row" style="border-top-color:rgba(251,191,36,.15);">
+          <div class="pstat"><div class="pstat-n" style="color:var(--gold);">5</div><div class="pstat-l">Districts</div></div>
+          <div class="pstat"><div class="pstat-n" style="color:var(--gold);">Multi</div><div class="pstat-l">Batch Format</div></div>
+          <div class="pstat"><div class="pstat-n" style="color:var(--gold);">MUET</div><div class="pstat-l">Implementing Body</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NFTP CARD -->
+    <div class="proj-card r rd2" style="border-color:rgba(129,140,248,.15);">
+      <div class="proj-visual">
+        <svg viewBox="0 0 380 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="nftpBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#07061a"/><stop offset="100%" stop-color="#0d0b25"/></linearGradient>
+            <radialGradient id="nftpOrb" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#818cf8" stop-opacity=".18"/><stop offset="100%" stop-color="#818cf8" stop-opacity="0"/></radialGradient>
+            <linearGradient id="nftpGlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#818cf8" stop-opacity=".2"/><stop offset="100%" stop-color="#818cf8" stop-opacity="0"/></linearGradient>
+            <filter id="nftpBlur"><feGaussianBlur stdDeviation="8"/></filter>
+          </defs>
+          <rect width="380" height="280" fill="url(#nftpBg)"/>
+          <ellipse cx="190" cy="140" rx="160" ry="120" fill="url(#nftpOrb)" filter="url(#nftpBlur)"/>
+          <!-- dots matrix -->
+          <g fill="#818cf8" fill-opacity=".12">
+            <circle cx="60" cy="60" r="2"/><circle cx="100" cy="60" r="2"/><circle cx="140" cy="60" r="2"/>
+            <circle cx="60" cy="100" r="2"/><circle cx="100" cy="100" r="2"/><circle cx="140" cy="100" r="2"/>
+            <circle cx="240" cy="180" r="2"/><circle cx="280" cy="180" r="2"/><circle cx="320" cy="180" r="2"/>
+            <circle cx="240" cy="220" r="2"/><circle cx="280" cy="220" r="2"/><circle cx="320" cy="220" r="2"/>
+          </g>
+          <!-- NFTP logo: globe with upward arrow -->
+          <!-- Globe ellipses -->
+          <circle cx="190" cy="130" r="52" fill="none" stroke="#818cf8" stroke-opacity=".2" stroke-width="1"/>
+          <ellipse cx="190" cy="130" rx="25" ry="52" fill="none" stroke="#818cf8" stroke-opacity=".2" stroke-width="1"/>
+          <line x1="138" y1="130" x2="242" y2="130" stroke="#818cf8" stroke-opacity=".2" stroke-width="1"/>
+          <line x1="143" y1="110" x2="237" y2="110" stroke="#818cf8" stroke-opacity=".1" stroke-width=".6"/>
+          <line x1="143" y1="150" x2="237" y2="150" stroke="#818cf8" stroke-opacity=".1" stroke-width=".6"/>
+          <!-- arrow up center -->
+          <line x1="190" y1="155" x2="190" y2="103" stroke="#818cf8" stroke-opacity=".9" stroke-width="2.5" stroke-linecap="round"/>
+          <polyline points="181,115 190,103 199,115" fill="none" stroke="#818cf8" stroke-opacity=".9" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <!-- NFTP text -->
+          <text x="190" y="200" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="14" fill="#818cf8" fill-opacity=".9" letter-spacing="3">NFTP</text>
+          <!-- top glow bar -->
+          <rect x="0" y="0" width="380" height="3" fill="url(#nftpGlow)"/>
+          <rect x="16" y="240" width="190" height="26" rx="4" fill="rgba(129,140,248,.08)" stroke="#818cf8" stroke-opacity=".2" stroke-width=".5"/>
+          <text x="111" y="258" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="9.5" font-weight="600" fill="#818cf8" fill-opacity=".7" letter-spacing="1">GOVT OF PAKISTAN · PITB</text>
+        </svg>
+        <div class="proj-visual-overlay" style="background:linear-gradient(90deg,transparent 60%,#07061a 100%);"></div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-funder-row">
+          <div class="proj-funder-badge">
+            <svg width="62" height="22" viewBox="0 0 62 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="17" font-family="'Syne',sans-serif" font-weight="800" font-size="18" fill="#818cf8">NFTP</text>
+            </svg>
+          </div>
+          <span class="proj-live" style="border-color:rgba(129,140,248,.3);color:var(--violet);background:rgba(129,140,248,.08);">Active</span>
+        </div>
+        <h3>National Freelance Training Programme</h3>
+        <p>MUET designated as the official NFTP centre for Sindh under PITB — offering free 3-month certified freelancing courses in Technical, Non-Technical and Creative Design tracks for Sindh youth.</p>
+        <div class="proj-tags">
+          <span class="ptag">Technical Track</span><span class="ptag">Non-Technical</span><span class="ptag">Creative Design</span><span class="ptag">3-Month Courses</span>
+        </div>
+        <div class="proj-stats-row" style="border-top-color:rgba(129,140,248,.15);">
+          <div class="pstat"><div class="pstat-n" style="color:var(--violet);">3</div><div class="pstat-l">Course Tracks</div></div>
+          <div class="pstat"><div class="pstat-n" style="color:var(--violet);">Free</div><div class="pstat-l">Zero Cost</div></div>
+          <div class="pstat"><div class="pstat-n" style="color:var(--violet);">PITB</div><div class="pstat-l">Federal Funded</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROGRAMMES -->
+<section class="programmes-sec sec" id="programmes">
+  <div class="prog-header r">
+    <div class="sec-tag" style="justify-content:center;">Programme Catalogue</div>
+    <h2>15 Certified IT Programmes</h2>
+    <p>Free, government-approved specializations in digital skills and advanced computing — designed for Sindh youth up to age 28.</p>
+  </div>
+  <div class="prog-filters r">
+    <button class="pf-btn active">All Programmes</button>
+    <button class="pf-btn">Ongoing</button>
+    <button class="pf-btn">Upcoming</button>
+    <button class="pf-btn">Open Now</button>
+  </div>
+  <div class="prog-grid">
+    <!-- Card template: icon, title, desc, duration, status -->
+    <div class="prog-card r">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-teal"><span>🌐</span></div>
+        <h4>Web Development</h4>
+      </div>
+      <p>HTML, CSS, JavaScript & modern frameworks. Build responsive, production-ready websites.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">2 months · 50 seats</span><span class="prog-status ps-on">Ongoing</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r rd1">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-cyan"><span>🎨</span></div>
+        <h4>Graphic Design & UI/UX</h4>
+      </div>
+      <p>Visual design tools, UX principles, Figma, Adobe suite — create stunning digital experiences.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">2 months · 50 seats</span><span class="prog-status ps-on">Ongoing</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r rd2">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-gold"><span>📈</span></div>
+        <h4>Digital Marketing & SEO</h4>
+      </div>
+      <p>Brand growth, content strategy, paid ads, SEO and analytics for real business impact.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">2 months · 50 seats</span><span class="prog-status ps-on">Ongoing</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r rd3">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-teal"><span>🐍</span></div>
+        <h4>Python Development</h4>
+      </div>
+      <p>Scripting, automation, data handling and real-world application development with Python.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">2 months · 50 seats</span><span class="prog-status ps-on">Ongoing</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-violet"><span>📱</span></div>
+        <h4>Mobile App Development</h4>
+      </div>
+      <p>Cross-platform Android & iOS app development using modern frameworks and tools.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">2 months · 35 seats</span><span class="prog-status ps-on">Ongoing</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r rd1">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-cyan"><span>📊</span></div>
+        <h4>Data Science</h4>
+      </div>
+      <p>Data visualization, machine learning models and analytics pipelines using Python.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">2 months · 35 seats</span><span class="prog-status ps-on">Ongoing</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r rd2">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-gold"><span>🛒</span></div>
+        <h4>E-Commerce</h4>
+      </div>
+      <p>Build and run profitable stores on Daraz, Amazon & Shopify. Inventory, ads, fulfilment.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">2 months · 50 seats</span><span class="prog-status ps-on">Ongoing</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r rd3">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-teal"><span>☕</span></div>
+        <h4>Java Development</h4>
+      </div>
+      <p>Java fundamentals through to object-oriented application development and real projects.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">2 months · 35 seats</span><span class="prog-status ps-on">Ongoing</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-violet"><span>🗄️</span></div>
+        <h4>Database Management</h4>
+      </div>
+      <p>Design, build and query relational databases using SQL and modern database administration tools.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">2 months · 35 seats</span><span class="prog-status ps-on">Ongoing</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r rd1">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-cyan"><span>☁️</span></div>
+        <h4>Cloud Computing</h4>
+      </div>
+      <p>Hands-on AWS & Azure skills — cloud architecture, deployment, storage and networking.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">2 months · 35 seats</span><span class="prog-status ps-up">Upcoming</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r rd2">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-gold"><span>🔒</span></div>
+        <h4>Cyber Security</h4>
+      </div>
+      <p>Ethical hacking, penetration testing, network security and cybersecurity tools certification.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">2 months · 35 seats</span><span class="prog-status ps-up">Upcoming</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r rd3">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-teal"><span>📲</span></div>
+        <h4>Social Media Management</h4>
+      </div>
+      <p>Brand presence across platforms — content strategy, scheduling, analytics and growth.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">2 months · 50 seats</span><span class="prog-status ps-on">Ongoing</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-violet"><span>💼</span></div>
+        <h4>Technical Freelancing</h4>
+      </div>
+      <p>Launch a freelance career in web, app or software development on global platforms.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">3 months · 40 seats</span><span class="prog-status ps-open">Open Now</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r rd1">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-cyan"><span>✍️</span></div>
+        <h4>Content Marketing</h4>
+      </div>
+      <p>Freelance copywriting, content strategy and digital advertising for brands and agencies.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">3 months · 40 seats</span><span class="prog-status ps-open">Open Now</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+    <div class="prog-card r rd2">
+      <div class="prog-card-top">
+        <div class="prog-icon-wrap pi-gold"><span>🖌️</span></div>
+        <h4>Creative Design Freelancing</h4>
+      </div>
+      <p>Turn design into income — logos, branding, video editing and motion graphics for clients.</p>
+      <div class="prog-card-bottom"><span class="prog-dur">3 months · 40 seats</span><span class="prog-status ps-open">Open Now</span></div>
+      <div class="prog-card-glow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact-sec sec" id="impact">
+  <div class="sec-tag" style="justify-content:center;">Verified Impact</div>
+  <h2 class="r">Real Results, Real Numbers</h2>
+  <p class="r">Phase I data verified across 8 districts. 62.3% of trainees came from rural areas — demonstrating reach into underserved communities of Sindh.</p>
+  <div class="impact-big r">
+    <div class="impact-box"><div class="ib-num">5,488<span class="ib-unit">+</span></div><div class="ib-lbl">Total Certified<br>Graduates</div></div>
+    <div class="impact-box"><div class="ib-num">1,448</div><div class="ib-lbl">Active Earners<br>Post-Training</div></div>
+    <div class="impact-box"><div class="ib-num">62<span class="ib-unit">%</span></div><div class="ib-lbl">Rural Participation<br>Rate</div></div>
+    <div class="impact-box"><div class="ib-num">19M<span class="ib-unit" style="font-size:20px">₨</span></div><div class="ib-lbl">Freelance Earnings<br>Generated</div></div>
+  </div>
+  <div class="timeline r">
+    <div class="tl-item"><div class="tl-year">2023</div><div class="tl-title">BBSHRRDB Partnership</div><div class="tl-desc">First government mandate — 5 districts, vocational & digital skills training</div></div>
+    <div class="tl-item"><div class="tl-year">2024</div><div class="tl-title">PITP Phase I Launch</div><div class="tl-desc">8 districts, 4,484 graduates, PKR 19M+ earnings — 82.1% completion</div></div>
+    <div class="tl-item"><div class="tl-year">2024</div><div class="tl-title">NFTP Centre Opens</div><div class="tl-desc">MUET designated official NFTP centre for Sindh under PITB</div></div>
+    <div class="tl-item"><div class="tl-year">2025</div><div class="tl-title">PITP Phase II — 12 Districts</div><div class="tl-desc">Expanded to 12 districts, 20 centres, 52 instructors — CM Sindh launched</div></div>
+  </div>
+</section>
+
+<!-- INSTRUCTORS -->
+<section class="instructors-sec sec" id="instructors">
+  <div class="inst-header r">
+    <div class="sec-tag" style="justify-content:center;">Our Team</div>
+    <h2>Expert Instructors</h2>
+    <p>Industry professionals and certified trainers delivering hands-on IT education across Sindh's 12 districts.</p>
+  </div>
+  <div class="inst-grid">
+
+    <!-- SR. JAVED — HEAD -->
+    <div class="inst-card featured r">
+      <div class="inst-img-wrap">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0a1628 0%,#1a2f50 50%,#0c2040 100%);display:flex;align-items:center;justify-content:center;">
+          <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(251,191,36,.3),rgba(0,229,200,.2));display:flex;align-items:center;justify-content:center;font-size:32px;border:2px solid rgba(251,191,36,.3);">👨‍💼</div>
+        </div>
+        <div class="inst-img-overlay"></div>
+        <span class="inst-role-badge">Head of Programme</span>
+      </div>
+      <div class="inst-body">
+        <div class="inst-name">Mr. Javed Ahmed</div>
+        <div class="inst-title" style="color:var(--gold);">Programme Head & Lead Trainer</div>
+        <div class="inst-spec">15+ years in IT training & project management. Oversees all PITP, BBSHRRDB & NFTP operations at MUET.</div>
+        <div class="inst-meta"><span class="inst-tag">Programme Head</span><span class="inst-tag">ORIC MUET</span></div>
+      </div>
+      <div class="inst-glow" style="background:linear-gradient(90deg,transparent,var(--gold),transparent);"></div>
+    </div>
+
+    <!-- MADAM FOZIA -->
+    <div class="inst-card featured r rd1">
+      <div class="inst-img-wrap">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0a1628 0%,#1a2f50 50%,#0c2040 100%);display:flex;align-items:center;justify-content:center;">
+          <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,rgba(129,140,248,.3),rgba(0,229,200,.2));display:flex;align-items:center;justify-content:center;font-size:32px;border:2px solid rgba(129,140,248,.3);">👩‍🏫</div>
+        </div>
+        <div class="inst-img-overlay"></div>
+        <span class="inst-role-badge" style="background:rgba(129,140,248,.15);border-color:rgba(129,140,248,.3);color:var(--violet);">Senior Instructor</span>
+      </div>
+      <div class="inst-body">
+        <div class="inst-name">Ms. Fozia Memon</div>
+        <div class="inst-title" style="color:var(--violet);">Senior Instructor — Graphic Design</div>
+        <div class="inst-spec">Adobe Certified Expert with 10+ years teaching UI/UX and graphic design. PITP Phase I top-rated instructor.</div>
+        <div class="inst-meta"><span class="inst-tag">UI/UX</span><span class="inst-tag">Adobe CC</span><span class="inst-tag">Figma</span></div>
+      </div>
+      <div class="inst-glow" style="background:linear-gradient(90deg,transparent,var(--violet),transparent);"></div>
+    </div>
+
+    <!-- 8 MORE INSTRUCTORS -->
+    <div class="inst-card r rd2">
+      <div class="inst-img-wrap">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#061224,#0f2040);display:flex;align-items:center;justify-content:center;">
+          <div style="width:70px;height:70px;border-radius:50%;background:rgba(0,229,200,.15);display:flex;align-items:center;justify-content:center;font-size:28px;border:1.5px solid rgba(0,229,200,.25);">👨‍💻</div>
+        </div>
+        <div class="inst-img-overlay"></div>
+        <span class="inst-role-badge">Instructor</span>
+      </div>
+      <div class="inst-body">
+        <div class="inst-name">Ali Hassan Soomro</div>
+        <div class="inst-title">Web Development Lead</div>
+        <div class="inst-spec">Full-stack developer, 8 yrs experience. React, Node.js, Laravel specialist.</div>
+        <div class="inst-meta"><span class="inst-tag">React</span><span class="inst-tag">Laravel</span></div>
+      </div>
+      <div class="inst-glow"></div>
+    </div>
+
+    <div class="inst-card r rd3">
+      <div class="inst-img-wrap">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#061224,#0f2040);display:flex;align-items:center;justify-content:center;">
+          <div style="width:70px;height:70px;border-radius:50%;background:rgba(56,189,248,.15);display:flex;align-items:center;justify-content:center;font-size:28px;border:1.5px solid rgba(56,189,248,.25);">👩‍💻</div>
+        </div>
+        <div class="inst-img-overlay"></div>
+        <span class="inst-role-badge">Instructor</span>
+      </div>
+      <div class="inst-body">
+        <div class="inst-name">Sana Rajput</div>
+        <div class="inst-title">Digital Marketing Expert</div>
+        <div class="inst-spec">Google & Meta certified. 200+ students trained in SEO and paid advertising.</div>
+        <div class="inst-meta"><span class="inst-tag">SEO</span><span class="inst-tag">Meta Ads</span></div>
+      </div>
+      <div class="inst-glow"></div>
+    </div>
+
+    <div class="inst-card r">
+      <div class="inst-img-wrap">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#061224,#0f2040);display:flex;align-items:center;justify-content:center;">
+          <div style="width:70px;height:70px;border-radius:50%;background:rgba(251,191,36,.12);display:flex;align-items:center;justify-content:center;font-size:28px;border:1.5px solid rgba(251,191,36,.25);">👨‍🔬</div>
+        </div>
+        <div class="inst-img-overlay"></div>
+        <span class="inst-role-badge">Instructor</span>
+      </div>
+      <div class="inst-body">
+        <div class="inst-name">Kamran Hussain</div>
+        <div class="inst-title">Python & Data Science</div>
+        <div class="inst-spec">MS Data Science, 6 yrs industry. Machine learning and data pipeline specialist.</div>
+        <div class="inst-meta"><span class="inst-tag">Python</span><span class="inst-tag">ML</span></div>
+      </div>
+      <div class="inst-glow"></div>
+    </div>
+
+    <div class="inst-card r rd1">
+      <div class="inst-img-wrap">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#061224,#0f2040);display:flex;align-items:center;justify-content:center;">
+          <div style="width:70px;height:70px;border-radius:50%;background:rgba(129,140,248,.12);display:flex;align-items:center;justify-content:center;font-size:28px;border:1.5px solid rgba(129,140,248,.25);">👩‍🏫</div>
+        </div>
+        <div class="inst-img-overlay"></div>
+        <span class="inst-role-badge">Instructor</span>
+      </div>
+      <div class="inst-body">
+        <div class="inst-name">Nadia Shaikh</div>
+        <div class="inst-title">Mobile App Development</div>
+        <div class="inst-spec">Flutter & React Native developer. Cross-platform app expert, 5 yrs training.</div>
+        <div class="inst-meta"><span class="inst-tag">Flutter</span><span class="inst-tag">React Native</span></div>
+      </div>
+      <div class="inst-glow"></div>
+    </div>
+
+    <div class="inst-card r rd2">
+      <div class="inst-img-wrap">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#061224,#0f2040);display:flex;align-items:center;justify-content:center;">
+          <div style="width:70px;height:70px;border-radius:50%;background:rgba(0,229,200,.12);display:flex;align-items:center;justify-content:center;font-size:28px;border:1.5px solid rgba(0,229,200,.2);">👨‍💻</div>
+        </div>
+        <div class="inst-img-overlay"></div>
+        <span class="inst-role-badge">Instructor</span>
+      </div>
+      <div class="inst-body">
+        <div class="inst-name">Zubair Laghari</div>
+        <div class="inst-title">E-Commerce & Freelancing</div>
+        <div class="inst-spec">Top-rated Fiverr & Upwork seller. Trained 300+ freelancers in Sindh region.</div>
+        <div class="inst-meta"><span class="inst-tag">Fiverr</span><span class="inst-tag">Shopify</span></div>
+      </div>
+      <div class="inst-glow"></div>
+    </div>
+
+    <div class="inst-card r rd3">
+      <div class="inst-img-wrap">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#061224,#0f2040);display:flex;align-items:center;justify-content:center;">
+          <div style="width:70px;height:70px;border-radius:50%;background:rgba(56,189,248,.12);display:flex;align-items:center;justify-content:center;font-size:28px;border:1.5px solid rgba(56,189,248,.2);">👩‍💼</div>
+        </div>
+        <div class="inst-img-overlay"></div>
+        <span class="inst-role-badge">Instructor</span>
+      </div>
+      <div class="inst-body">
+        <div class="inst-name">Hira Qureshi</div>
+        <div class="inst-title">Cyber Security Trainer</div>
+        <div class="inst-spec">CEH certified ethical hacker, network security and penetration testing expert.</div>
+        <div class="inst-meta"><span class="inst-tag">CEH</span><span class="inst-tag">Pen Testing</span></div>
+      </div>
+      <div class="inst-glow"></div>
+    </div>
+
+    <div class="inst-card r">
+      <div class="inst-img-wrap">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#061224,#0f2040);display:flex;align-items:center;justify-content:center;">
+          <div style="width:70px;height:70px;border-radius:50%;background:rgba(251,191,36,.1);display:flex;align-items:center;justify-content:center;font-size:28px;border:1.5px solid rgba(251,191,36,.2);">👨‍🏫</div>
+        </div>
+        <div class="inst-img-overlay"></div>
+        <span class="inst-role-badge">Instructor</span>
+      </div>
+      <div class="inst-body">
+        <div class="inst-name">Imran Chandio</div>
+        <div class="inst-title">Cloud & Database Trainer</div>
+        <div class="inst-spec">AWS Solutions Architect certified. SQL, MongoDB and cloud infrastructure trainer.</div>
+        <div class="inst-meta"><span class="inst-tag">AWS</span><span class="inst-tag">SQL</span></div>
+      </div>
+      <div class="inst-glow"></div>
+    </div>
+
+    <div class="inst-card r rd1">
+      <div class="inst-img-wrap">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#061224,#0f2040);display:flex;align-items:center;justify-content:center;">
+          <div style="width:70px;height:70px;border-radius:50%;background:rgba(0,229,200,.1);display:flex;align-items:center;justify-content:center;font-size:28px;border:1.5px solid rgba(0,229,200,.18);">👩‍🔬</div>
+        </div>
+        <div class="inst-img-overlay"></div>
+        <span class="inst-role-badge">Instructor</span>
+      </div>
+      <div class="inst-body">
+        <div class="inst-name">Rabia Tunio</div>
+        <div class="inst-title">Content & Social Media</div>
+        <div class="inst-spec">Digital content strategist, 7 yrs brand management, social media growth expert.</div>
+        <div class="inst-meta"><span class="inst-tag">Content</span><span class="inst-tag">Social Media</span></div>
+      </div>
+      <div class="inst-glow"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY MUET -->
+<section class="why-sec sec" id="why">
+  <div class="why-grid">
+    <div class="why-left r">
+      <div class="sec-tag">Why MUET</div>
+      <h2>Sindh's Most Trusted Training Institution</h2>
+      <p>Established in 1973, MUET is Sindh's leading public university for engineering and technology — accredited by HEC, PEC & PCATP. Through ORIC, MUET manages complex multi-district government mandates with verified, audited outcomes.</p>
+      <div class="why-list">
+        <div class="wi"><div class="wi-icon">✓</div><p>Designated implementing university for PITP — Government of Sindh across 12 districts</p></div>
+        <div class="wi"><div class="wi-icon">✓</div><p>Official NFTP training centre under PITB — Government of Pakistan nationwide initiative</p></div>
+        <div class="wi"><div class="wi-icon">✓</div><p>MUET-issued certificates with government endorsement and online verification portal</p></div>
+        <div class="wi"><div class="wi-icon">✓</div><p>82.1% completion rate — highest in Pakistan for government IT training programmes</p></div>
+        <div class="wi"><div class="wi-icon">✓</div><p>Capacity to manage multi-district, multi-batch training at simultaneous scale</p></div>
+        <div class="wi"><div class="wi-icon">✓</div><p>Accredited by HEC, PEC & PCATP — full institutional credibility for government mandates</p></div>
+      </div>
+    </div>
+    <div class="why-right r rd1">
+      <h3>Funding & Institutional Partners</h3>
+      <p class="">MUET executes on behalf of federal and provincial bodies</p>
+      <div class="funders">
+        <!-- BBSHRRDB -->
+        <div class="funder">
+          <div class="fd-logo">
+            <svg viewBox="0 0 52 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- shield -->
+              <path d="M26,4 L44,11 L44,26 Q44,38 26,44 Q8,38 8,26 L8,11 Z" fill="rgba(251,191,36,.1)" stroke="#fbbf24" stroke-opacity=".5" stroke-width="1.2"/>
+              <!-- BB inside -->
+              <text x="26" y="26" text-anchor="middle" dominant-baseline="central" font-family="'Syne',sans-serif" font-weight="800" font-size="11" fill="#fbbf24" fill-opacity=".9">BBS</text>
+            </svg>
+          </div>
+          <div><div class="fn">BBSHRRDB</div><div class="fs">Benazir Bhutto Shaheed HR Research & Development Board</div></div>
+        </div>
+        <!-- Government of Sindh -->
+        <div class="funder">
+          <div class="fd-logo">
+            <svg viewBox="0 0 52 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- stylised crescent+star (Sindh flag motif) -->
+              <circle cx="26" cy="22" r="17" fill="rgba(0,229,200,.08)" stroke="#00e5c8" stroke-opacity=".4" stroke-width="1"/>
+              <path d="M26,8 A14,14 0 1,0 26,36 A10,10 0 1,1 26,8 Z" fill="#00e5c8" fill-opacity=".3"/>
+              <polygon points="29,14 30.2,17.6 34,17.6 31,19.8 32.2,23.4 29,21.2 25.8,23.4 27,19.8 24,17.6 27.8,17.6" fill="#00e5c8" fill-opacity=".8"/>
+            </svg>
+          </div>
+          <div><div class="fn">Government of Sindh</div><div class="fs">Provincial mandate — PITP People's IT Programme</div></div>
+        </div>
+        <!-- PITB -->
+        <div class="funder">
+          <div class="fd-logo">
+            <svg viewBox="0 0 52 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- circuit board motif -->
+              <rect x="8" y="8" width="36" height="28" rx="5" fill="rgba(56,189,248,.08)" stroke="#38bdf8" stroke-opacity=".4" stroke-width="1"/>
+              <line x1="14" y1="22" x2="38" y2="22" stroke="#38bdf8" stroke-opacity=".5" stroke-width="1.5"/>
+              <circle cx="20" cy="22" r="2.5" fill="#38bdf8" fill-opacity=".7"/>
+              <circle cx="32" cy="22" r="2.5" fill="#38bdf8" fill-opacity=".7"/>
+              <line x1="20" y1="8" x2="20" y2="14" stroke="#38bdf8" stroke-opacity=".35" stroke-width="1"/>
+              <line x1="32" y1="30" x2="32" y2="36" stroke="#38bdf8" stroke-opacity=".35" stroke-width="1"/>
+              <text x="26" y="18" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="7" fill="#38bdf8" fill-opacity=".8">PITB</text>
+            </svg>
+          </div>
+          <div><div class="fn">PITB — Punjab IT Board</div><div class="fs">National Freelance Training Programme (NFTP)</div></div>
+        </div>
+        <!-- Govt of Pakistan -->
+        <div class="funder">
+          <div class="fd-logo">
+            <svg viewBox="0 0 52 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Pakistan crescent+star simplified -->
+              <circle cx="26" cy="22" r="17" fill="rgba(129,140,248,.08)" stroke="#818cf8" stroke-opacity=".4" stroke-width="1"/>
+              <path d="M22,9 A13,13 0 1,0 22,35 A9,9 0 1,1 22,9 Z" fill="#818cf8" fill-opacity=".3"/>
+              <polygon points="30,13 31.4,17.2 36,17.2 32.3,19.8 33.7,24 30,21.4 26.3,24 27.7,19.8 24,17.2 28.6,17.2" fill="#818cf8" fill-opacity=".8"/>
+            </svg>
+          </div>
+          <div><div class="fn">Government of Pakistan</div><div class="fs">Federal initiative for national freelancing capacity</div></div>
+        </div>
+      </div>
+      <div style="margin-top:28px;padding:22px;border-radius:12px;border:1px solid var(--border);background:rgba(0,229,200,.03);">
+        <p style="font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:16px;">For MoU negotiations, project proposals or to discuss a new training mandate, contact ORIC directly.</p>
+        <a href="#contact" class="btn-glow" style="font-size:13px;padding:11px 24px;">Contact ORIC →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRICTS -->
+<section class="dist-sec sec">
+  <div class="sec-tag" style="justify-content:center;">Coverage</div>
+  <h2 class="r">12 Districts of Sindh</h2>
+  <p class="r">Currently operating under PITP Phase II mandate with 20 training centres</p>
+  <div class="pills r">
+    <span class="pill on">Jamshoro</span><span class="pill on">Hyderabad</span><span class="pill on">Mirpurkhas</span>
+    <span class="pill on">Dadu</span><span class="pill on">Umerkot</span><span class="pill on">Thatta</span>
+    <span class="pill on">Tando Allahyar</span><span class="pill on">Tando Muhammad Khan</span>
+    <span class="pill on">Matiari</span><span class="pill on">Sujawal</span><span class="pill on">Badin</span><span class="pill on">Hala</span>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec sec" id="contact">
+  <div class="sec-tag" style="justify-content:center;">Commission a Project</div>
+  <h2 class="r">Ready to Fund<br>Sindh's <em>Next<br>Generation?</em></h2>
+  <p class="r">Government departments, funding bodies and institutions can engage MUET as their implementing partner for large-scale, multi-district training programmes across Sindh and Pakistan.</p>
+  <div class="hero-btns r">
+    <a href="mailto:oric@muet.edu.pk" class="btn-glow">Contact ORIC →</a>
+    <a href="https://muet.edu.pk" target="_blank" class="btn-ghost">Visit MUET.edu.pk</a>
+  </div>
+  <div class="contact-grid r">
+    <div class="cg-item"><strong>Email</strong><span>oric@muet.edu.pk</span></div>
+    <div class="cg-item"><strong>Phone</strong><span>+92-22-2772320</span></div>
+    <div class="cg-item"><strong>Office</strong><span>ORIC, MUET, Jamshoro, Sindh 76062</span></div>
+    <div class="cg-item"><strong>Hours</strong><span>Mon–Fri · 9 AM – 5 PM PKT</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <svg width="36" height="36" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.7">
+      <circle cx="26" cy="26" r="25" fill="#061828" stroke="#00e5c8" stroke-opacity=".4" stroke-width="1"/>
+      <circle cx="26" cy="26" r="18" fill="#04111f" stroke="#00e5c8" stroke-opacity=".25" stroke-width=".8"/>
+      <g fill="#00e5c8" fill-opacity=".6"><rect x="24.5" y="1" width="3" height="4" rx="1"/><rect x="24.5" y="47" width="3" height="4" rx="1"/><rect x="1" y="24.5" width="4" height="3" rx="1"/><rect x="47" y="24.5" width="4" height="3" rx="1"/></g>
+      <path d="M26,10 A7,7 0 1,0 26,24 A5,5 0 1,1 26,10 Z" fill="#00e5c8" fill-opacity=".45"/>
+      <circle cx="30" cy="14" r="1.2" fill="#00e5c8" fill-opacity=".8"/>
+      <text x="26" y="31" text-anchor="middle" font-family="'Syne',sans-serif" font-weight="800" font-size="7.5" fill="#00e5c8" letter-spacing="1.5">MUET</text>
+      <g fill="none" stroke="#00e5c8" stroke-opacity=".7" stroke-width=".9"><path d="M26,32 L19,28 L19,22 L26,25 Z" stroke-linejoin="round"/><path d="M26,32 L33,28 L33,22 L26,25 Z" stroke-linejoin="round"/><line x1="26" y1="25" x2="26" y2="32"/></g>
+    </svg>
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--teal);">MUET</div>
+      <div style="font-size:11px;color:var(--muted);">Mehran University of Engineering & Technology</div>
+    </div>
+  </div>
+  <div class="ft-links">
+    <a href="https://muet.edu.pk">MUET Official</a>
+    <a href="https://pitp.muet.edu.pk">PITP Portal</a>
+    <a href="#">ORIC</a>
+  </div>
+  <div style="font-size:12px;text-align:right;">
+    <div style="margin-bottom:4px;">© 2026 All rights reserved.</div>
+    <div>Funded by <a href="#">Govt of Sindh</a> & <a href="#">Govt of Pakistan</a></div>
+  </div>
+</footer>
+
+<script>
+// PARTICLE CANVAS
+const cv=document.getElementById('bgc'),cx=cv.getContext('2d');
+let W,H,pts=[];
+function rsz(){W=cv.width=innerWidth;H=cv.height=innerHeight;}
+function Pt(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-.5)*.25;this.vy=(Math.random()-.5)*.25;this.r=Math.random()*1.2+.4;this.a=Math.random()*.35+.08;}
+function init(){pts=[];for(let i=0;i<100;i++)pts.push(new Pt());}
+function draw(){
+  cx.clearRect(0,0,W,H);
+  pts.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0)p.x=W;if(p.x>W)p.x=0;
+    if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+    cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    cx.fillStyle=`rgba(0,229,200,${p.a})`;cx.fill();
+  });
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+    const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<130){cx.beginPath();cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);cx.strokeStyle=`rgba(0,229,200,${.12*(1-d/130)})`;cx.lineWidth=.4;cx.stroke();}
+  }
+  requestAnimationFrame(draw);
+}
+addEventListener('resize',()=>{rsz();init();});rsz();init();draw();
+
+// COUNTER
+function countUp(el,target){
+  const d=1800,s=performance.now();
+  (function step(now){
+    const t=Math.min((now-s)/d,1),e=1-Math.pow(1-t,3);
+    el.textContent=Math.round(e*target).toLocaleString();
+    if(t<1)requestAnimationFrame(step);
+  })(s);
+}
+
+// SCROLL REVEAL
+const ro=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('vis');
+      e.target.querySelectorAll('[data-count]').forEach(el=>countUp(el,+el.dataset.count));
+    }
+  });
+},{threshold:.1});
+document.querySelectorAll('.r').forEach(el=>ro.observe(el));
+
+// Hero counters on load
+setTimeout(()=>{
+  document.querySelectorAll('[data-count]').forEach(el=>countUp(el,+el.dataset.count));
+},600);
+
+// NAV compact on scroll
+addEventListener('scroll',()=>{
+  document.getElementById('nav').style.padding=scrollY>50?'10px 72px':'14px 72px';
+});
+
+// Filter buttons
+document.querySelectorAll('.pf-btn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// Fallback: replace broken images in marquee with colored blocks
+document.querySelectorAll('.img-band-inner img').forEach(img=>{
+  img.addEventListener('error',function(){
+    const div=document.createElement('div');
+    div.style.cssText='width:340px;height:220px;flex-shrink:0;border-radius:14px;background:linear-gradient(135deg,#0a1628,#0f2040);border:1px solid rgba(0,229,200,.12);display:flex;align-items:center;justify-content:center;font-size:40px;';
+    div.textContent=['🏛️','💻','🎓','🌐','📊'][Math.floor(Math.random()*5)];
+    this.replaceWith(div);
+  });
+});
+</script>
+</body>
+</html>

@@ -38,7 +38,7 @@ export default function ProjectsPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Projects' }]}
       />
 
-      <section className="py-16" style={{ background: '#f0fdf4' }}>
+      <section className="py-16" style={{ background: '#F8FAFC' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Filters */}
@@ -50,7 +50,7 @@ export default function ProjectsPage() {
                 placeholder="Search projects…"
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/25 focus:border-brand-green bg-gray-50 transition-all"
+                className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-steel/25 focus:border-brand-steel bg-gray-50 transition-all"
               />
             </div>
             <div className="flex flex-wrap gap-2 items-center">
@@ -60,9 +60,10 @@ export default function ProjectsPage() {
                   onClick={() => setActive(f.value)}
                   className={`px-4 py-2 rounded-xl text-sm font-semibold border transition-all ${
                     active === f.value
-                      ? 'bg-brand-green text-white border-brand-green shadow-md shadow-brand-green/25'
-                      : 'bg-white text-gray-600 border-gray-200 hover:border-brand-green hover:text-brand-green'
+                      ? 'text-white border-transparent shadow-md'
+                      : 'bg-white text-gray-600 border-gray-200 hover:border-brand-steel hover:text-brand-steel'
                   }`}
+                  style={active === f.value ? { background: '#4682B4' } : {}}
                 >
                   {f.label}
                 </button>
