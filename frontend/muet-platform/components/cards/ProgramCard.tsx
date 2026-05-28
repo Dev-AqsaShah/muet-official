@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Clock, Users, MapPin, ArrowRight } from 'lucide-react'
 import StatusBadge from '@/components/shared/StatusBadge'
-import ImageWithFallback from '@/components/shared/ImageWithFallback'
+import ProgramCover from '@/components/cards/ProgramCover'
 import { cn } from '@/lib/utils'
 import type { Program } from '@/types'
 
@@ -13,20 +13,14 @@ const modeStyle: Record<string, string> = {
   hybrid:   'bg-orange-100 text-orange-700',
 }
 
-export default function ProgramCard({ slug, title, shortDesc, coverImage, status, mode, duration, seats, location }: ProgramCardProps) {
+export default function ProgramCard({ slug, title, shortDesc, status, mode, duration, seats, location }: ProgramCardProps) {
   return (
     <Link
       href={`/programs/${slug}`}
       className="group flex flex-col bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
     >
-      <div className="relative aspect-video overflow-hidden">
-        <ImageWithFallback
-          src={coverImage}
-          alt={title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
-          fallbackClassName="absolute inset-0"
-        />
+      <div className="aspect-video overflow-hidden">
+        <ProgramCover slug={slug} name={title} />
       </div>
 
       <div className="flex flex-col flex-1 p-5">

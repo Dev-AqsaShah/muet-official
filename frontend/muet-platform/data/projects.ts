@@ -16,7 +16,7 @@ BBSHRRDB's national reach includes over 525,000 registered trainees, 420,000+ gr
     fundingBody: 'BBSHRRDB',
     fundingSource: 'Benazir Bhutto Shaheed Human Resource Research & Development Board — Government of Sindh',
     startDate: '2023-01-01',
-    coverImage: '/images/hero/muet-campus.jpg',
+    coverImage: '/images/projects/bbshrrdb-cover.svg',
     district: ['Jamshoro', 'Hyderabad', 'Dadu', 'Mirpurkhas', 'Thatta'],
     objectives: [
       'Execute government-mandated vocational and technical training on behalf of BBSHRRDB',
@@ -49,7 +49,7 @@ Programme outcomes validate MUET's institutional capacity: out of 5,488 enrolled
     fundingBody: 'Sindh Government',
     fundingSource: 'Government of Sindh — Presidential Initiative for Artificial Intelligence & Computing (PITP)',
     startDate: '2024-09-01',
-    coverImage: '/images/projects/pitp-trainees.webp',
+    coverImage: '/images/projects/pitp-cover.svg',
     district: ['Jamshoro', 'Hyderabad', 'Mirpurkhas', 'Dadu', 'Thatta', 'Umerkot', 'Tando Muhammad Khan', 'Tando Allahyar', 'Matiari', 'Sujawal', 'Badin', 'Hala'],
     objectives: [
       'Serve as the Government of Sindh\'s designated implementing university for PITP',
@@ -98,7 +98,7 @@ The programme is part of Pakistan's national effort to position its youth in the
     fundingBody: 'Government of Pakistan',
     fundingSource: 'Government of Pakistan — PITB National Freelance Training Programme',
     startDate: '2024-01-01',
-    coverImage: '/images/gallery/muet-civil-dept.jpg',
+    coverImage: '/images/projects/nftp-cover.svg',
     district: ['Jamshoro'],
     objectives: [
       'Serve as PITB\'s designated NFTP training center for Sindh province',

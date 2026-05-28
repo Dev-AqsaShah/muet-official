@@ -18,8 +18,8 @@ export default function Navbar() {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-30 bg-brand-navy transition-shadow duration-300',
-          scrolled && 'shadow-lg shadow-black/20'
+          'fixed top-0 left-0 right-0 z-30 bg-white border-b border-gray-200 transition-shadow duration-300',
+          scrolled && 'shadow-md'
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,19 +36,16 @@ export default function Navbar() {
                   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                 />
               </div>
-              {/* Short name on small screens */}
               <div className="sm:hidden">
-                <p className="text-white font-bold text-sm leading-tight">MUET</p>
+                <p className="text-brand-navy font-bold text-sm leading-tight">MUET</p>
               </div>
-              {/* Full official name on sm–md */}
               <div className="hidden sm:block lg:hidden">
-                <p className="text-white font-bold text-sm leading-tight">Mehran University</p>
-                <p className="text-brand-baby text-xs leading-tight">of Engineering &amp; Technology</p>
+                <p className="text-brand-navy font-bold text-sm leading-tight">Mehran University</p>
+                <p className="text-brand-steel text-xs leading-tight">of Engineering &amp; Technology</p>
               </div>
-              {/* Full two-line official name on lg+ */}
               <div className="hidden lg:block">
-                <p className="text-white font-bold text-sm leading-snug">Mehran University of Engineering &amp; Technology</p>
-                <p className="text-brand-baby text-xs leading-tight tracking-wide">Jamshoro, Sindh, Pakistan</p>
+                <p className="text-brand-navy font-bold text-sm leading-snug">Mehran University of Engineering &amp; Technology</p>
+                <p className="text-brand-steel text-xs leading-tight tracking-wide">Jamshoro, Sindh, Pakistan</p>
               </div>
             </Link>
 
@@ -61,8 +58,8 @@ export default function Navbar() {
                   className={cn(
                     'px-3 py-2 rounded-md text-sm font-medium transition-colors',
                     pathname === link.href
-                      ? 'text-white bg-white/15'
-                      : 'text-white/75 hover:text-white hover:bg-white/10'
+                      ? 'text-brand-navy bg-brand-navy/10'
+                      : 'text-gray-600 hover:text-brand-navy hover:bg-gray-100'
                   )}
                 >
                   {link.label}
@@ -73,13 +70,19 @@ export default function Navbar() {
             {/* CTA + hamburger */}
             <div className="flex items-center gap-2">
               <Link
-                href="/contact"
-                className="hidden sm:inline-flex items-center px-4 py-2 rounded-md text-sm font-medium bg-brand-steel hover:bg-brand-steel/90 text-white transition-colors"
+                href="/auth/signin"
+                className="hidden sm:inline-flex items-center px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-brand-navy border border-gray-200 hover:border-brand-navy transition-colors"
               >
-                Contact Us
+                Sign In
+              </Link>
+              <Link
+                href="/auth/signup"
+                className="hidden sm:inline-flex items-center px-4 py-2 rounded-md text-sm font-medium bg-brand-steel hover:bg-brand-navy text-white transition-colors"
+              >
+                Register
               </Link>
               <button
-                className="md:hidden text-white/80 hover:text-white p-2 rounded-md hover:bg-white/10 transition-colors"
+                className="md:hidden text-gray-600 hover:text-brand-navy p-2 rounded-md hover:bg-gray-100 transition-colors"
                 onClick={() => setMenuOpen(true)}
                 aria-label="Open menu"
               >

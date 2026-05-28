@@ -1,12 +1,13 @@
 'use client'
 import { motion } from 'framer-motion'
-import { FolderOpen, Users, MapPin, BookOpen, type LucideIcon } from 'lucide-react'
+import { FolderOpen, Users, MapPin, BookOpen, UserCheck, type LucideIcon } from 'lucide-react'
 import { siteStats } from '@/data/site'
 
 const iconMap: Record<string, LucideIcon> = {
   'folder-open': FolderOpen,
   'users':       Users,
   'map-pin':     MapPin,
+  'user-check':  UserCheck,
   'book-open':   BookOpen,
 }
 

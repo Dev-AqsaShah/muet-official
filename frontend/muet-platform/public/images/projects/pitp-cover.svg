@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="266" viewBox="0 0 400 266">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#071a0d"/>
+      <stop offset="100%" stop-color="#0e3320"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="266" fill="url(#bg)"/>
+
+  <!-- Circuit dot-grid pattern -->
+  <g opacity="0.08" fill="white">
+    <circle cx="30" cy="30" r="1.5"/> <circle cx="70" cy="30" r="1.5"/> <circle cx="110" cy="30" r="1.5"/>
+    <circle cx="30" cy="70" r="1.5"/> <circle cx="70" cy="70" r="1.5"/> <circle cx="110" cy="70" r="1.5"/>
+    <circle cx="30" cy="110" r="1.5"/> <circle cx="70" cy="110" r="1.5"/> <circle cx="110" cy="110" r="1.5"/>
+    <circle cx="30" cy="150" r="1.5"/> <circle cx="70" cy="150" r="1.5"/> <circle cx="110" cy="150" r="1.5"/>
+  </g>
+  <!-- Circuit lines -->
+  <g opacity="0.07" stroke="white" stroke-width="1" fill="none">
+    <line x1="30" y1="30" x2="70" y2="30"/>
+    <line x1="70" y1="30" x2="70" y2="70"/>
+    <line x1="70" y1="70" x2="110" y2="70"/>
+    <line x1="30" y1="110" x2="30" y2="150"/>
+    <line x1="30" y1="150" x2="70" y2="150"/>
+  </g>
+
+  <!-- Decorative rings top-right -->
+  <circle cx="370" cy="40" r="120" fill="none" stroke="white" stroke-width="1" opacity="0.05"/>
+  <circle cx="370" cy="40" r="75" fill="none" stroke="white" stroke-width="1" opacity="0.05"/>
+  <circle cx="370" cy="40" r="35" fill="none" stroke="white" stroke-width="1" opacity="0.07"/>
+
+  <!-- Gold accent top bar -->
+  <rect x="0" y="0" width="400" height="4" fill="#FFD700"/>
+  <rect x="0" y="4" width="400" height="1.5" fill="white" opacity="0.1"/>
+
+  <!-- PITP icon box — AI brain + circuit icon -->
+  <rect x="48" y="53" width="148" height="148" rx="14" fill="white" opacity="0.07"/>
+  <rect x="50" y="55" width="144" height="144" rx="12" fill="none" stroke="#FFD700" stroke-width="1" opacity="0.3"/>
+
+  <!-- AI brain icon (neural network) centered in box -->
+  <g transform="translate(124, 129)" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+    <!-- Central node -->
+    <circle cx="0" cy="0" r="8" stroke-width="3"/>
+    <!-- Outer nodes -->
+    <circle cx="0" cy="-38" r="6" stroke-width="2.5"/>
+    <circle cx="36" cy="-19" r="6" stroke-width="2.5"/>
+    <circle cx="36" cy="19" r="6" stroke-width="2.5"/>
+    <circle cx="0" cy="38" r="6" stroke-width="2.5"/>
+    <circle cx="-36" cy="19" r="6" stroke-width="2.5"/>
+    <circle cx="-36" cy="-19" r="6" stroke-width="2.5"/>
+    <!-- Connections -->
+    <line x1="0" y1="-8" x2="0" y2="-32" stroke-width="1.5"/>
+    <line x1="7" y1="-4" x2="30" y2="-16" stroke-width="1.5"/>
+    <line x1="7" y1="4" x2="30" y2="16" stroke-width="1.5"/>
+    <line x1="0" y1="8" x2="0" y2="32" stroke-width="1.5"/>
+    <line x1="-7" y1="4" x2="-30" y2="16" stroke-width="1.5"/>
+    <line x1="-7" y1="-4" x2="-30" y2="-16" stroke-width="1.5"/>
+    <!-- Outer ring connections -->
+    <line x1="5" y1="-38" x2="30" y2="-24" stroke-width="1" opacity="0.5"/>
+    <line x1="36" y1="-13" x2="36" y2="13" stroke-width="1" opacity="0.5"/>
+    <line x1="30" y1="24" x2="5" y2="38" stroke-width="1" opacity="0.5"/>
+    <line x1="-5" y1="38" x2="-30" y2="24" stroke-width="1" opacity="0.5"/>
+    <line x1="-36" y1="13" x2="-36" y2="-13" stroke-width="1" opacity="0.5"/>
+    <line x1="-30" y1="-24" x2="-5" y2="-38" stroke-width="1" opacity="0.5"/>
+    <!-- Center dot -->
+    <circle cx="0" cy="0" r="3" fill="#FFD700" stroke="none"/>
+  </g>
+
+  <!-- Right: labels -->
+  <text x="222" y="88" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#FFD700" letter-spacing="1.5">GOVERNMENT OF SINDH</text>
+  <text x="222" y="107" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white" opacity="0.95">PITP</text>
+  <text x="222" y="122" font-family="Arial,sans-serif" font-size="8.5" fill="white" opacity="0.6">AI &amp; Computing</text>
+  <text x="222" y="134" font-family="Arial,sans-serif" font-size="8.5" fill="white" opacity="0.6">Training Initiative</text>
+
+  <line x1="222" y1="148" x2="378" y2="148" stroke="white" stroke-width="0.5" opacity="0.2"/>
+
+  <text x="222" y="166" font-family="Arial,sans-serif" font-size="8" fill="white" opacity="0.45">MUET Implementing University</text>
+
+  <text x="222" y="190" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="white">4,484</text>
+  <text x="222" y="202" font-family="Arial,sans-serif" font-size="8" fill="white" opacity="0.5">Certified (Phase I)</text>
+
+  <text x="312" y="190" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="white">12</text>
+  <text x="312" y="202" font-family="Arial,sans-serif" font-size="8" fill="white" opacity="0.5">Districts</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="212" width="400" height="54" fill="black" opacity="0.35"/>
+  <rect x="0" y="212" width="4" height="54" fill="#FFD700"/>
+  <text x="20" y="237" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">Presidential AI &amp; Computing Initiative</text>
+  <text x="20" y="253" font-family="Arial,sans-serif" font-size="9" fill="#FFD700" opacity="0.85">PITP — Government of Sindh · MUET Implementing University</text>
+</svg>

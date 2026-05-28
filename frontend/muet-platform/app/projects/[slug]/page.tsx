@@ -11,7 +11,6 @@ import { formatDate } from '@/lib/utils'
 import PageHeader from '@/components/shared/PageHeader'
 import StatusBadge from '@/components/shared/StatusBadge'
 import FundingBadge from '@/components/shared/FundingBadge'
-import ProgramCard from '@/components/cards/ProgramCard'
 
 export function generateStaticParams() {
   return projects.map(p => ({ slug: p.slug }))
@@ -107,22 +106,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               </div>
             </section>
 
-            {/* Related Programs */}
-            {relatedPrograms.length > 0 && (
-              <section className="mb-10">
-                <h2 className="text-xl font-semibold text-gray-900 mb-6">Training Programs Under This Project</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  {relatedPrograms.slice(0, 4).map(program => (
-                    <ProgramCard key={program.slug} {...program} />
-                  ))}
-                </div>
-                {relatedPrograms.length > 4 && (
-                  <Link href="/programs" className="inline-block mt-4 text-brand-steel text-sm font-medium hover:underline">
-                    View all {relatedPrograms.length} programs →
-                  </Link>
-                )}
-              </section>
-            )}
           </div>
 
           {/* ── Sidebar ── */}

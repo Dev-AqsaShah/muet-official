@@ -11,13 +11,16 @@ const fadeUp = (delay = 0) => ({
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-navy via-[#1a3560] to-brand-steel/80" />
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-10"
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-brand-navy">
+
+      {/* Subtle dot pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.06]"
         style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}
       />
+
+      {/* Accent gradient blob */}
+      <div className="pointer-events-none absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-10 blur-3xl bg-brand-steel" />
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
@@ -79,7 +82,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="hidden lg:block"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200">
               <Image
                 src="/images/hero/gate.jpeg"
                 alt="Mehran University of Engineering & Technology — Main Gate, Jamshoro"
@@ -88,7 +91,6 @@ export default function HeroSection() {
                 className="object-cover w-full"
                 priority
               />
-              {/* Bottom caption bar */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-navy/90 to-transparent px-5 py-4">
                 <p className="text-white font-semibold text-sm">Mehran University of Engineering &amp; Technology</p>
                 <p className="text-brand-baby text-xs">Jamshoro, Sindh — Est. 1977</p>

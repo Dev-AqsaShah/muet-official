@@ -1,40 +1,83 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="266" viewBox="0 0 400 266">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="266" viewBox="0 0 400 266">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#120520"/>
-      <stop offset="100%" stop-color="#200a3a"/>
+    <linearGradient id="bg-creative-design-freelancing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0f0ff"/>
+      <stop offset="100%" stop-color="#c8e0f8"/>
+    </linearGradient>
+    <linearGradient id="ov-creative-design-freelancing" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c8e0f8" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#c8e0f8" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#c8e0f8" stop-opacity="0.98"/>
     </linearGradient>
   </defs>
 
-  <!-- Background -->
-  <rect width="400" height="266" fill="url(#bg)"/>
+  <!-- Light blue background -->
+  <rect width="400" height="266" fill="url(#bg-creative-design-freelancing)"/>
 
-  <!-- Subtle large ring top-right -->
-  <circle cx="360" cy="50" r="110" fill="none" stroke="white" stroke-width="1" opacity="0.04"/>
-  <circle cx="360" cy="50" r="75"  fill="none" stroke="white" stroke-width="1" opacity="0.04"/>
+  <!-- Subtle decorative rings top-right -->
+  <circle cx="370" cy="36" r="130" fill="none" stroke="#1e3a8a" stroke-width="1" opacity="0.05"/>
+  <circle cx="370" cy="36" r="85"  fill="none" stroke="#1e3a8a" stroke-width="1" opacity="0.05"/>
+  <circle cx="370" cy="36" r="42"  fill="none" stroke="#1e3a8a" stroke-width="1" opacity="0.07"/>
 
   <!-- Accent top bar -->
-  <rect x="0" y="0" width="400" height="3" fill="#d8b4fe"/>
+  <rect x="0" y="0" width="400" height="4" fill="#be185d"/>
 
-  <!-- Accent dot top-left -->
-  <circle cx="28" cy="28" r="5" fill="#d8b4fe" opacity="0.7"/>
+  <!-- MUET logo — real logo in white circle -->
+  <circle cx="30" cy="30" r="22" fill="white" opacity="0.92"/>
+  <circle cx="30" cy="30" r="22" fill="none" stroke="#1e3a8a" stroke-width="0.8" opacity="0.2"/>
+  <image href="data:image/png;base64,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" x="9" y="9" width="42" height="42" preserveAspectRatio="xMidYMid meet"/>
 
-  <!-- Icon group -->
-  <g>
-      <polygon points="200,105 232,148 220,195 180,195 168,148" fill="none" stroke="white" stroke-width="4" stroke-linejoin="round" opacity="0.9"/>
-      <polygon points="200,120 224,154 215,185 185,185 176,154" fill="none" stroke="white" stroke-width="2" opacity="0.3"/>
-      <line x1="200" y1="105" x2="200" y2="120" stroke="white" stroke-width="2" opacity="0.5"/>
-      <line x1="232" y1="148" x2="224" y2="154" stroke="white" stroke-width="2" opacity="0.5"/>
-      <line x1="220" y1="195" x2="215" y2="185" stroke="white" stroke-width="2" opacity="0.5"/>
-      <line x1="180" y1="195" x2="185" y2="185" stroke="white" stroke-width="2" opacity="0.5"/>
-      <line x1="168" y1="148" x2="176" y2="154" stroke="white" stroke-width="2" opacity="0.5"/>
-      <circle cx="200" cy="153" r="8" fill="white" opacity="0.9"/>
-  </g>
+  <!-- BBSHRRDB official badge top-right -->
+  <rect x="254" y="8" width="140" height="44" rx="8" fill="#015FC9" opacity="0.95"/>
+  <!-- inner highlight -->
+  <rect x="256" y="10" width="136" height="40" rx="6" fill="none" stroke="white" stroke-width="0.5" opacity="0.2"/>
+  <!-- BB monogram box -->
+  <rect x="260" y="13" width="34" height="34" rx="5" fill="white" opacity="0.15"/>
+  <text x="277" y="27" font-family="Arial,sans-serif" font-size="10" font-weight="900" fill="white" text-anchor="middle">BB</text>
+  <text x="277" y="39" font-family="Arial,sans-serif" font-size="6" fill="white" opacity="0.8" text-anchor="middle">SHRRD</text>
+  <!-- divider -->
+  <line x1="298" y1="14" x2="298" y2="44" stroke="white" stroke-width="0.5" opacity="0.25"/>
+  <!-- text -->
+  <text x="322" y="26" font-family="Arial,sans-serif" font-size="9" font-weight="800" fill="white" text-anchor="middle">BBSHRRDB</text>
+  <text x="322" y="38" font-family="Arial,sans-serif" font-size="7" fill="white" opacity="0.75" text-anchor="middle">Govt. of Sindh</text>
 
-  <!-- Bottom label bar -->
-  <rect x="0" y="212" width="400" height="54" fill="black" opacity="0.42"/>
-  <!-- Accent left stripe -->
-  <rect x="0" y="212" width="3" height="54" fill="#d8b4fe"/>
-  <text x="18" y="238" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white">Creative Design</text>
-  <text x="18" y="254" font-family="Arial,sans-serif" font-size="10" fill="#d8b4fe" opacity="0.75">MUET Training Programme</text>
+  <!-- Program icon centered -->
+  <g transform="translate(200, 112)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="0" cy="-20" r="10" fill="none" stroke="#1e3a8a" stroke-width="4"/>
+      <circle cx="-22" cy="12" r="10" fill="none" stroke="#1e3a8a" stroke-width="4"/>
+      <circle cx="22" cy="12" r="10" fill="none" stroke="#1e3a8a" stroke-width="4"/>
+      <circle cx="0" cy="30" r="10" fill="none" stroke="#1e3a8a" stroke-width="4"/>
+      <circle cx="0" cy="-20" r="4" fill="#7c3aed" opacity="0.9"/>
+      <circle cx="-22" cy="12" r="4" fill="#2563eb" opacity="0.9"/>
+      <circle cx="22" cy="12" r="4" fill="#be185d" opacity="0.9"/>
+      <circle cx="0" cy="30" r="4" fill="#b45309" opacity="0.9"/>
+      <line x1="0" y1="-10" x2="-14" y2="4" stroke="#1e3a8a" stroke-width="2" opacity="0.35"/>
+      <line x1="0" y1="-10" x2="14" y2="4" stroke="#1e3a8a" stroke-width="2" opacity="0.35"/>
+      <line x1="-16" y1="22" x2="-6" y2="22" stroke="#1e3a8a" stroke-width="2" opacity="0.35"/>
+      <line x1="6" y1="22" x2="16" y2="22" stroke="#1e3a8a" stroke-width="2" opacity="0.35"/>
+    </g>
+
+  <!-- Bottom overlay -->
+  <rect x="0" y="140" width="400" height="126" fill="url(#ov-creative-design-freelancing)"/>
+
+  <!-- Left accent stripe -->
+  <rect x="0" y="175" width="3" height="91" fill="#be185d"/>
+
+  <!-- Program name -->
+  <text x="200" y="189" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1e3a8a" text-anchor="middle">Creative Design Freelancing</text>
+
+  <!-- Topics row 1 -->
+  <circle cx="18" cy="208" r="2.5" fill="#be185d"/>
+  <text x="26" y="212" font-family="Arial,sans-serif" font-size="9" fill="#1e40af" opacity="0.85">Logo & Brand Design</text>
+  <circle cx="208" cy="208" r="2.5" fill="#be185d"/>
+  <text x="216" y="212" font-family="Arial,sans-serif" font-size="9" fill="#1e40af" opacity="0.85">Print & Digital Media</text>
+
+  <!-- Topics row 2 -->
+  <circle cx="18" cy="228" r="2.5" fill="#be185d"/>
+  <text x="26" y="232" font-family="Arial,sans-serif" font-size="9" fill="#1e40af" opacity="0.85">Adobe Creative Suite</text>
+  <circle cx="208" cy="228" r="2.5" fill="#be185d"/>
+  <text x="216" y="232" font-family="Arial,sans-serif" font-size="9" fill="#1e40af" opacity="0.85">Client Projects</text>
+
+  <!-- Footer -->
+  <text x="200" y="253" font-family="Arial,sans-serif" font-size="8" fill="#1e3a8a" text-anchor="middle" opacity="0.5">MUET Training Programme · Jamshoro, Sindh</text>
 </svg>

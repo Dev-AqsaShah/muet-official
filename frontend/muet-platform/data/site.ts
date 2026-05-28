@@ -11,7 +11,7 @@ export const siteConfig = {
 export const siteStats = [
   { label: 'Government Projects',    value: '4+',     icon: 'folder-open' },
   { label: 'Trainees Certified',     value: '5,488+', icon: 'users' },
-  { label: 'Districts Covered',      value: '12',     icon: 'map-pin' },
+  { label: 'Instructors',            value: '20+',    icon: 'user-check' },
   { label: 'Training Programs',      value: '15+',    icon: 'book-open' },
 ]
 

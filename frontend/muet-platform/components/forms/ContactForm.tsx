@@ -15,6 +15,7 @@ export default function ContactForm() {
     const data = {
       name:    (form.elements.namedItem('name')    as HTMLInputElement).value,
       email:   (form.elements.namedItem('email')   as HTMLInputElement).value,
+      phone:   (form.elements.namedItem('phone')   as HTMLInputElement).value || undefined,
       subject: (form.elements.namedItem('subject') as HTMLInputElement).value,
       message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
     }
@@ -71,6 +72,16 @@ export default function ContactForm() {
             className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-steel/30 focus:border-brand-steel"
           />
         </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1.5">Phone <span className="text-gray-400 font-normal">(optional)</span></label>
+        <input
+          name="phone"
+          type="tel"
+          placeholder="+92 300 0000000"
+          className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-steel/30 focus:border-brand-steel"
+        />
       </div>
 
       <div>
