@@ -25,16 +25,15 @@ export default function NewsPage() {
 
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Category pills */}
           <div className="flex flex-wrap gap-2 mb-8">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+                className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all ${
                   active === cat
-                    ? 'bg-brand-steel text-white border-brand-steel'
-                    : 'bg-white text-gray-600 border-gray-200 hover:border-brand-steel hover:text-brand-steel'
+                    ? 'bg-brand-green text-white border-brand-green shadow-sm shadow-brand-green/30'
+                    : 'bg-white text-gray-600 border-gray-200 hover:border-brand-green hover:text-brand-green'
                 }`}
               >
                 {cat}

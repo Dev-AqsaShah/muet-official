@@ -43,9 +43,8 @@ export default function ProjectsPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Projects' }]}
       />
 
-      <section className="py-12 bg-white">
+      <section className="py-12" style={{ background: '#f0fdf4' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Search + Filters */}
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <div className="relative flex-1 max-w-sm">
               <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -54,7 +53,7 @@ export default function ProjectsPage() {
                 placeholder="Search projects…"
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-steel/30 focus:border-brand-steel"
+                className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/25 focus:border-brand-green bg-white"
               />
             </div>
             <div className="flex flex-wrap gap-2">
@@ -62,10 +61,10 @@ export default function ProjectsPage() {
                 <button
                   key={f.value}
                   onClick={() => setActive(f.value)}
-                  className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+                  className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all ${
                     active === f.value
-                      ? 'bg-brand-steel text-white border-brand-steel'
-                      : 'bg-white text-gray-600 border-gray-200 hover:border-brand-steel hover:text-brand-steel'
+                      ? 'bg-brand-green text-white border-brand-green shadow-sm shadow-brand-green/30'
+                      : 'bg-white text-gray-600 border-gray-200 hover:border-brand-green hover:text-brand-green'
                   }`}
                 >
                   {f.label}

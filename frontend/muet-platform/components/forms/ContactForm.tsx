@@ -42,7 +42,7 @@ export default function ContactForm() {
         </p>
         <button
           onClick={() => setState('idle')}
-          className="mt-6 text-brand-steel text-sm font-medium hover:underline"
+          className="mt-6 text-brand-green text-sm font-semibold hover:underline"
         >
           Send another message
         </button>
@@ -59,7 +59,7 @@ export default function ContactForm() {
             name="name"
             required
             placeholder="Your name"
-            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-steel/30 focus:border-brand-steel"
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/25 focus:border-brand-green"
           />
         </div>
         <div>
@@ -69,7 +69,7 @@ export default function ContactForm() {
             type="email"
             required
             placeholder="you@example.com"
-            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-steel/30 focus:border-brand-steel"
+            className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/25 focus:border-brand-green"
           />
         </div>
       </div>
@@ -80,7 +80,7 @@ export default function ContactForm() {
           name="phone"
           type="tel"
           placeholder="+92 300 0000000"
-          className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-steel/30 focus:border-brand-steel"
+          className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/25 focus:border-brand-green"
         />
       </div>
 
@@ -90,7 +90,7 @@ export default function ContactForm() {
           name="subject"
           required
           placeholder="Programme enquiry / Application / Other"
-          className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-steel/30 focus:border-brand-steel"
+          className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/25 focus:border-brand-green"
         />
       </div>
 
@@ -112,7 +112,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={state === 'sending'}
-        className="inline-flex items-center gap-2 px-6 py-3 bg-brand-steel hover:bg-brand-steel/90 disabled:opacity-60 text-white font-semibold rounded-lg transition-colors text-sm"
+        className="inline-flex items-center gap-2 px-6 py-3.5 bg-brand-green hover:bg-brand-mid disabled:opacity-60 text-white font-semibold rounded-xl transition-all text-sm shadow-md shadow-brand-green/25"
       >
         <Send size={16} />
         {state === 'sending' ? 'Sending…' : 'Send Message'}

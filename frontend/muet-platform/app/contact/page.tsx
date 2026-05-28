@@ -31,19 +31,19 @@ export default function ContactPage() {
             {/* Info card */}
             <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-6">Get in Touch</h2>
-              <div className="bg-brand-navy rounded-2xl p-6 text-white mb-6">
-                <p className="text-white/70 text-sm leading-relaxed mb-6">
+              <div className="rounded-2xl p-6 text-white mb-5" style={{ background: '#064e3b' }}>
+                <p className="text-white/60 text-sm leading-relaxed mb-6">
                   For programme applications, eligibility queries, and general enquiries about
                   MUET&apos;s training initiatives and programmes.
                 </p>
                 <ul className="space-y-4">
                   {contactDetails.map(({ icon: Icon, label, value }) => (
                     <li key={label} className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <Icon size={15} className="text-brand-baby" />
+                      <div className="w-8 h-8 rounded-xl bg-brand-green/20 flex items-center justify-center shrink-0 mt-0.5">
+                        <Icon size={15} className="text-brand-light" />
                       </div>
                       <div>
-                        <p className="text-white/50 text-xs mb-0.5">{label}</p>
+                        <p className="text-white/40 text-xs mb-0.5">{label}</p>
                         <p className="text-white text-sm font-medium">{value}</p>
                       </div>
                     </li>
@@ -51,9 +51,9 @@ export default function ContactPage() {
                 </ul>
               </div>
 
-              <div className="bg-amber-50 border border-amber-100 rounded-xl p-5 text-sm text-amber-800">
-                <p className="font-semibold mb-1">Programme Applications</p>
-                <p className="leading-relaxed text-amber-700">
+              <div className="bg-brand-green/10 border border-brand-green/25 rounded-xl p-5 text-sm">
+                <p className="font-semibold mb-1 text-brand-forest">Programme Applications</p>
+                <p className="leading-relaxed text-gray-600">
                   To apply for a training programme, please include the programme name and your
                   district in your message. We&apos;ll share eligibility details and next steps.
                 </p>

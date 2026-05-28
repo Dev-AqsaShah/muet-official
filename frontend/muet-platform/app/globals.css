@@ -5,10 +5,24 @@
 @tailwind utilities;
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .text-balance { text-wrap: balance; }
+  .bg-mesh-green {
+    background-image:
+      radial-gradient(at 20% 20%, rgba(5,150,105,0.18) 0px, transparent 50%),
+      radial-gradient(at 80% 80%, rgba(6,78,59,0.22) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(52,211,153,0.06) 0px, transparent 50%);
   }
 }
+
+::selection {
+  background: #059669;
+  color: #fff;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f0fdf4; }
+::-webkit-scrollbar-thumb { background: #059669; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #047857; }
 
 @layer base {
   .theme {

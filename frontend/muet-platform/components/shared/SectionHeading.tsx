@@ -28,11 +28,11 @@ export default function SectionHeading({
       <div className={cn('flex items-end justify-between gap-4', align === 'center' && 'flex-col items-center')}>
         <div>
           {eyebrow && (
-            <p className="text-brand-steel font-medium text-sm uppercase tracking-widest mb-2">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-green mb-3 px-3 py-1 rounded-full bg-brand-green/10">
               {eyebrow}
-            </p>
+            </span>
           )}
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-900 leading-tight">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-brand-forest leading-tight">
             {title}
           </h2>
           {description && (

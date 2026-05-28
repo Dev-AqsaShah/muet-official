@@ -5,7 +5,7 @@ import { partners } from '@/data/site'
 
 export default function PartnersSection() {
   return (
-    <section className="bg-slate-50 py-16 border-t border-gray-100">
+    <section className="bg-white py-16 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-center text-sm font-medium text-gray-400 uppercase tracking-widest mb-3">
           Institutional Partners &amp; Funding Bodies
@@ -26,7 +26,7 @@ export default function PartnersSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
             >
-              <div className="relative h-14 w-36 rounded-lg overflow-hidden border border-gray-200 bg-white group-hover:border-brand-steel transition-colors shadow-sm">
+              <div className="relative h-14 w-36 rounded-xl overflow-hidden border border-gray-200 bg-white group-hover:border-brand-green transition-colors shadow-sm">
                 <Image
                   src={partner.logo}
                   alt={partner.name}

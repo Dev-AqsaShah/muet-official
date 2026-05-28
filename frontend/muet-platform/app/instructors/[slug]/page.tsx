@@ -19,9 +19,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 const roleColor: Record<string, string> = {
-  head:       '#d97706',
-  senior:     '#2563eb',
-  instructor: '#4682B4',
+  head:       '#059669',
+  senior:     '#34d399',
+  instructor: '#047857',
 }
 
 const roleLabel: Record<string, string> = {
@@ -39,13 +39,15 @@ export default async function InstructorDetailPage({ params }: { params: Promise
   const taughtPrograms = programs.filter(p => ins.programSlugs.includes(p.slug))
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: '#f0fdf4' }}>
 
       {/* Hero */}
-      <div className="bg-white pt-24 pb-12 px-4 border-b border-gray-200" style={{ borderBottomColor: accent }}>
-        <div style={{ borderBottom: `3px solid ${accent}`, position: 'absolute', bottom: 0, left: 0, right: 0 }} />
-        <div className="max-w-5xl mx-auto">
-          <Link href="/instructors" className="inline-flex items-center gap-1.5 text-gray-400 hover:text-brand-navy text-sm mb-8 transition-colors">
+      <div className="relative pt-28 pb-14 px-4 overflow-hidden" style={{ background: '#064e3b' }}>
+        <div className="absolute inset-0 opacity-[0.05]"
+          style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #34d399 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-0.5" style={{ background: accent }} />
+        <div className="relative max-w-5xl mx-auto">
+          <Link href="/instructors" className="inline-flex items-center gap-1.5 text-white/40 hover:text-white text-sm mb-8 transition-colors">
             <ArrowLeft size={14} /> All Instructors
           </Link>
 
@@ -67,15 +69,15 @@ export default async function InstructorDetailPage({ params }: { params: Promise
                 >
                   {roleLabel[ins.role]}
                 </span>
-                <span className="text-xs text-gray-400 border border-gray-200 px-3 py-0.5 rounded-full">
+                <span className="text-xs text-white/40 border border-white/20 px-3 py-0.5 rounded-full">
                   {ins.experience} experience
                 </span>
               </div>
-              <h1 className="font-display text-3xl md:text-4xl font-bold text-brand-navy mb-1">{ins.name}</h1>
-              <p className="text-gray-500 text-base mb-4">{ins.title}</p>
+              <h1 className="font-display text-3xl md:text-4xl font-bold text-white mb-1">{ins.name}</h1>
+              <p className="text-white/55 text-base mb-4">{ins.title}</p>
 
-              <div className="flex flex-wrap gap-4 text-sm text-gray-500">
-                <a href={`mailto:${ins.email}`} className="flex items-center gap-1.5 hover:text-brand-steel transition-colors">
+              <div className="flex flex-wrap gap-4 text-sm text-white/50">
+                <a href={`mailto:${ins.email}`} className="flex items-center gap-1.5 hover:text-brand-light transition-colors">
                   <Mail size={14} style={{ color: accent }} /> {ins.email}
                 </a>
                 <span className="flex items-center gap-1.5">
@@ -96,7 +98,7 @@ export default async function InstructorDetailPage({ params }: { params: Promise
 
             {/* Bio */}
             <section className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm">
-              <h2 className="text-base font-bold text-brand-navy mb-4 flex items-center gap-2">
+              <h2 className="text-base font-bold text-brand-forest mb-4 flex items-center gap-2">
                 <span className="w-1 h-4 rounded-full" style={{ background: accent }} />
                 About
               </h2>
@@ -106,7 +108,7 @@ export default async function InstructorDetailPage({ params }: { params: Promise
             {/* Programmes taught */}
             {taughtPrograms.length > 0 && (
               <section className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm">
-                <h2 className="text-base font-bold text-brand-navy mb-5 flex items-center gap-2">
+                <h2 className="text-base font-bold text-brand-forest mb-5 flex items-center gap-2">
                   <span className="w-1 h-4 rounded-full" style={{ background: accent }} />
                   Programmes Taught
                 </h2>
@@ -118,10 +120,10 @@ export default async function InstructorDetailPage({ params }: { params: Promise
                       className="group flex items-center justify-between p-4 rounded-xl border border-gray-100 bg-gray-50 hover:bg-white hover:border-gray-200 hover:shadow-sm transition-all"
                     >
                       <div>
-                        <p className="font-semibold text-brand-navy text-sm group-hover:text-brand-steel transition-colors">{p.title}</p>
+                        <p className="font-semibold text-brand-forest text-sm group-hover:text-brand-green transition-colors">{p.title}</p>
                         <p className="text-gray-400 text-xs mt-0.5">{p.duration} · {p.seats} seats</p>
                       </div>
-                      <ChevronRight size={15} className="text-gray-300 group-hover:text-brand-steel transition-colors" />
+                      <ChevronRight size={15} className="text-gray-300 group-hover:text-brand-green transition-colors" />
                     </Link>
                   ))}
                 </div>

@@ -56,19 +56,18 @@ export default function GalleryPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Gallery' }]}
       />
 
-      <section className="py-12 bg-white">
+      <section className="py-12" style={{ background: '#f0fdf4' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Filter pills */}
           <div className="flex flex-wrap gap-2 mb-8 justify-center">
             {tags.map(tag => (
               <button
                 key={tag}
                 onClick={() => setActiveTag(tag)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${
+                className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all ${
                   activeTag === tag
-                    ? 'bg-brand-steel text-white border-brand-steel'
-                    : 'bg-white text-gray-600 border-gray-200 hover:border-brand-steel hover:text-brand-steel'
+                    ? 'bg-brand-green text-white border-brand-green shadow-sm shadow-brand-green/30'
+                    : 'bg-white text-gray-600 border-gray-200 hover:border-brand-green hover:text-brand-green'
                 }`}
               >
                 {tag}
@@ -76,11 +75,12 @@ export default function GalleryPage() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {shown.map((img, i) => (
               <div
                 key={i}
-                className="group relative aspect-video rounded-xl overflow-hidden bg-brand-navy shadow-md"
+                className="group relative aspect-video rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:shadow-brand-green/20 hover:-translate-y-1 transition-all duration-300"
+                style={{ background: '#064e3b' }}
               >
                 <Image
                   src={img.src}
@@ -89,9 +89,9 @@ export default function GalleryPage() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#052e16]/80 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <span className="inline-block text-xs font-medium text-brand-baby mb-1">{img.tag}</span>
+                  <span className="inline-block text-xs font-bold text-brand-light mb-1">{img.tag}</span>
                   <p className="text-white text-sm font-medium leading-snug">{img.caption}</p>
                 </div>
               </div>

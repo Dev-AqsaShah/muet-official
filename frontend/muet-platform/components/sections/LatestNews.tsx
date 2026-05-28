@@ -10,14 +10,14 @@ export default function LatestNews() {
   const articles = getLatestNews(3)
 
   return (
-    <section className="bg-slate-50 py-20">
+    <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Latest Updates"
           title="News & Announcements"
           description="Programme results, new batch launches, and impact stories from across Sindh."
           action={
-            <Link href="/news" className="inline-flex items-center gap-1.5 text-brand-steel font-medium text-sm hover:underline shrink-0">
+            <Link href="/news" className="inline-flex items-center gap-1.5 text-brand-green font-semibold text-sm hover:text-brand-mid transition-colors shrink-0">
               All News <ArrowRight size={16} />
             </Link>
           }

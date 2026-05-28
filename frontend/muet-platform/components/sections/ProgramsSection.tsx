@@ -5,21 +5,21 @@ import { ArrowRight, Clock, Users } from 'lucide-react'
 import { programs } from '@/data/programs'
 
 const accents: Record<string, string> = {
-  'web-development':               '#2563eb',
-  'graphic-designing-ui-ux':       '#7c3aed',
-  'digital-marketing-seo':         '#ea580c',
-  'social-media-management':       '#9333ea',
-  'e-commerce':                    '#16a34a',
-  'python-development':            '#d97706',
-  'mobile-app-development':        '#059669',
-  'java-development':              '#dc2626',
-  'technical-freelancing':         '#0d9488',
-  'content-marketing-advertising': '#b45309',
-  'creative-design-freelancing':   '#be185d',
-  'data-science':                  '#6d28d9',
-  'database-management':           '#0891b2',
-  'cloud-computing':               '#0284c7',
-  'cyber-security':                '#475569',
+  'web-development':               '#34d399',
+  'graphic-designing-ui-ux':       '#a78bfa',
+  'digital-marketing-seo':         '#fb923c',
+  'social-media-management':       '#c084fc',
+  'e-commerce':                    '#4ade80',
+  'python-development':            '#fbbf24',
+  'mobile-app-development':        '#34d399',
+  'java-development':              '#f87171',
+  'technical-freelancing':         '#2dd4bf',
+  'content-marketing-advertising': '#fcd34d',
+  'creative-design-freelancing':   '#f472b6',
+  'data-science':                  '#818cf8',
+  'database-management':           '#38bdf8',
+  'cloud-computing':               '#60a5fa',
+  'cyber-security':                '#94a3b8',
 }
 
 const preview = programs.slice(0, 4)
@@ -33,13 +33,13 @@ export default function ProgramsSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.55 }}
           className="mb-12"
         >
-          <p className="text-brand-steel text-xs font-semibold uppercase tracking-widest mb-3">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-green mb-3 px-3 py-1 rounded-full bg-brand-green/10">
             Programme Curriculum
-          </p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-navy leading-tight mb-3">
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-brand-forest leading-tight mb-3">
             Certified IT Programmes
           </h2>
           <p className="text-gray-500 text-sm max-w-lg leading-relaxed">
@@ -49,40 +49,43 @@ export default function ProgramsSection() {
 
         <div className="flex flex-col gap-3">
           {preview.map((program, i) => {
-            const accent = accents[program.slug] ?? '#2563eb'
+            const accent = accents[program.slug] ?? '#34d399'
             return (
               <motion.div
                 key={program.slug}
-                initial={{ opacity: 0, x: -16 }}
+                initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
+                transition={{ duration: 0.45, delay: i * 0.08 }}
               >
                 <Link
                   href={`/programs/${program.slug}`}
-                  className="group relative flex items-center gap-5 rounded-2xl px-6 py-5 shadow-sm transition-all duration-300 hover:shadow-md hover:brightness-110"
-                  style={{ backgroundColor: '#1B3A6B' }}
+                  className="group relative flex items-center gap-5 rounded-2xl px-6 py-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl overflow-hidden"
+                  style={{ background: '#064e3b' }}
                 >
-                  <div
-                    className="shrink-0 w-2.5 h-2.5 rounded-full"
-                    style={{ background: accent }}
-                  />
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-white font-semibold text-base mb-1 group-hover:text-brand-baby transition-colors">
+                  {/* Hover glow */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: 'linear-gradient(135deg, rgba(5,150,105,0.15) 0%, transparent 60%)' }} />
+
+                  <div className="relative shrink-0 w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: accent + '22', border: `1px solid ${accent}44` }}>
+                    <div className="w-2.5 h-2.5 rounded-full" style={{ background: accent }} />
+                  </div>
+
+                  <div className="relative flex-1 min-w-0">
+                    <h3 className="text-white font-semibold text-base mb-0.5 group-hover:text-brand-light transition-colors">
                       {program.title}
                     </h3>
-                    <p className="text-white/50 text-sm leading-relaxed line-clamp-1">
+                    <p className="text-white/45 text-sm leading-relaxed line-clamp-1">
                       {program.shortDesc}
                     </p>
                   </div>
-                  <div className="hidden sm:flex items-center gap-4 text-xs text-white/40 shrink-0">
+
+                  <div className="relative hidden sm:flex items-center gap-5 text-xs text-white/35 shrink-0">
                     <span className="flex items-center gap-1.5"><Clock size={11} />{program.duration}</span>
                     <span className="flex items-center gap-1.5"><Users size={11} />{program.seats} seats</span>
                   </div>
-                  <ArrowRight
-                    size={16}
-                    className="shrink-0 text-white/25 group-hover:text-brand-baby group-hover:translate-x-1 transition-all duration-300"
-                  />
+
+                  <ArrowRight size={16} className="relative shrink-0 text-white/20 group-hover:text-brand-light group-hover:translate-x-1 transition-all duration-300" />
                 </Link>
               </motion.div>
             )
@@ -90,7 +93,7 @@ export default function ProgramsSection() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.3 }}
@@ -98,7 +101,7 @@ export default function ProgramsSection() {
         >
           <Link
             href="/programs"
-            className="inline-flex items-center gap-2 px-7 py-3 bg-brand-steel hover:bg-brand-navy text-white font-semibold rounded-lg transition-colors text-sm"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-green hover:bg-brand-mid text-white font-semibold rounded-xl transition-all hover:scale-[1.02] shadow-md shadow-brand-green/25 text-sm"
           >
             View All 15 Programmes <ArrowRight size={15} />
           </Link>

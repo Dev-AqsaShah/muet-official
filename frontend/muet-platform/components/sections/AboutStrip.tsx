@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, ArrowRight } from 'lucide-react'
 
 const credentials = [
   'Designated implementing university for PITP — Government of Sindh',
@@ -15,67 +15,67 @@ const credentials = [
 
 export default function AboutStrip() {
   return (
-    <section className="bg-brand-navy py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 overflow-hidden" style={{ background: '#064e3b' }}>
+      {/* Subtle dot pattern */}
+      <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #34d399 1px, transparent 0)', backgroundSize: '36px 36px' }} />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+
           {/* Text */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.65 }}
           >
-            <p className="text-brand-baby text-sm font-medium uppercase tracking-widest mb-3">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-light mb-4 px-3 py-1 rounded-full bg-brand-light/10 border border-brand-light/20">
               Why Partner With MUET
-            </p>
+            </span>
             <h2 className="font-display text-3xl md:text-4xl text-white font-bold leading-tight mb-5">
-              Mehran University — Sindh&apos;s Premier Institution for Government Programme Execution
+              Sindh&apos;s Premier Institution for Government Programme Execution
             </h2>
-            <p className="text-white/65 text-base leading-relaxed mb-4">
+            <p className="text-white/60 text-base leading-relaxed mb-4">
               Established in 1977, MUET is Sindh&apos;s leading public university for engineering
-              and technology. Through its Office of Research, Innovation &amp; Commercialization (ORIC),
-              MUET has developed the institutional capacity to manage complex, multi-district
-              government training mandates — from centre operations and instructor management
-              to certification, reporting, and quality assurance.
+              and technology. Through ORIC, MUET manages complex, multi-district government training
+              mandates — from centre operations to certification and quality assurance.
             </p>
-            <p className="text-white/55 text-sm leading-relaxed mb-6">
-              Government departments and funding bodies choose MUET because of its proven execution record,
-              accredited academic standing, and the credibility that a university-issued certificate
-              carries for programme graduates.
-            </p>
-            <ul className="space-y-2.5 mb-8">
+
+            <ul className="space-y-3 mb-8">
               {credentials.map((point) => (
-                <li key={point} className="flex items-start gap-3 text-white/75 text-sm">
-                  <CheckCircle2 size={16} className="text-brand-baby shrink-0 mt-0.5" />
+                <li key={point} className="flex items-start gap-3 text-white/70 text-sm">
+                  <CheckCircle2 size={16} className="text-brand-light shrink-0 mt-0.5" />
                   {point}
                 </li>
               ))}
             </ul>
+
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/about"
-                className="inline-flex items-center px-6 py-3 border border-white/30 hover:border-white/70 text-white font-semibold rounded-lg transition-all hover:bg-white/10 text-sm"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-white/25 hover:border-brand-light/60 text-white font-semibold rounded-xl transition-all hover:bg-white/8 text-sm"
               >
                 About MUET
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center px-6 py-3 bg-brand-steel hover:bg-brand-steel/90 text-white font-semibold rounded-lg transition-all text-sm"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-brand-green hover:bg-brand-mid text-white font-semibold rounded-xl transition-all text-sm shadow-lg shadow-brand-green/30"
               >
-                Partner With Us
+                Partner With Us <ArrowRight size={15} />
               </Link>
             </div>
           </motion.div>
 
-          {/* Campus image panel */}
+          {/* Image */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.65 }}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-brand-light/20 aspect-[4/3]">
               <Image
                 src="/images/hero/muet-gate-header.jpg"
                 alt="Mehran University of Engineering & Technology — Jamshoro Campus"
@@ -83,34 +83,31 @@ export default function AboutStrip() {
                 className="object-cover object-right"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              {/* gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#052e16]/80 via-transparent to-transparent" />
 
-              {/* Stats row overlaid at bottom */}
               <div className="absolute bottom-0 left-0 right-0 p-4 grid grid-cols-3 gap-2">
                 {[
                   { value: '5,488+', label: 'Certified' },
                   { value: '82.1%',  label: 'Completion' },
                   { value: '20',     label: 'Centers' },
                 ].map(stat => (
-                  <div key={stat.label} className="bg-black/40 backdrop-blur-sm border border-white/20 rounded-xl p-3 text-center">
+                  <div key={stat.label} className="bg-black/50 backdrop-blur-sm border border-white/15 rounded-xl p-3 text-center">
                     <p className="text-xl font-bold text-white">{stat.value}</p>
-                    <p className="text-white/70 text-xs font-medium">{stat.label}</p>
+                    <p className="text-white/65 text-[10px] mt-0.5">{stat.label}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Extra stats below image */}
             <div className="grid grid-cols-3 gap-3 mt-3">
               {[
                 { value: '1977', label: 'Established' },
                 { value: '20+',  label: 'Instructors' },
-                { value: '4',    label: 'Active Projects' },
+                { value: '4',    label: 'Projects' },
               ].map(stat => (
-                <div key={stat.label} className="bg-white/8 border border-white/10 rounded-xl p-4 text-center">
+                <div key={stat.label} className="bg-white/8 border border-white/10 rounded-2xl p-4 text-center">
                   <p className="text-xl font-bold text-white">{stat.value}</p>
-                  <p className="text-white/55 text-xs font-medium">{stat.label}</p>
+                  <p className="text-white/50 text-xs mt-0.5">{stat.label}</p>
                 </div>
               ))}
             </div>

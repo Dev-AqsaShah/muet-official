@@ -67,11 +67,11 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
     <div className="min-h-screen bg-gray-50">
 
       {/* ── Hero ── */}
-      <div className="relative pt-24 pb-12 px-4" style={{ background: '#1B3A6B' }}>
-        <div
-          className="pointer-events-none absolute bottom-0 left-0 right-0 h-1"
-          style={{ background: accent }}
-        />
+      <div className="relative pt-28 pb-14 px-4 overflow-hidden" style={{ background: '#064e3b' }}>
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
+          style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #34d399 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-0.5"
+          style={{ background: accent }} />
 
         <div className="max-w-5xl mx-auto">
           <Link href="/programs" className="inline-flex items-center gap-1.5 text-white/40 hover:text-white text-sm mb-8 transition-colors">
@@ -122,7 +122,7 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
           <div className="space-y-10">
 
             {/* About */}
-            <section className="rounded-2xl p-8 shadow-sm" style={{ background: '#1B3A6B' }}>
+            <section className="rounded-2xl p-8 shadow-sm" style={{ background: '#064e3b' }}>
               <h2 className="text-lg font-bold text-white mb-5 flex items-center gap-2">
                 <span className="w-1 h-5 rounded-full inline-block" style={{ background: accent }} />
                 About the Programme
@@ -134,7 +134,7 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
 
             {/* Topics */}
             {program.topics && program.topics.length > 0 && (
-              <section className="rounded-2xl p-8 shadow-sm" style={{ background: '#1B3A6B' }}>
+              <section className="rounded-2xl p-8 shadow-sm" style={{ background: '#064e3b' }}>
                 <h2 className="text-lg font-bold text-white mb-5 flex items-center gap-2">
                   <span className="w-1 h-5 rounded-full inline-block" style={{ background: accent }} />
                   Topics Covered
@@ -156,7 +156,7 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
 
             {/* Eligibility */}
             {program.eligibility && (
-              <section className="rounded-2xl p-8 shadow-sm" style={{ background: '#1B3A6B' }}>
+              <section className="rounded-2xl p-8 shadow-sm" style={{ background: '#064e3b' }}>
                 <h2 className="text-lg font-bold text-white mb-5 flex items-center gap-2">
                   <span className="w-1 h-5 rounded-full inline-block" style={{ background: accent }} />
                   Eligibility
@@ -202,7 +202,7 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
 
           {/* Right — sticky apply card */}
           <aside>
-            <div className="rounded-2xl shadow-sm sticky top-24 overflow-hidden" style={{ background: '#1B3A6B' }}>
+            <div className="rounded-2xl shadow-sm sticky top-24 overflow-hidden" style={{ background: '#064e3b' }}>
               <div className="h-1.5" style={{ background: accent }} />
               <div className="p-6">
                 <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: accent }}>
