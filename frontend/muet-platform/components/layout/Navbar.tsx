@@ -11,21 +11,23 @@ import MobileMenu from './MobileMenu'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const scrolled = useScrolled(60)
-  const pathname = usePathname()
+  const scrolled  = useScrolled(60)
+  const pathname  = usePathname()
 
   return (
     <>
       <header className={cn(
-        'fixed top-0 left-0 right-0 z-30 bg-white border-b border-gray-100 transition-all duration-300',
-        scrolled && 'shadow-lg shadow-brand-green/10'
+        'fixed top-0 left-0 right-0 z-30 transition-all duration-300',
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-lg shadow-brand-green/8'
+          : 'bg-white border-b border-gray-100'
       )}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-[68px]">
 
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-sm ring-1 ring-brand-green/20 group-hover:ring-brand-green/50 transition-all shrink-0">
+            <Link href="/" className="flex items-center gap-3 shrink-0 group">
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-md ring-2 ring-brand-green/15 group-hover:ring-brand-green/40 transition-all shrink-0">
                 <Image
                   src="/images/logos/muet-official.svg"
                   alt="MUET"
@@ -35,30 +37,29 @@ export default function Navbar() {
                   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                 />
               </div>
-              <div className="hidden sm:block lg:hidden">
-                <p className="text-brand-forest font-bold text-sm leading-tight">Mehran University</p>
-                <p className="text-brand-green text-xs leading-tight">of Engineering &amp; Technology</p>
-              </div>
-              <div className="hidden lg:block">
-                <p className="text-brand-forest font-bold text-sm leading-snug">Mehran University of Engineering &amp; Technology</p>
-                <p className="text-brand-green text-xs leading-tight tracking-wide">Jamshoro, Sindh, Pakistan</p>
+              <div className="hidden sm:block">
+                <p className="text-brand-forest font-bold text-sm leading-tight">Mehran University of Engineering &amp; Technology</p>
+                <p className="text-brand-green text-[11px] leading-tight font-medium tracking-wide">Jamshoro, Sindh, Pakistan</p>
               </div>
             </Link>
 
             {/* Desktop nav */}
-            <nav className="hidden md:flex items-center gap-0.5">
+            <nav className="hidden md:flex items-center gap-0">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
+                    'relative px-3.5 py-2 text-sm font-medium transition-colors duration-200',
                     pathname === link.href
-                      ? 'text-brand-green bg-brand-green/10 font-semibold'
-                      : 'text-gray-600 hover:text-brand-forest hover:bg-gray-50'
+                      ? 'text-brand-green'
+                      : 'text-gray-600 hover:text-brand-green'
                   )}
                 >
                   {link.label}
+                  {pathname === link.href && (
+                    <span className="absolute bottom-0 left-3.5 right-3.5 h-0.5 rounded-full bg-brand-green" />
+                  )}
                 </Link>
               ))}
             </nav>
@@ -67,18 +68,18 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               <Link
                 href="/auth/signin"
-                className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-brand-forest border border-brand-forest/20 hover:border-brand-green hover:text-brand-green transition-all"
+                className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-brand-forest border border-gray-200 hover:border-brand-green hover:text-brand-green transition-all"
               >
                 Sign In
               </Link>
               <Link
                 href="/auth/signup"
-                className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold bg-brand-green hover:bg-brand-mid text-white transition-all shadow-sm shadow-brand-green/30"
+                className="hidden sm:inline-flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold bg-brand-green hover:bg-brand-mid text-white transition-all shadow-md shadow-brand-green/25 hover:scale-[1.02]"
               >
                 Register
               </Link>
               <button
-                className="md:hidden text-gray-600 hover:text-brand-forest p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                className="md:hidden text-gray-600 hover:text-brand-forest p-2 rounded-xl hover:bg-gray-50 transition-colors"
                 onClick={() => setMenuOpen(true)}
                 aria-label="Open menu"
               >

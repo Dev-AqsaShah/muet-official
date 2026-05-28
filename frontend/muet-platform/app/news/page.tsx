@@ -1,5 +1,6 @@
 'use client'
 import { useState, useMemo } from 'react'
+import { motion } from 'framer-motion'
 import { newsArticles } from '@/data/news'
 import PageHeader from '@/components/shared/PageHeader'
 import NewsCard from '@/components/cards/NewsCard'
@@ -23,16 +24,18 @@ export default function NewsPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'News' }]}
       />
 
-      <section className="py-12 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap gap-2 mb-8">
+
+          {/* Filter pills */}
+          <div className="flex flex-wrap gap-2 mb-10 justify-center">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
-                className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all ${
+                className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all ${
                   active === cat
-                    ? 'bg-brand-green text-white border-brand-green shadow-sm shadow-brand-green/30'
+                    ? 'bg-brand-green text-white border-brand-green shadow-md shadow-brand-green/25'
                     : 'bg-white text-gray-600 border-gray-200 hover:border-brand-green hover:text-brand-green'
                 }`}
               >
@@ -44,11 +47,17 @@ export default function NewsPage() {
           {shown.length === 0 ? (
             <EmptyState />
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
               {shown.map(article => (
                 <NewsCard key={article.slug} {...article} />
               ))}
-            </div>
+            </motion.div>
           )}
         </div>
       </section>

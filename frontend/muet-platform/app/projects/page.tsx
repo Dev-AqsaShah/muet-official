@@ -1,6 +1,7 @@
 'use client'
 import { useState, useMemo } from 'react'
-import { Search } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Search, FolderKanban } from 'lucide-react'
 import { projects } from '@/data/projects'
 import PageHeader from '@/components/shared/PageHeader'
 import ProjectCard from '@/components/cards/ProjectCard'
@@ -10,11 +11,11 @@ import type { ProjectStatus, FundingBody } from '@/types'
 type FilterValue = 'all' | ProjectStatus | FundingBody
 
 const filters: { label: string; value: FilterValue }[] = [
-  { label: 'All',                value: 'all' },
-  { label: 'Active',             value: 'active' },
-  { label: 'Completed',          value: 'completed' },
-  { label: 'Sindh Government',   value: 'Sindh Government' },
-  { label: 'Govt of Pakistan',   value: 'Government of Pakistan' },
+  { label: 'All',              value: 'all' },
+  { label: 'Active',           value: 'active' },
+  { label: 'Completed',        value: 'completed' },
+  { label: 'Govt of Sindh',    value: 'Sindh Government' },
+  { label: 'Govt of Pakistan', value: 'Government of Pakistan' },
 ]
 
 export default function ProjectsPage() {
@@ -23,14 +24,8 @@ export default function ProjectsPage() {
 
   const shown = useMemo(() => {
     return projects.filter(p => {
-      const matchesFilter =
-        active === 'all' ||
-        p.status === active ||
-        p.fundingBody === active
-      const matchesSearch =
-        !query ||
-        p.title.toLowerCase().includes(query.toLowerCase()) ||
-        p.shortDesc.toLowerCase().includes(query.toLowerCase())
+      const matchesFilter = active === 'all' || p.status === active || p.fundingBody === active
+      const matchesSearch = !query || p.title.toLowerCase().includes(query.toLowerCase()) || p.shortDesc.toLowerCase().includes(query.toLowerCase())
       return matchesFilter && matchesSearch
     })
   }, [query, active])
@@ -39,31 +34,33 @@ export default function ProjectsPage() {
     <>
       <PageHeader
         title="Government Projects"
-        subtitle="MUET-administered projects funded by the Government of Sindh and Government of Pakistan — delivering digital skills training across Sindh's districts."
+        subtitle="MUET-administered projects funded by the Government of Sindh and Government of Pakistan — delivering certified digital skills across Sindh's districts."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Projects' }]}
       />
 
-      <section className="py-12" style={{ background: '#f0fdf4' }}>
+      <section className="py-16" style={{ background: '#f0fdf4' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+
+          {/* Filters */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-10 bg-white rounded-2xl p-4 border border-gray-100 shadow-sm">
             <div className="relative flex-1 max-w-sm">
-              <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search projects…"
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/25 focus:border-brand-green bg-white"
+                className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-green/25 focus:border-brand-green bg-gray-50 transition-all"
               />
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 items-center">
               {filters.map(f => (
                 <button
                   key={f.value}
                   onClick={() => setActive(f.value)}
-                  className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all ${
+                  className={`px-4 py-2 rounded-xl text-sm font-semibold border transition-all ${
                     active === f.value
-                      ? 'bg-brand-green text-white border-brand-green shadow-sm shadow-brand-green/30'
+                      ? 'bg-brand-green text-white border-brand-green shadow-md shadow-brand-green/25'
                       : 'bg-white text-gray-600 border-gray-200 hover:border-brand-green hover:text-brand-green'
                   }`}
                 >
@@ -71,17 +68,33 @@ export default function ProjectsPage() {
                 </button>
               ))}
             </div>
+            <div className="flex items-center gap-1.5 text-gray-400 text-sm sm:ml-auto shrink-0">
+              <FolderKanban size={14} />
+              {shown.length} project{shown.length !== 1 ? 's' : ''}
+            </div>
           </div>
 
-          {/* Grid */}
           {shown.length === 0 ? (
             <EmptyState title="No projects found" description="Try a different filter or search term." />
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {shown.map(project => (
-                <ProjectCard key={project.slug} {...project} />
+            <motion.div
+              key={active + query}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {shown.map((project, i) => (
+                <motion.div
+                  key={project.slug}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                >
+                  <ProjectCard {...project} />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
         </div>
       </section>

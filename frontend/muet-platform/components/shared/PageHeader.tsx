@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, Home } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface Breadcrumb { label: string; href?: string }
@@ -7,28 +7,42 @@ interface PageHeaderProps { title: string; subtitle?: string; breadcrumbs: Bread
 
 export default function PageHeader({ title, subtitle, breadcrumbs, className }: PageHeaderProps) {
   return (
-    <section className={cn('relative pt-28 pb-14 px-4 overflow-hidden', className)} style={{ background: '#064e3b' }}>
-      {/* dot grid */}
-      <div className="absolute inset-0 opacity-[0.055] pointer-events-none"
+    <section className={cn('relative pt-28 pb-16 px-4 overflow-hidden', className)} style={{ background: '#064e3b' }}>
+      {/* Dot grid */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
         style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #34d399 1.5px, transparent 0)', backgroundSize: '32px 32px' }} />
-      {/* glow */}
-      <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full blur-[80px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(5,150,105,0.3) 0%, transparent 70%)' }} />
+      {/* Gradient glow blobs */}
+      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-[100px] pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(5,150,105,0.28) 0%, transparent 70%)' }} />
+      <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full blur-[80px] pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(52,211,153,0.1) 0%, transparent 70%)' }} />
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-12 pointer-events-none"
+        style={{ background: 'linear-gradient(to bottom, transparent, rgba(6,78,59,0.5))' }} />
 
       <div className="relative max-w-7xl mx-auto">
-        <nav className="flex items-center gap-1 text-xs text-white/40 mb-5 flex-wrap">
+        {/* Breadcrumbs */}
+        <nav className="flex items-center gap-1 text-xs text-white/35 mb-6 flex-wrap">
+          <Home size={11} className="shrink-0" />
           {breadcrumbs.map((crumb, i) => (
             <span key={i} className="flex items-center gap-1">
-              {i > 0 && <ChevronRight size={12} />}
+              {i > 0 && <ChevronRight size={11} className="shrink-0" />}
               {crumb.href
-                ? <Link href={crumb.href} className="hover:text-brand-light transition-colors">{crumb.label}</Link>
-                : <span className="text-white/80">{crumb.label}</span>
+                ? <Link href={crumb.href} className="hover:text-brand-light transition-colors font-medium">{crumb.label}</Link>
+                : <span className="text-white/75 font-semibold">{crumb.label}</span>
               }
             </span>
           ))}
         </nav>
-        <h1 className="font-display text-3xl md:text-5xl text-white font-bold mb-4 leading-tight">{title}</h1>
-        {subtitle && <p className="text-white/55 text-base md:text-lg max-w-2xl leading-relaxed">{subtitle}</p>}
+
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-brand-light">
+            {title}
+          </span>
+        </h1>
+        {subtitle && (
+          <p className="text-white/55 text-base md:text-lg max-w-2xl leading-relaxed mt-3">{subtitle}</p>
+        )}
       </div>
     </section>
   )
