@@ -1,21 +1,21 @@
 import type { Metadata } from "next"
-import { Plus_Jakarta_Sans, Syne } from "next/font/google"
+import { DM_Sans, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/lib/utils"
 import Navbar from "@/components/layout/Navbar"
 import Footer from "@/components/layout/Footer"
 import Providers from "@/components/Providers"
 
-const jakarta = Plus_Jakarta_Sans({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: ["300", "400", "500", "600"],
 })
 
-const syne = Syne({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["400", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
 })
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={cn(jakarta.variable, syne.variable)}>
+    <html lang="en" className={cn(dmSans.variable, spaceGrotesk.variable)}>
       <body className="font-sans antialiased bg-background text-foreground">
         <Providers>
           <Navbar />
