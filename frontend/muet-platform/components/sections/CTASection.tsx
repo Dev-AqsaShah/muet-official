@@ -5,51 +5,79 @@ import { ArrowRight } from 'lucide-react'
 
 export default function CTASection() {
   return (
-    <section className="relative py-24 overflow-hidden" style={{ background: '#4682B4' }}>
-      {/* Glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full blur-[120px]"
-          style={{ background: 'radial-gradient(ellipse, rgba(27,58,107,0.4) 0%, transparent 70%)' }} />
-      </div>
-      <div className="absolute inset-0 opacity-[0.06]"
-        style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '30px 30px' }} />
+    <section className="py-28 text-center relative overflow-hidden" style={{ background: '#020b18', borderTop: '1px solid rgba(0,229,200,0.12)' }}>
+      <div className="pointer-events-none absolute inset-0"
+        style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(0,229,200,0.06), transparent 70%)' }} />
 
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.65 }}
+          transition={{ duration: 0.7 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 border border-white/25 text-white text-xs font-bold uppercase tracking-widest mb-7">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-amber animate-pulse" />
-            Interested in Our Programmes?
-          </div>
+          <p className="text-xs font-bold uppercase tracking-[0.18em] mb-6" style={{ color: '#00e5c8' }}>Ready to Partner?</p>
 
-          <h2 className="font-display text-3xl md:text-5xl text-white font-bold mb-5 leading-tight">
-            Partner With MUET for Your Next Training Initiative
+          <h2
+            className="font-display font-extrabold leading-none mb-6"
+            style={{ fontSize: 'clamp(40px, 6vw, 72px)', letterSpacing: '-0.04em', color: '#e8f4ff' }}
+          >
+            Scale Your Skills{' '}
+            <span
+              style={{
+                background: 'linear-gradient(120deg, #00e5c8, #38bdf8, #fbbf24)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              Initiative
+            </span>
+            {' '}With MUET
           </h2>
 
-          <p className="text-white/65 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            Government departments, funding bodies, and institutions can engage MUET as their implementing
-            partner for large-scale, multi-district certified training programmes across Sindh and Pakistan.
+          <p className="text-lg leading-relaxed mb-10 max-w-xl mx-auto font-light" style={{ color: 'rgba(232,244,255,0.55)' }}>
+            Engage MUET as your implementing partner for government-certified training across Sindh.
+            We handle centres, instructors, curriculum, and certification end-to-end.
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white font-semibold rounded-xl transition-all hover:scale-[1.03] text-sm shadow-xl"
-              style={{ color: '#1B3A6B' }}
+              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl font-bold text-sm transition-all"
+              style={{ background: 'linear-gradient(135deg, #00e5c8, #38bdf8)', color: '#020b18', boxShadow: '0 0 30px rgba(0,229,200,0.35)' }}
             >
-              Contact Us <ArrowRight size={17} />
+              Partner With MUET <ArrowRight size={16} />
             </Link>
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/35 hover:border-white/65 hover:bg-white/10 text-white font-semibold rounded-xl transition-all text-sm"
+              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl font-medium text-sm transition-all"
+              style={{ border: '1px solid rgba(0,229,200,0.3)', color: '#e8f4ff', background: 'rgba(0,229,200,0.04)' }}
             >
-              View Our Projects
+              View Active Projects
             </Link>
           </div>
+        </motion.div>
+
+        {/* Contact info band */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-12 mt-16 pt-12"
+          style={{ borderTop: '1px solid rgba(0,229,200,0.1)' }}
+        >
+          {[
+            { label: 'Phone', value: '+92 22 2772250' },
+            { label: 'Email', value: 'oric@muet.edu.pk' },
+            { label: 'Address', value: 'MUET, Jamshoro, Sindh' },
+          ].map(item => (
+            <div key={item.label}>
+              <strong className="block text-xs font-bold uppercase tracking-widest mb-1" style={{ color: '#00e5c8', letterSpacing: '0.12em' }}>{item.label}</strong>
+              <span className="text-sm" style={{ color: 'rgba(232,244,255,0.7)' }}>{item.value}</span>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

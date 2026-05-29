@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { navLinks } from '@/config/navigation'
-import { cn } from '@/lib/utils'
 
 interface MobileMenuProps {
   open: boolean
@@ -28,7 +27,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
       {open && (
         <>
           <motion.div
-            className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -36,22 +35,23 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
           />
           <motion.div
             className="fixed top-0 left-0 right-0 z-50 md:hidden overflow-hidden"
-            style={{ background: '#1B3A6B' }}
+            style={{ background: '#020b18', borderBottom: '1px solid rgba(0,229,200,0.15)' }}
             initial={{ y: '-100%' }}
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
             transition={{ type: 'tween', duration: 0.28, ease: 'easeInOut' }}
           >
-            <div className="absolute inset-0 opacity-[0.04]"
-              style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '28px 28px' }} />
-
             <div className="relative">
-              <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
+              <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: '1px solid rgba(0,229,200,0.1)' }}>
                 <div>
-                  <p className="text-white font-bold text-sm">MUET Training</p>
-                  <p className="text-brand-baby text-xs">Mehran University</p>
+                  <p className="font-display font-bold text-sm" style={{ color: '#00e5c8' }}>MUET Training</p>
+                  <p className="text-xs" style={{ color: 'rgba(232,244,255,0.4)' }}>Mehran University</p>
                 </div>
-                <button onClick={onClose} className="text-white/60 hover:text-white transition-colors p-1.5 rounded-lg hover:bg-white/10">
+                <button
+                  onClick={onClose}
+                  className="p-1.5 rounded-lg transition-colors"
+                  style={{ color: 'rgba(232,244,255,0.5)' }}
+                >
                   <X size={20} />
                 </button>
               </div>
@@ -65,24 +65,32 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
                   >
                     <Link
                       href={link.href}
-                      className={cn(
-                        'flex items-center px-5 py-3.5 text-sm font-medium transition-all',
-                        pathname === link.href
-                          ? 'text-brand-baby bg-white/10 border-l-2 border-brand-baby'
-                          : 'text-white/75 hover:text-white hover:bg-white/5 border-l-2 border-transparent'
-                      )}
+                      className="flex items-center px-5 py-3.5 text-sm font-medium transition-all"
+                      style={{
+                        color: pathname === link.href ? '#00e5c8' : 'rgba(232,244,255,0.6)',
+                        borderLeft: pathname === link.href ? '2px solid #00e5c8' : '2px solid transparent',
+                        background: pathname === link.href ? 'rgba(0,229,200,0.05)' : 'transparent',
+                      }}
                     >
                       {link.label}
                     </Link>
                   </motion.div>
                 ))}
               </nav>
-              <div className="px-5 py-4 border-t border-white/10 flex gap-3">
-                <Link href="/auth/signin" className="flex-1 py-2.5 text-center text-sm font-medium text-white border border-white/25 rounded-lg hover:bg-white/10 transition-colors">
+              <div className="px-5 py-4 flex gap-3" style={{ borderTop: '1px solid rgba(0,229,200,0.1)' }}>
+                <Link
+                  href="/auth/signin"
+                  className="flex-1 py-2.5 text-center text-sm font-medium rounded-lg transition-colors"
+                  style={{ color: 'rgba(232,244,255,0.7)', border: '1px solid rgba(0,229,200,0.25)' }}
+                >
                   Sign In
                 </Link>
-                <Link href="/auth/signup" className="flex-1 py-2.5 text-center text-sm font-semibold text-white rounded-lg transition-colors" style={{ background: '#4682B4' }}>
-                  Register
+                <Link
+                  href="/programs"
+                  className="flex-1 py-2.5 text-center text-sm font-bold rounded-lg transition-colors"
+                  style={{ background: 'linear-gradient(135deg, #00e5c8, #38bdf8)', color: '#020b18' }}
+                >
+                  Programmes
                 </Link>
               </div>
             </div>

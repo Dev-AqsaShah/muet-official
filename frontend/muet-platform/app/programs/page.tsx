@@ -2,7 +2,7 @@
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Search, Clock, Users, ArrowRight, SlidersHorizontal, ChevronRight } from 'lucide-react'
+import { Search, Clock, Users, ArrowRight, ChevronRight } from 'lucide-react'
 import { programs } from '@/data/programs'
 import type { ProgramMode, ProgramStatus } from '@/types'
 
@@ -19,21 +19,21 @@ const filters: { label: string; value: FilterValue }[] = [
 ]
 
 const accents: Record<string, string> = {
-  'web-development':               '#34d399',
-  'graphic-designing-ui-ux':       '#a78bfa',
-  'digital-marketing-seo':         '#fb923c',
-  'social-media-management':       '#c084fc',
-  'e-commerce':                    '#4ade80',
+  'web-development':               '#00e5c8',
+  'graphic-designing-ui-ux':       '#818cf8',
+  'digital-marketing-seo':         '#fbbf24',
+  'social-media-management':       '#38bdf8',
+  'e-commerce':                    '#00e5c8',
   'python-development':            '#fbbf24',
-  'mobile-app-development':        '#34d399',
-  'java-development':              '#f87171',
-  'technical-freelancing':         '#2dd4bf',
-  'content-marketing-advertising': '#fcd34d',
-  'creative-design-freelancing':   '#f472b6',
-  'data-science':                  '#818cf8',
-  'database-management':           '#38bdf8',
-  'cloud-computing':               '#60a5fa',
-  'cyber-security':                '#94a3b8',
+  'mobile-app-development':        '#38bdf8',
+  'java-development':              '#818cf8',
+  'technical-freelancing':         '#00e5c8',
+  'content-marketing-advertising': '#fbbf24',
+  'creative-design-freelancing':   '#818cf8',
+  'data-science':                  '#38bdf8',
+  'database-management':           '#00e5c8',
+  'cloud-computing':               '#38bdf8',
+  'cyber-security':                '#818cf8',
 }
 
 const emojis: Record<string, string> = {
@@ -56,6 +56,13 @@ const emojis: Record<string, string> = {
 
 const modeLabel: Record<string, string> = { physical: 'In-Person', online: 'Online', hybrid: 'Hybrid' }
 
+const statusStyle: Record<string, { bg: string; color: string }> = {
+  open:      { bg: 'rgba(0,229,200,0.1)',   color: '#00e5c8' },
+  ongoing:   { bg: 'rgba(56,189,248,0.1)',   color: '#38bdf8' },
+  upcoming:  { bg: 'rgba(251,191,36,0.1)',   color: '#fbbf24' },
+  completed: { bg: 'rgba(129,140,248,0.1)',  color: '#818cf8' },
+}
+
 export default function ProgramsPage() {
   const [query,  setQuery]  = useState('')
   const [active, setActive] = useState<FilterValue>('all')
@@ -67,59 +74,60 @@ export default function ProgramsPage() {
   }), [query, active])
 
   return (
-    <div className="min-h-screen" style={{ background: '#F8FAFC' }}>
+    <div className="min-h-screen" style={{ background: '#020b18' }}>
 
       {/* Header */}
-      <div className="relative pt-28 pb-16 px-4 overflow-hidden" style={{ background: '#1B3A6B' }}>
-        <div className="absolute inset-0 opacity-[0.05]"
-          style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #89CFF0 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-        <div className="absolute -top-20 right-0 w-96 h-96 rounded-full blur-[90px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(70,130,180,0.35) 0%, transparent 70%)' }} />
+      <div className="relative pt-28 pb-16 px-4 overflow-hidden" style={{ background: '#020b18', borderBottom: '1px solid rgba(0,229,200,0.12)' }}>
+        <div className="pointer-events-none absolute -top-20 -right-20 w-96 h-96 rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(0,229,200,0.1) 0%, transparent 70%)', filter: 'blur(60px)' }} />
+        <div className="pointer-events-none absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #00e5c8 1px, transparent 0)', backgroundSize: '32px 32px' }} />
         <div className="relative max-w-7xl mx-auto">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-baby mb-4 px-3 py-1 rounded-full bg-brand-baby/10 border border-brand-baby/20">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full"
+            style={{ background: 'rgba(0,229,200,0.1)', color: '#00e5c8', border: '1px solid rgba(0,229,200,0.2)' }}>
             Programme Catalogue
           </span>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+          <h1 className="font-display font-extrabold leading-tight mb-4"
+            style={{ fontSize: 'clamp(32px, 5vw, 60px)', letterSpacing: '-0.03em', color: '#e8f4ff' }}>
             All 15 Programmes
           </h1>
-          <p className="text-white/50 text-base max-w-lg leading-relaxed">
+          <p className="max-w-lg leading-relaxed" style={{ color: 'rgba(232,244,255,0.5)', fontSize: '16px' }}>
             Free, certified IT and digital skills programmes for Sindh youth. Government-approved, zero cost — apply today.
           </p>
         </div>
       </div>
 
       {/* Sticky filter bar */}
-      <div className="sticky top-0 z-20 bg-white/96 backdrop-blur-md border-b border-gray-200 shadow-sm">
+      <div className="sticky top-0 z-20 backdrop-blur-xl" style={{ background: 'rgba(2,11,24,0.92)', borderBottom: '1px solid rgba(0,229,200,0.1)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
             <div className="relative w-full sm:w-60">
-              <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+              <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2" style={{ color: '#607896' }} />
               <input
                 type="text"
                 placeholder="Search programmes…"
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-steel/25 focus:border-brand-steel transition-all"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl text-sm placeholder-[#607896] focus:outline-none focus:ring-1 transition-all"
+                style={{ background: '#061224', border: '1px solid rgba(0,229,200,0.15)', color: '#e8f4ff' }}
               />
             </div>
             <div className="flex items-center gap-1.5 flex-wrap">
-              <SlidersHorizontal size={12} className="text-gray-400 mr-1 shrink-0" />
               {filters.map(f => (
                 <button
                   key={f.value}
                   onClick={() => setActive(f.value)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                    active === f.value
-                      ? 'text-white shadow-sm'
-                      : 'text-gray-500 border border-gray-200 hover:border-brand-steel hover:text-brand-steel bg-white'
-                  }`}
-                  style={active === f.value ? { background: '#4682B4' } : {}}
+                  className="px-3 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200"
+                  style={active === f.value
+                    ? { background: 'rgba(0,229,200,0.1)', color: '#00e5c8', borderColor: 'rgba(0,229,200,0.4)', boxShadow: '0 0 12px rgba(0,229,200,0.12)' }
+                    : { background: 'transparent', color: '#607896', borderColor: 'rgba(0,229,200,0.12)' }
+                  }
                 >
                   {f.label}
                 </button>
               ))}
             </div>
-            <span className="text-gray-400 text-xs sm:ml-auto shrink-0 font-medium">{shown.length} / 15</span>
+            <span className="text-xs sm:ml-auto shrink-0 font-medium" style={{ color: '#607896' }}>{shown.length} / 15</span>
           </div>
         </div>
       </div>
@@ -128,8 +136,8 @@ export default function ProgramsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {shown.length === 0 ? (
           <div className="text-center py-24">
-            <p className="text-lg font-semibold text-gray-500 mb-1">No programmes found</p>
-            <p className="text-sm text-gray-400">Try a different filter or search term.</p>
+            <p className="text-lg font-semibold mb-1" style={{ color: '#607896' }}>No programmes found</p>
+            <p className="text-sm" style={{ color: '#607896' }}>Try a different filter or search term.</p>
           </div>
         ) : (
           <motion.div
@@ -140,8 +148,9 @@ export default function ProgramsPage() {
             transition={{ duration: 0.3 }}
           >
             {shown.map((program, i) => {
-              const accent = accents[program.slug] ?? '#34d399'
+              const accent = accents[program.slug] ?? '#00e5c8'
               const emoji  = emojis[program.slug]  ?? '💡'
+              const st = statusStyle[program.status] ?? statusStyle.upcoming
               return (
                 <motion.div
                   key={program.slug}
@@ -151,42 +160,49 @@ export default function ProgramsPage() {
                 >
                   <Link
                     href={`/programs/${program.slug}`}
-                    className="group flex flex-col h-full rounded-2xl border border-gray-200 bg-white hover:border-brand-steel/40 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-                    style={{ boxShadow: '0 2px 8px rgba(70,130,180,0.06)' }}
+                    className="group flex flex-col h-full rounded-2xl overflow-hidden relative transition-all duration-300"
+                    style={{ background: '#061224', border: `1px solid ${accent}20` }}
+                    onMouseEnter={e => { const el = e.currentTarget; el.style.borderColor = `${accent}40`; el.style.transform = 'translateY(-5px)'; el.style.boxShadow = `0 20px 60px rgba(0,0,0,0.4), 0 0 30px ${accent}08` }}
+                    onMouseLeave={e => { const el = e.currentTarget; el.style.borderColor = `${accent}20`; el.style.transform = ''; el.style.boxShadow = '' }}
                   >
-                    <div className="h-1 w-full shrink-0" style={{ background: 'linear-gradient(90deg, #4682B4, #89CFF0)' }} />
+                    {/* Bottom glow on hover */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{ background: `linear-gradient(90deg, transparent, ${accent}, transparent)` }} />
+
+                    <div className="h-0.5 shrink-0" style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
 
                     <div className="flex flex-col flex-1 p-6">
                       <div className="flex items-start justify-between mb-5">
                         <div
-                          className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl shadow-sm"
-                          style={{ background: '#dbeafe', border: '1px solid #bfdbfe' }}
+                          className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl"
+                          style={{ background: `${accent}18`, border: `1px solid ${accent}30` }}
                         >
                           {emoji}
                         </div>
                         <div className="flex flex-col items-end gap-1.5">
-                          <span className="text-[11px] font-bold px-2.5 py-1 rounded-full capitalize" style={{ background: '#dbeafe', color: '#1B3A6B' }}>
+                          <span className="text-[11px] font-bold px-2.5 py-1 rounded-full capitalize"
+                            style={{ background: st.bg, color: st.color }}>
                             {program.status}
                           </span>
-                          <span className="text-[10px] text-gray-400 border border-gray-100 px-2 py-0.5 rounded-full">
+                          <span className="text-[10px] px-2 py-0.5 rounded-full" style={{ border: '1px solid rgba(0,229,200,0.12)', color: '#607896' }}>
                             {modeLabel[program.mode] ?? program.mode}
                           </span>
                         </div>
                       </div>
 
-                      <h3 className="font-semibold text-base leading-snug mb-2 group-hover:text-brand-steel transition-colors" style={{ color: '#1B3A6B' }}>
+                      <h3 className="font-display font-bold text-base leading-snug mb-2" style={{ color: '#e8f4ff' }}>
                         {program.title}
                       </h3>
-                      <p className="text-brand-gray text-sm leading-relaxed line-clamp-2 flex-1 mb-5">
+                      <p className="text-sm leading-relaxed line-clamp-2 flex-1 mb-5" style={{ color: 'rgba(232,244,255,0.5)' }}>
                         {program.shortDesc}
                       </p>
 
-                      <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                        <div className="flex items-center gap-3 text-xs text-gray-400">
-                          <span className="flex items-center gap-1.5"><Clock size={11} className="text-brand-steel" />{program.duration}</span>
-                          <span className="flex items-center gap-1.5"><Users size={11} className="text-brand-steel" />{program.seats}</span>
+                      <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(0,229,200,0.08)' }}>
+                        <div className="flex items-center gap-3 text-xs" style={{ color: '#607896' }}>
+                          <span className="flex items-center gap-1.5"><Clock size={11} style={{ color: accent }} />{program.duration}</span>
+                          <span className="flex items-center gap-1.5"><Users size={11} style={{ color: accent }} />{program.seats}</span>
                         </div>
-                        <ChevronRight size={15} className="text-brand-steel group-hover:translate-x-1 transition-transform duration-300" />
+                        <ChevronRight size={15} style={{ color: accent }} className="group-hover:translate-x-1 transition-transform duration-300" />
                       </div>
                     </div>
                   </Link>

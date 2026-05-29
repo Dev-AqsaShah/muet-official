@@ -13,12 +13,16 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         brand: {
-          navy:     "#1B3A6B",   // primary dark — hero, footer, dark sections
-          steel:    "#4682B4",   // primary brand — navbar, buttons, links
-          baby:     "#89CFF0",   // accent on dark backgrounds
-          amber:    "#D97706",   // impact numbers, CTA accents, badges
-          offwhite: "#F8FAFC",   // alternating section backgrounds
-          gray:     "#64748B",   // body text, captions
+          bg:     "#020b18",   // page background
+          bg2:    "#061224",   // card/section background
+          bg3:    "#0c1e35",   // hover/active card background
+          teal:   "#00e5c8",   // primary accent
+          teal2:  "#00b8a3",   // teal hover
+          cyan:   "#38bdf8",   // secondary accent
+          gold:   "#fbbf24",   // stat numbers, featured
+          violet: "#818cf8",   // tertiary accent
+          white:  "#e8f4ff",   // text color
+          muted:  "#607896",   // muted text
         },
         border: "hsl(var(--border))",
         input:  "hsl(var(--input))",
@@ -45,8 +49,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans:    ["var(--font-inter)", "sans-serif"],
-        display: ["var(--font-display)", "serif"],
+        sans:    ["var(--font-sans)", "sans-serif"],
+        display: ["var(--font-display)", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -5,7 +5,7 @@ import { getProgramBySlug, programs } from '@/data/programs'
 import { getProjectBySlug } from '@/data/projects'
 import { getInstructorsByProgram } from '@/data/instructors'
 import { formatDate, cn } from '@/lib/utils'
-import StatusBadge from '@/components/shared/StatusBadge'
+import HoverLink from '@/components/shared/HoverLink'
 
 export function generateStaticParams() {
   return programs.map(p => ({ slug: p.slug }))
@@ -22,21 +22,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 const accents: Record<string, string> = {
-  'web-development':               '#2563eb',
-  'graphic-designing-ui-ux':       '#7c3aed',
-  'digital-marketing-seo':         '#ea580c',
-  'social-media-management':       '#9333ea',
-  'e-commerce':                    '#16a34a',
-  'python-development':            '#d97706',
-  'mobile-app-development':        '#059669',
-  'java-development':              '#dc2626',
-  'technical-freelancing':         '#0d9488',
-  'content-marketing-advertising': '#b45309',
-  'creative-design-freelancing':   '#be185d',
-  'data-science':                  '#6d28d9',
-  'database-management':           '#0891b2',
-  'cloud-computing':               '#0284c7',
-  'cyber-security':                '#475569',
+  'web-development':               '#00e5c8',
+  'graphic-designing-ui-ux':       '#818cf8',
+  'digital-marketing-seo':         '#fbbf24',
+  'social-media-management':       '#38bdf8',
+  'e-commerce':                    '#00e5c8',
+  'python-development':            '#fbbf24',
+  'mobile-app-development':        '#38bdf8',
+  'java-development':              '#818cf8',
+  'technical-freelancing':         '#00e5c8',
+  'content-marketing-advertising': '#fbbf24',
+  'creative-design-freelancing':   '#818cf8',
+  'data-science':                  '#38bdf8',
+  'database-management':           '#00e5c8',
+  'cloud-computing':               '#38bdf8',
+  'cyber-security':                '#818cf8',
 }
 
 const modeLabel: Record<string, string> = {
@@ -60,80 +60,84 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
 
   const project     = getProjectBySlug(program.projectSlug)
   const cta         = statusCTA[program.status] ?? { label: 'Contact Us', disabled: false }
-  const accent      = accents[program.slug] ?? '#2563eb'
+  const accent      = accents[program.slug] ?? '#00e5c8'
   const instructors = getInstructorsByProgram(program.slug)
 
   return (
-    <div className="min-h-screen" style={{ background: '#F8FAFC' }}>
+    <div className="min-h-screen" style={{ background: '#020b18' }}>
 
-      {/* ── Hero ── */}
-      <div className="relative pt-28 pb-14 px-4 overflow-hidden" style={{ background: '#1B3A6B' }}>
-        <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #89CFF0 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-0.5"
-          style={{ background: '#4682B4' }} />
+      {/* Hero */}
+      <div className="relative pt-28 pb-14 px-4 overflow-hidden" style={{ background: '#020b18', borderBottom: '1px solid rgba(0,229,200,0.12)' }}>
+        <div className="pointer-events-none absolute -top-20 -right-20 w-96 h-96 rounded-full"
+          style={{ background: `radial-gradient(circle, ${accent}15 0%, transparent 70%)`, filter: 'blur(60px)' }} />
+        <div className="pointer-events-none absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #00e5c8 1px, transparent 0)', backgroundSize: '32px 32px' }} />
 
-        <div className="max-w-5xl mx-auto">
-          <Link href="/programs" className="inline-flex items-center gap-1.5 text-white/40 hover:text-white text-sm mb-8 transition-colors">
+        <div className="relative max-w-5xl mx-auto">
+          <Link href="/programs" className="inline-flex items-center gap-1.5 text-sm mb-8 transition-colors" style={{ color: '#607896' }}>
             <ArrowLeft size={14} /> All Programmes
           </Link>
 
           <div className="flex flex-wrap items-center gap-2 mb-5">
-            <span className="text-xs font-semibold px-3 py-1 rounded-full text-white" style={{ background: '#4682B4' }}>
+            <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded"
+              style={{ background: `${accent}12`, border: `1px solid ${accent}30`, color: accent }}>
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: accent, animation: program.status === 'ongoing' || program.status === 'open' ? 'blink 1.8s infinite' : 'none' }} />
               {program.status.charAt(0).toUpperCase() + program.status.slice(1)}
             </span>
-            <span className="text-xs text-white/50 border border-white/20 px-3 py-1 rounded-full">
+            <span className="text-xs px-3 py-1 rounded-full" style={{ border: '1px solid rgba(0,229,200,0.2)', color: '#607896' }}>
               {modeLabel[program.mode] ?? program.mode}
             </span>
             {project && (
               <Link
                 href={`/projects/${project.slug}`}
-                className="text-xs text-white/40 hover:text-white border border-white/15 px-3 py-1 rounded-full transition-colors"
+                className="text-xs px-3 py-1 rounded-full transition-colors"
+                style={{ border: '1px solid rgba(0,229,200,0.15)', color: '#607896' }}
               >
                 ↗ {project.title}
               </Link>
             )}
           </div>
 
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
+          <h1 className="font-display font-extrabold leading-tight mb-4"
+            style={{ fontSize: 'clamp(28px, 5vw, 52px)', letterSpacing: '-0.03em', color: '#e8f4ff' }}>
             {program.title}
           </h1>
-          <p className="text-white/60 text-base max-w-2xl leading-relaxed">
+          <p className="max-w-2xl leading-relaxed" style={{ color: 'rgba(232,244,255,0.55)', fontSize: '16px' }}>
             {program.shortDesc}
           </p>
 
-          <div className="flex flex-wrap gap-6 mt-8 text-sm text-white/50">
-            <span className="flex items-center gap-2"><Clock size={14} className="text-brand-baby" />{program.duration}</span>
-            <span className="flex items-center gap-2"><Users size={14} className="text-brand-baby" />{program.seats} seats per batch</span>
-            {program.location && <span className="flex items-center gap-2"><MapPin size={14} className="text-brand-baby" />{program.location}</span>}
-            {program.startDate && <span className="flex items-center gap-2"><CalendarDays size={14} className="text-brand-baby" />Next batch: {formatDate(program.startDate)}</span>}
+          <div className="flex flex-wrap gap-6 mt-8 text-sm" style={{ color: '#607896' }}>
+            <span className="flex items-center gap-2"><Clock size={14} style={{ color: accent }} />{program.duration}</span>
+            <span className="flex items-center gap-2"><Users size={14} style={{ color: accent }} />{program.seats} seats per batch</span>
+            {program.location && <span className="flex items-center gap-2"><MapPin size={14} style={{ color: accent }} />{program.location}</span>}
+            {program.startDate && <span className="flex items-center gap-2"><CalendarDays size={14} style={{ color: accent }} />Next batch: {formatDate(program.startDate)}</span>}
           </div>
         </div>
       </div>
 
-      {/* ── Body ── */}
+      {/* Body */}
       <div className="max-w-5xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10">
 
           {/* Left — content */}
-          <div className="space-y-10">
+          <div className="space-y-6">
 
             {/* About */}
-            <section className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
-              <h2 className="text-lg font-bold mb-5 flex items-center gap-2" style={{ color: '#1B3A6B' }}>
-                <span className="w-1 h-5 rounded-full inline-block" style={{ background: '#4682B4' }} />
+            <section className="rounded-2xl p-8" style={{ background: '#061224', border: '1px solid rgba(0,229,200,0.1)' }}>
+              <h2 className="text-lg font-bold mb-5 flex items-center gap-2" style={{ color: '#e8f4ff' }}>
+                <span className="w-1 h-5 rounded-full inline-block" style={{ background: accent }} />
                 About the Programme
               </h2>
-              <div className="text-brand-gray text-sm leading-relaxed whitespace-pre-line">
+              <div className="text-sm leading-relaxed whitespace-pre-line" style={{ color: 'rgba(232,244,255,0.6)' }}>
                 {program.description}
               </div>
             </section>
 
             {/* Topics */}
             {program.topics && program.topics.length > 0 && (
-              <section className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
-                <h2 className="text-lg font-bold mb-5 flex items-center gap-2" style={{ color: '#1B3A6B' }}>
-                  <span className="w-1 h-5 rounded-full inline-block" style={{ background: '#4682B4' }} />
+              <section className="rounded-2xl p-8" style={{ background: '#061224', border: '1px solid rgba(0,229,200,0.1)' }}>
+                <h2 className="text-lg font-bold mb-5 flex items-center gap-2" style={{ color: '#e8f4ff' }}>
+                  <span className="w-1 h-5 rounded-full inline-block" style={{ background: accent }} />
                   Topics Covered
                 </h2>
                 <div className="flex flex-wrap gap-2">
@@ -141,7 +145,7 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
                     <span
                       key={topic}
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium"
-                      style={{ background: '#dbeafe', color: '#1B3A6B', border: '1px solid #bfdbfe' }}
+                      style={{ background: `${accent}10`, color: accent, border: `1px solid ${accent}25` }}
                     >
                       <Tag size={11} />
                       {topic}
@@ -153,44 +157,51 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
 
             {/* Eligibility */}
             {program.eligibility && (
-              <section className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
-                <h2 className="text-lg font-bold mb-5 flex items-center gap-2" style={{ color: '#1B3A6B' }}>
-                  <span className="w-1 h-5 rounded-full inline-block" style={{ background: '#4682B4' }} />
+              <section className="rounded-2xl p-8" style={{ background: '#061224', border: '1px solid rgba(0,229,200,0.1)' }}>
+                <h2 className="text-lg font-bold mb-5 flex items-center gap-2" style={{ color: '#e8f4ff' }}>
+                  <span className="w-1 h-5 rounded-full inline-block" style={{ background: accent }} />
                   Eligibility
                 </h2>
-                <div className="flex items-start gap-3 p-4 rounded-xl text-sm" style={{ background: '#eff6ff', border: '1px solid #bfdbfe' }}>
-                  <CheckCircle2 size={17} className="shrink-0 mt-0.5 text-brand-steel" />
-                  <span className="text-brand-gray">{program.eligibility}</span>
+                <div className="flex items-start gap-3 p-4 rounded-xl text-sm"
+                  style={{ background: `${accent}08`, border: `1px solid ${accent}20` }}>
+                  <CheckCircle2 size={17} className="shrink-0 mt-0.5" style={{ color: accent }} />
+                  <span style={{ color: 'rgba(232,244,255,0.65)' }}>{program.eligibility}</span>
                 </div>
               </section>
             )}
+
             {/* Instructors */}
             {instructors.length > 0 && (
-              <section className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm">
-                <h2 className="text-lg font-bold mb-5 flex items-center gap-2" style={{ color: '#1B3A6B' }}>
-                  <span className="w-1 h-5 rounded-full inline-block" style={{ background: '#4682B4' }} />
+              <section className="rounded-2xl p-8" style={{ background: '#061224', border: '1px solid rgba(0,229,200,0.1)' }}>
+                <h2 className="text-lg font-bold mb-5 flex items-center gap-2" style={{ color: '#e8f4ff' }}>
+                  <span className="w-1 h-5 rounded-full inline-block" style={{ background: accent }} />
                   {instructors.length === 1 ? 'Your Instructor' : 'Instructors'}
                 </h2>
                 <div className="space-y-4">
                   {instructors.map(ins => (
-                    <Link
+                    <HoverLink
                       key={ins.slug}
                       href={`/instructors/${ins.slug}`}
-                      className="group flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-gray-50 hover:bg-white hover:border-brand-steel/30 hover:shadow-sm transition-all"
+                      accent={accent}
+                      borderBase="rgba(0,229,200,0.08)"
+                      borderHover={`${accent}30`}
+                      bgBase="#020b18"
+                      bgHover={`${accent}05`}
+                      className="group flex items-center gap-4 p-4 rounded-xl transition-all"
                     >
                       <div
-                        className="shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center text-white font-bold text-lg"
-                        style={{ background: 'linear-gradient(135deg, #1B3A6B, #4682B4)' }}
+                        className="shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center font-display font-bold text-lg"
+                        style={{ background: `${accent}15`, border: `1px solid ${accent}30`, color: accent }}
                       >
                         {ins.name.split(' ').map((n: string) => n[0]).join('').slice(0, 2)}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-semibold text-sm group-hover:text-brand-steel transition-colors" style={{ color: '#1B3A6B' }}>{ins.name}</p>
-                        <p className="text-gray-400 text-xs mt-0.5">{ins.title}</p>
-                        <p className="text-gray-400 text-xs mt-0.5">{ins.experience} experience</p>
+                        <p className="font-semibold text-sm" style={{ color: '#e8f4ff' }}>{ins.name}</p>
+                        <p className="text-xs mt-0.5" style={{ color: '#607896' }}>{ins.title}</p>
+                        <p className="text-xs mt-0.5" style={{ color: '#607896' }}>{ins.experience} experience</p>
                       </div>
-                      <ArrowLeft size={14} className="text-gray-300 group-hover:text-brand-steel rotate-180 transition-colors shrink-0" />
-                    </Link>
+                      <ArrowLeft size={14} style={{ color: accent }} className="rotate-180 shrink-0" />
+                    </HoverLink>
                   ))}
                 </div>
               </section>
@@ -199,47 +210,48 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
 
           {/* Right — sticky apply card */}
           <aside>
-            <div className="rounded-2xl shadow-sm sticky top-24 overflow-hidden border border-gray-200 bg-white">
-              <div className="h-1.5" style={{ background: 'linear-gradient(90deg, #1B3A6B, #4682B4)' }} />
+            <div className="rounded-2xl sticky top-24 overflow-hidden" style={{ background: '#061224', border: `1px solid ${accent}25`, boxShadow: `0 0 40px ${accent}08` }}>
+              <div className="h-1.5" style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
               <div className="p-6">
-                <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#4682B4' }}>
+                <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: accent }}>
                   Programme Details
                 </p>
 
                 <div className="space-y-3.5 mb-6">
-                  <div className="flex items-center gap-3 text-sm text-brand-gray">
-                    <Clock size={15} className="text-brand-steel shrink-0" />
-                    <span><strong style={{ color: '#1B3A6B' }}>Duration:</strong> {program.duration}</span>
+                  <div className="flex items-center gap-3 text-sm" style={{ color: 'rgba(232,244,255,0.6)' }}>
+                    <Clock size={15} style={{ color: accent }} className="shrink-0" />
+                    <span><strong style={{ color: '#e8f4ff' }}>Duration:</strong> {program.duration}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-sm text-brand-gray">
-                    <Users size={15} className="text-brand-steel shrink-0" />
-                    <span><strong style={{ color: '#1B3A6B' }}>Seats:</strong> {program.seats} per batch</span>
+                  <div className="flex items-center gap-3 text-sm" style={{ color: 'rgba(232,244,255,0.6)' }}>
+                    <Users size={15} style={{ color: accent }} className="shrink-0" />
+                    <span><strong style={{ color: '#e8f4ff' }}>Seats:</strong> {program.seats} per batch</span>
                   </div>
                   {program.location && (
-                    <div className="flex items-center gap-3 text-sm text-brand-gray">
-                      <MapPin size={15} className="text-brand-steel shrink-0" />
-                      <span><strong style={{ color: '#1B3A6B' }}>Location:</strong> {program.location}</span>
+                    <div className="flex items-center gap-3 text-sm" style={{ color: 'rgba(232,244,255,0.6)' }}>
+                      <MapPin size={15} style={{ color: accent }} className="shrink-0" />
+                      <span><strong style={{ color: '#e8f4ff' }}>Location:</strong> {program.location}</span>
                     </div>
                   )}
                   {program.startDate && (
-                    <div className="flex items-center gap-3 text-sm text-brand-gray">
-                      <CalendarDays size={15} className="text-brand-steel shrink-0" />
-                      <span><strong style={{ color: '#1B3A6B' }}>Next Batch:</strong> {formatDate(program.startDate)}</span>
+                    <div className="flex items-center gap-3 text-sm" style={{ color: 'rgba(232,244,255,0.6)' }}>
+                      <CalendarDays size={15} style={{ color: accent }} className="shrink-0" />
+                      <span><strong style={{ color: '#e8f4ff' }}>Next Batch:</strong> {formatDate(program.startDate)}</span>
                     </div>
                   )}
                 </div>
 
-                <div className="border-t border-gray-100 pt-5">
-                  <p className="text-xs text-gray-400 mb-4 text-center">100% free — no fee, no hidden costs</p>
+                <div className="pt-5" style={{ borderTop: '1px solid rgba(0,229,200,0.1)' }}>
+                  <p className="text-xs mb-4 text-center" style={{ color: '#607896' }}>100% free — no fee, no hidden costs</p>
                   <Link
                     href={cta.disabled ? '#' : '/contact'}
                     className={cn(
-                      'block w-full text-center py-3 rounded-xl text-sm font-semibold transition-all',
-                      cta.disabled
-                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed pointer-events-none'
-                        : 'text-white hover:opacity-90'
+                      'block w-full text-center py-3 rounded-xl text-sm font-bold transition-all',
+                      cta.disabled ? 'cursor-not-allowed pointer-events-none' : ''
                     )}
-                    style={!cta.disabled ? { background: '#4682B4' } : {}}
+                    style={!cta.disabled
+                      ? { background: `linear-gradient(135deg, ${accent}, #38bdf8)`, color: '#020b18', boxShadow: `0 0 24px ${accent}30` }
+                      : { background: 'rgba(96,120,150,0.15)', color: '#607896', border: '1px solid rgba(96,120,150,0.2)' }
+                    }
                   >
                     {cta.label}
                   </Link>

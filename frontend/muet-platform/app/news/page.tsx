@@ -24,8 +24,10 @@ export default function NewsPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'News' }]}
       />
 
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 relative" style={{ background: '#020b18' }}>
+        <div className="pointer-events-none absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #00e5c8 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Filter pills */}
           <div className="flex flex-wrap gap-2 mb-10 justify-center">
@@ -33,12 +35,11 @@ export default function NewsPage() {
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
-                className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all ${
-                  active === cat
-                    ? 'text-white border-transparent shadow-md'
-                    : 'bg-white text-gray-600 border-gray-200 hover:border-brand-steel hover:text-brand-steel'
-                }`}
-                style={active === cat ? { background: '#4682B4' } : {}}
+                className="px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-200"
+                style={active === cat
+                  ? { background: 'rgba(0,229,200,0.1)', color: '#00e5c8', borderColor: 'rgba(0,229,200,0.4)', boxShadow: '0 0 16px rgba(0,229,200,0.12)' }
+                  : { background: 'transparent', color: '#607896', borderColor: 'rgba(0,229,200,0.12)' }
+                }
               >
                 {cat}
               </button>

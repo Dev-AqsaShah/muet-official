@@ -1,91 +1,79 @@
+'use client'
 import Link from 'next/link'
-import Image from 'next/image'
 import { MapPin, ArrowRight, CalendarDays } from 'lucide-react'
 import type { Project } from '@/types'
 
 type Props = Pick<Project, 'slug' | 'title' | 'shortDesc' | 'coverImage' | 'status' | 'fundingBody' | 'district' | 'startDate' | 'featured'>
 
-const statusConfig: Record<string, { bg: string; text: string; label: string }> = {
-  active:    { bg: '#dcfce7', text: '#166534', label: 'Active' },
-  ongoing:   { bg: '#dcfce7', text: '#166534', label: 'Ongoing' },
-  completed: { bg: '#f1f5f9', text: '#475569', label: 'Completed' },
-  upcoming:  { bg: '#fef3c7', text: '#92400e', label: 'Upcoming' },
+const accentByFunder: Record<string, string> = {
+  'BBSHRRDB':               '#fbbf24',
+  'Sindh Government':       '#00e5c8',
+  'Government of Pakistan': '#38bdf8',
+  'MUET':                   '#818cf8',
 }
 
-const fundingConfig: Record<string, { bg: string; text: string }> = {
-  'BBSHRRDB':             { bg: '#dbeafe', text: '#1e40af' },
-  'Sindh Government':     { bg: '#d1fae5', text: '#065f46' },
-  'Government of Pakistan': { bg: '#e0e7ff', text: '#3730a3' },
-  'MUET':                 { bg: '#f0f9ff', text: '#0369a1' },
-}
-
-const coverFallback: Record<string, string> = {
-  'bbshrrdb-skills-development': '/images/projects/bbshrrdb-banner.png',
-  'pitp':                         '/images/projects/pitp-trainees.webp',
-  'nftp-muet':                    '/images/hero/muet-campus.jpg',
-}
-
-export default function ProjectCard({ slug, title, shortDesc, coverImage, status, fundingBody, district, startDate }: Props) {
-  const sc = statusConfig[status]   ?? statusConfig.active
-  const fc = fundingConfig[fundingBody] ?? { bg: '#f1f5f9', text: '#475569' }
-  const imgSrc = coverImage || coverFallback[slug] || '/images/hero/muet-campus.jpg'
+export default function ProjectCard({ slug, title, shortDesc, status, fundingBody, district, startDate }: Props) {
+  const accent = accentByFunder[fundingBody] ?? '#00e5c8'
+  const isActive = status === 'active'
 
   return (
     <Link
       href={`/projects/${slug}`}
-      className="group flex flex-col bg-white rounded-2xl border border-gray-200 overflow-hidden hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
-      style={{ boxShadow: '0 2px 12px rgba(70,130,180,0.08)' }}
+      className="group flex flex-col rounded-2xl overflow-hidden transition-all duration-300"
+      style={{ background: '#061224', border: `1px solid ${accent}20` }}
+      onMouseEnter={e => { const el = e.currentTarget; el.style.borderColor = `${accent}40`; el.style.transform = 'translateY(-4px)'; el.style.boxShadow = `0 20px 60px rgba(0,0,0,0.45), 0 0 40px ${accent}10` }}
+      onMouseLeave={e => { const el = e.currentTarget; el.style.borderColor = `${accent}20`; el.style.transform = ''; el.style.boxShadow = '' }}
     >
-      {/* Cover image — 16:9 */}
-      <div className="relative aspect-video overflow-hidden bg-brand-offwhite shrink-0">
-        <Image
-          src={imgSrc}
-          alt={title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+      {/* Accent top bar */}
+      <div className="h-1 shrink-0" style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
+
+      {/* Visual panel */}
+      <div className="relative h-28 flex items-center justify-center p-6" style={{ background: `linear-gradient(135deg, ${accent}08, transparent)` }}>
+        <div className="absolute inset-0 opacity-[0.05]"
+          style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '20px 20px' }} />
+        <div
+          className="relative w-16 h-16 rounded-full flex items-center justify-center font-display font-extrabold text-lg"
+          style={{ border: `2px solid ${accent}40`, background: `${accent}10`, color: accent, textShadow: `0 0 16px ${accent}` }}
+        >
+          {title.split(' ').map(w => w[0]).join('').slice(0, 3)}
+        </div>
       </div>
 
-      {/* Content */}
       <div className="flex flex-col flex-1 p-5">
         {/* Badges */}
         <div className="flex items-center gap-2 mb-3 flex-wrap">
-          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full" style={{ background: sc.bg, color: sc.text }}>
-            {sc.label}
+          <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded"
+            style={{ background: `${accent}12`, border: `1px solid ${accent}30`, color: accent }}>
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: accent, animation: isActive ? 'blink 1.8s infinite' : 'none' }} />
+            {isActive ? 'Active' : 'Completed'}
           </span>
-          <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full" style={{ background: fc.bg, color: fc.text }}>
+          <span className="text-[10px] font-bold px-2.5 py-0.5 rounded uppercase tracking-wider" style={{ color: accent }}>
             {fundingBody}
           </span>
         </div>
 
-        {/* Title */}
-        <h3 className="font-semibold text-base leading-snug mb-2 line-clamp-2 group-hover:text-brand-steel transition-colors" style={{ color: '#1B3A6B' }}>
+        <h3 className="font-display font-bold text-base leading-snug mb-2 line-clamp-2" style={{ color: '#e8f4ff' }}>
           {title}
         </h3>
-
-        {/* Desc */}
-        <p className="text-brand-gray text-sm leading-relaxed line-clamp-2 flex-1 mb-4">
+        <p className="text-sm leading-relaxed line-clamp-2 flex-1 mb-4" style={{ color: 'rgba(232,244,255,0.5)' }}>
           {shortDesc}
         </p>
 
-        {/* Footer */}
-        <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-          <div className="flex items-center gap-3 text-xs text-gray-400">
+        <div className="flex items-center justify-between pt-3" style={{ borderTop: '1px solid rgba(0,229,200,0.08)' }}>
+          <div className="flex items-center gap-3 text-xs" style={{ color: '#607896' }}>
             <span className="flex items-center gap-1.5">
-              <MapPin size={11} className="text-brand-steel" />
+              <MapPin size={11} style={{ color: accent }} />
               {district.length} district{district.length !== 1 ? 's' : ''}
             </span>
             {startDate && (
               <span className="flex items-center gap-1.5">
-                <CalendarDays size={11} className="text-brand-steel" />
+                <CalendarDays size={11} style={{ color: accent }} />
                 {new Date(startDate).getFullYear()}
               </span>
             )}
           </div>
-          <span className="flex items-center gap-1 text-xs font-semibold group-hover:gap-2 transition-all" style={{ color: '#4682B4' }}>
-            View Project <ArrowRight size={12} />
+          <span className="flex items-center gap-1 text-xs font-semibold group-hover:gap-2 transition-all" style={{ color: accent }}>
+            View <ArrowRight size={11} />
           </span>
         </div>
       </div>

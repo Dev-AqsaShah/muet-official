@@ -14,11 +14,12 @@ export default function EmptyState({
 }: EmptyStateProps) {
   return (
     <div className={cn('flex flex-col items-center justify-center py-20 text-center', className)}>
-      <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
-        <SearchX size={28} className="text-gray-400" />
+      <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
+        style={{ background: 'rgba(0,229,200,0.08)', border: '1px solid rgba(0,229,200,0.2)' }}>
+        <SearchX size={28} style={{ color: '#607896' }} />
       </div>
-      <h3 className="text-lg font-semibold text-gray-700 mb-1">{title}</h3>
-      <p className="text-gray-400 text-sm max-w-xs">{description}</p>
+      <h3 className="text-lg font-semibold mb-1" style={{ color: '#e8f4ff' }}>{title}</h3>
+      <p className="text-sm max-w-xs" style={{ color: '#607896' }}>{description}</p>
     </div>
   )
 }

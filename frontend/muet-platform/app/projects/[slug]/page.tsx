@@ -9,8 +9,6 @@ import { getProjectBySlug, projects } from '@/data/projects'
 import { getProgramsByProject } from '@/data/programs'
 import { formatDate } from '@/lib/utils'
 import PageHeader from '@/components/shared/PageHeader'
-import StatusBadge from '@/components/shared/StatusBadge'
-import FundingBadge from '@/components/shared/FundingBadge'
 
 export function generateStaticParams() {
   return projects.map(p => ({ slug: p.slug }))
@@ -26,12 +24,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
+const accentByFunder: Record<string, string> = {
+  'BBSHRRDB':               '#fbbf24',
+  'Sindh Government':       '#00e5c8',
+  'Government of Pakistan': '#38bdf8',
+  'MUET':                   '#818cf8',
+}
+
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const project = getProjectBySlug(slug)
   if (!project) notFound()
 
   const relatedPrograms = getProgramsByProject(project.slug)
+  const accent = accentByFunder[project.fundingBody] ?? '#00e5c8'
+  const isActive = project.status === 'active'
 
   return (
     <>
@@ -46,140 +53,162 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       />
 
       {/* Hero image */}
-      <div className="relative h-72 md:h-96 w-full overflow-hidden bg-brand-navy">
+      <div className="relative h-72 md:h-96 w-full overflow-hidden" style={{ background: '#061224' }}>
         <Image
           src={project.coverImage}
           alt={project.title}
           fill
-          className="object-cover opacity-80"
+          className="object-cover opacity-60"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #020b18 0%, transparent 60%)' }} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        {/* Badges row */}
-        <div className="flex flex-wrap items-center gap-3 mb-8">
-          <StatusBadge status={project.status} />
-          <FundingBadge fundingBody={project.fundingBody} />
-          <span className="flex items-center gap-1.5 text-sm text-gray-500">
-            <Calendar size={14} />
-            {formatDate(project.startDate)}
-            {project.endDate && ` — ${formatDate(project.endDate)}`}
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10">
-          {/* ── Main content ── */}
-          <div>
-            {/* Description */}
-            <section className="mb-10">
-              <h2 className="font-display text-xl font-bold mb-4" style={{ color: '#1B3A6B' }}>About the Project</h2>
-              <div className="text-brand-gray leading-relaxed whitespace-pre-line text-sm">
-                {project.description}
-              </div>
-            </section>
-
-            {/* Objectives */}
-            <section className="mb-10">
-              <h2 className="font-display text-xl font-bold mb-4" style={{ color: '#1B3A6B' }}>Key Objectives</h2>
-              <ul className="space-y-3">
-                {project.objectives.map((obj, i) => (
-                  <li key={i} className="flex items-start gap-3 text-brand-gray text-sm">
-                    <CheckCircle2 size={18} className="text-brand-steel shrink-0 mt-0.5" />
-                    {obj}
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            {/* Districts */}
-            <section className="mb-10">
-              <h2 className="font-display text-xl font-bold mb-4" style={{ color: '#1B3A6B' }}>Districts Covered</h2>
-              <div className="flex flex-wrap gap-2">
-                {project.district.map(d => (
-                  <span key={d} className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-full" style={{ background: '#dbeafe', color: '#1B3A6B' }}>
-                    <MapPin size={12} />
-                    {d}
-                  </span>
-                ))}
-              </div>
-            </section>
-
+      <div className="relative" style={{ background: '#020b18' }}>
+        <div className="pointer-events-none absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #00e5c8 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          {/* Badges row */}
+          <div className="flex flex-wrap items-center gap-3 mb-8">
+            <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded"
+              style={{ background: `${accent}12`, border: `1px solid ${accent}30`, color: accent }}>
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: accent, animation: isActive ? 'blink 1.8s infinite' : 'none' }} />
+              {isActive ? 'Active' : 'Completed'}
+            </span>
+            <span className="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider" style={{ color: accent }}>
+              {project.fundingBody}
+            </span>
+            <span className="flex items-center gap-1.5 text-sm" style={{ color: '#607896' }}>
+              <Calendar size={14} />
+              {formatDate(project.startDate)}
+              {project.endDate && ` — ${formatDate(project.endDate)}`}
+            </span>
           </div>
 
-          {/* ── Sidebar ── */}
-          <aside className="space-y-6">
-            {/* Impact Metrics */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
-              <h3 className="font-bold mb-4 flex items-center gap-2 text-sm" style={{ color: '#1B3A6B' }}>
-                <TrendingUp size={16} className="text-brand-steel" />
-                Impact Metrics
-              </h3>
-              <div className="grid grid-cols-2 gap-3">
-                {project.metrics.map(m => (
-                  <div key={m.label} className="rounded-xl p-3 text-center" style={{ background: '#F8FAFC' }}>
-                    <p className="text-lg font-bold font-display" style={{ color: '#D97706' }}>{m.value}</p>
-                    <p className="text-xs text-gray-500 mt-0.5">{m.label}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10">
+            {/* Main content */}
+            <div>
+              {/* Description */}
+              <section className="mb-8 rounded-2xl p-8" style={{ background: '#061224', border: '1px solid rgba(0,229,200,0.1)' }}>
+                <h2 className="font-display text-xl font-bold mb-4 flex items-center gap-2" style={{ color: '#e8f4ff' }}>
+                  <span className="w-1 h-5 rounded-full inline-block" style={{ background: accent }} />
+                  About the Project
+                </h2>
+                <div className="leading-relaxed whitespace-pre-line text-sm" style={{ color: 'rgba(232,244,255,0.6)' }}>
+                  {project.description}
+                </div>
+              </section>
+
+              {/* Objectives */}
+              <section className="mb-8 rounded-2xl p-8" style={{ background: '#061224', border: '1px solid rgba(0,229,200,0.1)' }}>
+                <h2 className="font-display text-xl font-bold mb-4 flex items-center gap-2" style={{ color: '#e8f4ff' }}>
+                  <span className="w-1 h-5 rounded-full inline-block" style={{ background: accent }} />
+                  Key Objectives
+                </h2>
+                <ul className="space-y-3">
+                  {project.objectives.map((obj, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm" style={{ color: 'rgba(232,244,255,0.6)' }}>
+                      <CheckCircle2 size={18} className="shrink-0 mt-0.5" style={{ color: accent }} />
+                      {obj}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              {/* Districts */}
+              <section className="rounded-2xl p-8" style={{ background: '#061224', border: '1px solid rgba(0,229,200,0.1)' }}>
+                <h2 className="font-display text-xl font-bold mb-4 flex items-center gap-2" style={{ color: '#e8f4ff' }}>
+                  <span className="w-1 h-5 rounded-full inline-block" style={{ background: accent }} />
+                  Districts Covered
+                </h2>
+                <div className="flex flex-wrap gap-2">
+                  {project.district.map(d => (
+                    <span key={d} className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-full"
+                      style={{ background: `${accent}10`, color: accent, border: `1px solid ${accent}25` }}>
+                      <MapPin size={12} />
+                      {d}
+                    </span>
+                  ))}
+                </div>
+              </section>
+            </div>
+
+            {/* Sidebar */}
+            <aside className="space-y-6">
+              {/* Impact Metrics */}
+              <div className="rounded-2xl p-5" style={{ background: '#061224', border: '1px solid rgba(0,229,200,0.1)' }}>
+                <h3 className="font-bold mb-4 flex items-center gap-2 text-sm" style={{ color: '#e8f4ff' }}>
+                  <TrendingUp size={16} style={{ color: accent }} />
+                  Impact Metrics
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {project.metrics.map(m => (
+                    <div key={m.label} className="rounded-xl p-3 text-center" style={{ background: '#020b18', border: '1px solid rgba(0,229,200,0.08)' }}>
+                      <p className="text-lg font-bold font-display" style={{ color: accent, textShadow: `0 0 16px ${accent}50` }}>{m.value}</p>
+                      <p className="text-xs mt-0.5" style={{ color: '#607896' }}>{m.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Funding Info */}
+              <div className="rounded-2xl p-5" style={{ background: '#061224', border: '1px solid rgba(0,229,200,0.1)' }}>
+                <h3 className="font-bold mb-3 flex items-center gap-2 text-sm" style={{ color: '#e8f4ff' }}>
+                  <FileText size={16} style={{ color: accent }} />
+                  Funding Details
+                </h3>
+                <div className="space-y-2 text-sm" style={{ color: 'rgba(232,244,255,0.6)' }}>
+                  <div className="flex justify-between">
+                    <span style={{ color: '#607896' }}>Funded by</span>
+                    <span className="font-medium text-right" style={{ color: '#e8f4ff' }}>{project.fundingBody}</span>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Funding Info */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
-              <h3 className="font-bold mb-3 flex items-center gap-2 text-sm" style={{ color: '#1B3A6B' }}>
-                <FileText size={16} className="text-brand-steel" />
-                Funding Details
-              </h3>
-              <div className="space-y-2 text-sm text-brand-gray">
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Funded by</span>
-                  <span className="font-medium text-right">{project.fundingBody}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Source</span>
-                  <span className="font-medium text-right max-w-[180px]">{project.fundingSource}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Implemented by</span>
-                  <span className="font-medium">MUET</span>
+                  <div className="flex justify-between">
+                    <span style={{ color: '#607896' }}>Source</span>
+                    <span className="font-medium text-right max-w-[180px]" style={{ color: '#e8f4ff' }}>{project.fundingSource}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span style={{ color: '#607896' }}>Implemented by</span>
+                    <span className="font-medium" style={{ color: '#e8f4ff' }}>MUET</span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Programs count */}
-            {relatedPrograms.length > 0 && (
-              <div className="bg-brand-navy rounded-xl p-5 text-white">
-                <div className="flex items-center gap-2 mb-2">
-                  <Users size={16} className="text-brand-baby" />
-                  <span className="font-semibold text-sm">Training Programs</span>
+              {/* Programs count */}
+              {relatedPrograms.length > 0 && (
+                <div className="rounded-2xl p-5 relative overflow-hidden"
+                  style={{ background: `linear-gradient(135deg, ${accent}12, transparent)`, border: `1px solid ${accent}25` }}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Users size={16} style={{ color: accent }} />
+                    <span className="font-semibold text-sm" style={{ color: '#e8f4ff' }}>Training Programs</span>
+                  </div>
+                  <p className="text-3xl font-bold font-display mb-1" style={{ color: accent, textShadow: `0 0 20px ${accent}50` }}>{relatedPrograms.length}</p>
+                  <p className="text-xs mb-4" style={{ color: '#607896' }}>Programs under this project</p>
+                  <Link
+                    href="/programs"
+                    className="block text-center py-2 rounded-lg text-sm font-medium transition-all"
+                    style={{ background: `${accent}15`, border: `1px solid ${accent}30`, color: accent }}
+                  >
+                    View All Programs
+                  </Link>
                 </div>
-                <p className="text-3xl font-bold mb-1">{relatedPrograms.length}</p>
-                <p className="text-white/60 text-xs mb-4">Programs under this project</p>
+              )}
+
+              {/* Share */}
+              <div className="rounded-2xl p-5" style={{ background: '#061224', border: '1px solid rgba(0,229,200,0.1)' }}>
+                <h3 className="font-semibold mb-3 flex items-center gap-2" style={{ color: '#e8f4ff' }}>
+                  <Share2 size={16} style={{ color: accent }} />
+                  Learn More
+                </h3>
                 <Link
-                  href="/programs"
-                  className="block text-center py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium rounded-lg transition-colors"
+                  href="/contact"
+                  className="block w-full text-center py-2.5 rounded-lg text-sm font-bold transition-all"
+                  style={{ background: `linear-gradient(135deg, ${accent}, #38bdf8)`, color: '#020b18', boxShadow: `0 0 20px ${accent}30` }}
                 >
-                  View All Programs
+                  Contact to Learn More
                 </Link>
               </div>
-            )}
-
-            {/* Share */}
-            <div className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                <Share2 size={16} className="text-brand-steel" />
-                Share
-              </h3>
-              <Link
-                href="/contact"
-                className="block w-full text-center py-2.5 bg-brand-steel hover:bg-brand-steel/90 text-white text-sm font-medium rounded-lg transition-colors"
-              >
-                Contact to Learn More
-              </Link>
-            </div>
-          </aside>
+            </aside>
+          </div>
         </div>
       </div>
     </>

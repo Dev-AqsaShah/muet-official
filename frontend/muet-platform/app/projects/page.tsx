@@ -38,19 +38,23 @@ export default function ProjectsPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Projects' }]}
       />
 
-      <section className="py-16" style={{ background: '#F8FAFC' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 relative" style={{ background: '#020b18' }}>
+        <div className="pointer-events-none absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #00e5c8 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Filters */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-10 bg-white rounded-2xl p-4 border border-gray-100 shadow-sm">
+          <div className="flex flex-col sm:flex-row gap-4 mb-10 rounded-2xl p-4"
+            style={{ background: '#061224', border: '1px solid rgba(0,229,200,0.1)' }}>
             <div className="relative flex-1 max-w-sm">
-              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2" style={{ color: '#607896' }} />
               <input
                 type="text"
                 placeholder="Search projects…"
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-steel/25 focus:border-brand-steel bg-gray-50 transition-all"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl text-sm placeholder-[#607896] focus:outline-none transition-all"
+                style={{ background: '#020b18', border: '1px solid rgba(0,229,200,0.15)', color: '#e8f4ff' }}
               />
             </div>
             <div className="flex flex-wrap gap-2 items-center">
@@ -58,18 +62,17 @@ export default function ProjectsPage() {
                 <button
                   key={f.value}
                   onClick={() => setActive(f.value)}
-                  className={`px-4 py-2 rounded-xl text-sm font-semibold border transition-all ${
-                    active === f.value
-                      ? 'text-white border-transparent shadow-md'
-                      : 'bg-white text-gray-600 border-gray-200 hover:border-brand-steel hover:text-brand-steel'
-                  }`}
-                  style={active === f.value ? { background: '#4682B4' } : {}}
+                  className="px-4 py-2 rounded-xl text-sm font-semibold border transition-all duration-200"
+                  style={active === f.value
+                    ? { background: 'rgba(0,229,200,0.1)', color: '#00e5c8', borderColor: 'rgba(0,229,200,0.4)', boxShadow: '0 0 12px rgba(0,229,200,0.12)' }
+                    : { background: 'transparent', color: '#607896', borderColor: 'rgba(0,229,200,0.12)' }
+                  }
                 >
                   {f.label}
                 </button>
               ))}
             </div>
-            <div className="flex items-center gap-1.5 text-gray-400 text-sm sm:ml-auto shrink-0">
+            <div className="flex items-center gap-1.5 text-sm sm:ml-auto shrink-0" style={{ color: '#607896' }}>
               <FolderKanban size={14} />
               {shown.length} project{shown.length !== 1 ? 's' : ''}
             </div>

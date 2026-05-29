@@ -16,43 +16,65 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={cn(
-        'fixed top-0 left-0 right-0 z-30 transition-all duration-300',
-        scrolled ? 'shadow-xl shadow-brand-navy/20' : 'shadow-md shadow-brand-navy/10'
-      )} style={{ background: '#4682B4' }}>
+      <header
+        className={cn(
+          'fixed top-0 left-0 right-0 z-30 transition-all duration-300',
+          scrolled ? 'shadow-lg' : ''
+        )}
+        style={{
+          background: 'rgba(2,11,24,0.88)',
+          backdropFilter: 'blur(20px)',
+          borderBottom: '1px solid rgba(0,229,200,0.12)',
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 shrink-0 group">
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-md shrink-0 ring-2 ring-white/30 group-hover:ring-white/60 transition-all">
+              <div
+                className="w-11 h-11 rounded-xl flex items-center justify-center overflow-hidden shrink-0 transition-all"
+                style={{ filter: 'drop-shadow(0 0 10px rgba(0,229,200,0.35))' }}
+              >
                 <Image
-                  src="/images/logos/muet-official.svg"
+                  src="/images/logos/muet-logo-official.png"
                   alt="MUET"
-                  width={38}
-                  height={38}
+                  width={44}
+                  height={44}
                   className="object-contain"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
                 />
               </div>
-              <div className="hidden sm:block">
-                <p className="text-white font-bold text-sm leading-tight">Mehran University of Engineering &amp; Technology</p>
-                <p className="text-brand-baby text-[11px] leading-tight font-medium tracking-wide">Jamshoro, Sindh, Pakistan</p>
+              <div className="hidden sm:flex flex-col gap-0">
+                <span
+                  className="font-display text-base font-800 leading-tight"
+                  style={{ color: '#00e5c8', fontWeight: 800, letterSpacing: '0.04em', textShadow: '0 0 16px rgba(0,229,200,0.4)' }}
+                >
+                  MUET
+                </span>
+                <span className="text-[10px] leading-tight" style={{ color: 'rgba(232,244,255,0.45)', letterSpacing: '0.04em' }}>
+                  Mehran University of Engineering &amp; Technology
+                </span>
               </div>
             </Link>
 
             {/* Desktop nav */}
-            <nav className="hidden md:flex items-center gap-0">
+            <nav className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'relative px-3.5 py-2 text-sm font-medium transition-colors duration-200 rounded-lg',
+                    'px-3.5 py-2 text-[13.5px] font-medium rounded-lg transition-colors duration-200',
                     pathname === link.href
-                      ? 'text-white bg-white/15 font-semibold'
-                      : 'text-white/80 hover:text-white hover:bg-white/10'
+                      ? 'font-semibold'
+                      : ''
                   )}
+                  style={{
+                    color: pathname === link.href ? '#00e5c8' : 'rgba(232,244,255,0.55)',
+                  }}
+                  onMouseEnter={e => { if (pathname !== link.href) (e.currentTarget as HTMLAnchorElement).style.color = '#00e5c8' }}
+                  onMouseLeave={e => { if (pathname !== link.href) (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(232,244,255,0.55)' }}
                 >
                   {link.label}
                 </Link>
@@ -63,18 +85,29 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               <Link
                 href="/auth/signin"
-                className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-white/85 border border-white/30 hover:border-white/60 hover:text-white transition-all"
+                className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                style={{ color: 'rgba(232,244,255,0.6)', border: '1px solid rgba(0,229,200,0.2)' }}
+                onMouseEnter={e => { const el = e.currentTarget; el.style.color = '#00e5c8'; el.style.borderColor = 'rgba(0,229,200,0.5)' }}
+                onMouseLeave={e => { const el = e.currentTarget; el.style.color = 'rgba(232,244,255,0.6)'; el.style.borderColor = 'rgba(0,229,200,0.2)' }}
               >
                 Sign In
               </Link>
               <Link
-                href="/auth/signup"
-                className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold bg-white text-brand-steel hover:bg-brand-baby/10 hover:text-brand-navy transition-all shadow-sm"
+                href="/programs"
+                className="hidden sm:inline-flex items-center px-5 py-2 rounded-lg text-sm font-bold transition-all"
+                style={{
+                  background: 'linear-gradient(135deg, #00e5c8, #38bdf8)',
+                  color: '#020b18',
+                  boxShadow: '0 0 24px rgba(0,229,200,0.3)',
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 0 40px rgba(0,229,200,0.5)' }}
+                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 0 24px rgba(0,229,200,0.3)' }}
               >
-                Register
+                Explore Programmes
               </Link>
               <button
-                className="md:hidden text-white/85 hover:text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+                className="md:hidden p-2 rounded-lg transition-colors"
+                style={{ color: 'rgba(232,244,255,0.7)' }}
                 onClick={() => setMenuOpen(true)}
                 aria-label="Open menu"
               >

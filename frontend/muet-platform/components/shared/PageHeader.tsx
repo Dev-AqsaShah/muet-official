@@ -1,45 +1,59 @@
 import Link from 'next/link'
-import { ChevronRight, Home } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { ChevronRight } from 'lucide-react'
 
-interface Breadcrumb { label: string; href?: string }
-interface PageHeaderProps { title: string; subtitle?: string; breadcrumbs: Breadcrumb[]; className?: string }
+interface Crumb { label: string; href?: string }
 
-export default function PageHeader({ title, subtitle, breadcrumbs, className }: PageHeaderProps) {
+interface PageHeaderProps {
+  title: string
+  subtitle?: string
+  breadcrumbs?: Crumb[]
+}
+
+export default function PageHeader({ title, subtitle, breadcrumbs }: PageHeaderProps) {
   return (
-    <section className={cn('relative pt-28 pb-16 px-4 overflow-hidden', className)} style={{ background: '#1B3A6B' }}>
-      {/* Dot grid */}
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
-        style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #89CFF0 1.5px, transparent 0)', backgroundSize: '32px 32px' }} />
-      {/* Glow */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-[100px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(70,130,180,0.35) 0%, transparent 70%)' }} />
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-12 pointer-events-none"
-        style={{ background: 'linear-gradient(to bottom, transparent, rgba(27,58,107,0.4))' }} />
+    <div className="relative pt-28 pb-16 px-4 overflow-hidden" style={{ background: '#020b18', borderBottom: '1px solid rgba(0,229,200,0.12)' }}>
+      <div className="pointer-events-none absolute -top-20 -right-20 w-80 h-80 rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(0,229,200,0.1) 0%, transparent 70%)', filter: 'blur(60px)' }} />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #00e5c8 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px"
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(0,229,200,0.3), transparent)' }} />
 
       <div className="relative max-w-7xl mx-auto">
-        {/* Breadcrumbs */}
-        <nav className="flex items-center gap-1 text-xs text-white/35 mb-6 flex-wrap">
-          <Home size={11} className="shrink-0" />
-          {breadcrumbs.map((crumb, i) => (
-            <span key={i} className="flex items-center gap-1">
-              {i > 0 && <ChevronRight size={11} className="shrink-0" />}
-              {crumb.href
-                ? <Link href={crumb.href} className="hover:text-brand-baby transition-colors font-medium">{crumb.label}</Link>
-                : <span className="text-white/75 font-semibold">{crumb.label}</span>
-              }
-            </span>
-          ))}
-        </nav>
+        {breadcrumbs && breadcrumbs.length > 0 && (
+          <div className="flex items-center gap-1 text-xs mb-5" style={{ color: '#607896' }}>
+            {breadcrumbs.map((crumb, i) => (
+              <span key={crumb.label} className="flex items-center gap-1">
+                {i > 0 && <ChevronRight size={12} />}
+                {crumb.href ? (
+                  <Link href={crumb.href} className="transition-colors" style={{ color: '#607896' }}>
+                    {crumb.label}
+                  </Link>
+                ) : (
+                  <span style={{ color: '#00e5c8' }}>{crumb.label}</span>
+                )}
+              </span>
+            ))}
+          </div>
+        )}
 
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+        <span className="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full"
+          style={{ background: 'rgba(0,229,200,0.1)', color: '#00e5c8', border: '1px solid rgba(0,229,200,0.2)', letterSpacing: '0.12em' }}>
+          MUET Training
+        </span>
+
+        <h1
+          className="font-display font-extrabold leading-tight mb-4"
+          style={{ fontSize: 'clamp(32px, 5vw, 56px)', letterSpacing: '-0.03em', color: '#e8f4ff' }}
+        >
           {title}
         </h1>
         {subtitle && (
-          <p className="text-white/55 text-base md:text-lg max-w-2xl leading-relaxed mt-3">{subtitle}</p>
+          <p className="max-w-2xl leading-relaxed" style={{ color: 'rgba(232,244,255,0.5)', fontSize: '16px' }}>
+            {subtitle}
+          </p>
         )}
       </div>
-    </section>
+    </div>
   )
 }

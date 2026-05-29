@@ -1,44 +1,45 @@
 'use client'
 import { motion } from 'framer-motion'
-import { FolderOpen, Users, MapPin, BookOpen, UserCheck, type LucideIcon } from 'lucide-react'
-import { siteStats } from '@/data/site'
 
-const iconMap: Record<string, LucideIcon> = {
-  'folder-open': FolderOpen,
-  'users':       Users,
-  'map-pin':     MapPin,
-  'user-check':  UserCheck,
-  'book-open':   BookOpen,
-}
+const stats = [
+  { value: '5,488+', label: 'Certified Graduates',   sub: 'Phase I + Phase II' },
+  { value: '82.1%',  label: 'Completion Rate',        sub: 'Verified Govt KPI' },
+  { value: '20',     label: 'Training Centers',        sub: 'Across 12 districts' },
+  { value: '4',      label: 'Government Mandates',     sub: 'Active partnerships' },
+  { value: 'PKR 19M+', label: 'Graduate Earnings',    sub: 'Phase I alone' },
+  { value: '52+',    label: 'Qualified Instructors',   sub: 'Deployed statewide' },
+]
 
 export default function StatsSection() {
   return (
-    <section className="relative py-16 overflow-hidden" style={{ background: '#4682B4' }}>
-      {/* Subtle dot pattern */}
-      <div className="absolute inset-0 opacity-[0.06]"
-        style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+    <section className="py-20 relative overflow-hidden" style={{ background: '#061224', borderTop: '1px solid rgba(0,229,200,0.1)', borderBottom: '1px solid rgba(0,229,200,0.1)' }}>
+      <div className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #00e5c8 1px, transparent 0)', backgroundSize: '40px 40px' }} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {siteStats.map((stat, i) => {
-            const Icon = iconMap[stat.icon] ?? FolderOpen
-            return (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group flex flex-col items-center text-center p-6 rounded-2xl bg-white/10 hover:bg-white/18 border border-white/15 hover:border-white/30 transition-all duration-300 cursor-default"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center mb-4 group-hover:bg-white/25 transition-colors">
-                  <Icon size={22} className="text-white" />
-                </div>
-                <p className="font-display text-4xl font-bold text-brand-amber mb-1.5 leading-none">{stat.value}</p>
-                <p className="text-white/75 text-sm font-medium leading-tight">{stat.label}</p>
-              </motion.div>
-            )
-          })}
+        <p className="text-center text-xs font-bold uppercase tracking-[0.22em] mb-12" style={{ color: 'rgba(0,229,200,0.5)' }}>By The Numbers</p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-px" style={{ border: '1px solid rgba(0,229,200,0.1)', borderRadius: '20px', overflow: 'hidden', background: 'rgba(0,229,200,0.06)' }}>
+          {stats.map(({ value, label, sub }, i) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
+              className="text-center py-10 px-6 relative group transition-colors duration-300"
+              style={{ background: '#061224' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.background = '#0c1e35' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.background = '#061224' }}
+            >
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ background: 'linear-gradient(90deg, transparent, #00e5c8, transparent)' }} />
+              <p className="font-display font-extrabold leading-none mb-2" style={{ fontSize: '42px', color: '#00e5c8', textShadow: '0 0 24px rgba(0,229,200,0.4)' }}>
+                {value}
+              </p>
+              <p className="font-medium text-sm mb-1" style={{ color: '#e8f4ff' }}>{label}</p>
+              <p className="text-xs" style={{ color: '#607896' }}>{sub}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
