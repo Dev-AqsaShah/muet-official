@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Eye, EyeOff, LogIn, AlertCircle } from 'lucide-react'
 
-const ERROR_MESSAGES: Record<string, string> = {
+const ERROR_MESSAGES: { [k: string]: string } = {
   PENDING:   'Your account is pending admin approval. You will be notified by email.',
   REJECTED:  'Your registration was rejected. Contact MUET for more information.',
   SUSPENDED: 'Your account has been suspended. Contact the admin.',

@@ -9,7 +9,7 @@ interface Props {
   byDistrict:  { district: string;  count: number }[]
 }
 
-const PROG_COLORS: Record<string, string> = { PITP: '#00E5C8', BBSHRRDB: '#FBBF24', NFTP: '#38BDF8' }
+const PROG_COLORS: { [k: string]: string } = { PITP: '#00E5C8', BBSHRRDB: '#FBBF24', NFTP: '#38BDF8' }
 
 export default function AdminDashboardClient({ stats, byProgramme, byDistrict }: Props) {
   const maxDistrict = Math.max(...byDistrict.map(d => d.count), 1)
