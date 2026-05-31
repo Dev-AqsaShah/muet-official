@@ -7,8 +7,9 @@ import {
   LayoutDashboard, BookOpen, CalendarDays, ClipboardList,
   Zap, BarChart3, Clock, Megaphone, Award, User, LogOut,
   Users, CheckSquare, Upload, PlusSquare, GraduationCap,
-  FileText, Building2, Shield,
+  FileText, Building2, Shield, Languages,
 } from 'lucide-react'
+import { useLang } from '@/components/LanguageProvider'
 
 const studentNav = [
   { href: '/dashboard',     label: 'Dashboard',      icon: LayoutDashboard },
@@ -41,8 +42,9 @@ const adminNav = [
 ]
 
 export default function Sidebar() {
-  const pathname = usePathname()
+  const pathname  = usePathname()
   const { data: session } = useSession()
+  const { lang, toggle: toggleLang } = useLang()
   const role = (session?.user as any)?.role
 
   const nav = role === 'INSTRUCTOR' || role === 'CENTRE_ADMIN'
@@ -97,8 +99,18 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/* Logout */}
-      <div className="px-3 mt-4 pt-4" style={{ borderTop: '1px solid rgba(0,229,200,0.08)' }}>
+      {/* Language + Logout */}
+      <div className="px-3 mt-4 pt-4 space-y-0.5" style={{ borderTop: '1px solid rgba(0,229,200,0.08)' }}>
+        <button
+          onClick={toggleLang}
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm w-full transition-all"
+          style={{ color: '#607896' }}
+          onMouseEnter={e => (e.currentTarget.style.color = '#00E5C8')}
+          onMouseLeave={e => (e.currentTarget.style.color = '#607896')}
+        >
+          <Languages size={16} />
+          {lang === 'en' ? 'اردو' : 'English'}
+        </button>
         <button
           onClick={() => signOut({ callbackUrl: '/login' })}
           className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm w-full transition-all"

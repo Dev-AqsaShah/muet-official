@@ -123,3 +123,41 @@ body[style*="background:#F0F4F8"] {
 ::-webkit-scrollbar-thumb { background: rgba(0,229,200,.2); border-radius: 4px; }
 
 #particle-canvas { position: absolute; inset: 0; pointer-events: none; }
+
+/* ── RTL (Urdu) support ── */
+[dir="rtl"] .lms-sidebar {
+  left: auto; right: 0;
+  border-right: none;
+  border-left: 1px solid var(--border);
+}
+[dir="rtl"] .lms-topbar {
+  left: 0; right: var(--sidebar-w);
+}
+[dir="rtl"] .lms-main {
+  margin-left: 0;
+  margin-right: var(--sidebar-w);
+}
+[dir="rtl"] .lms-sidebar .lms-sidebar {
+  transform: translateX(100%);
+}
+[dir="rtl"] .lms-sidebar.open {
+  transform: translateX(0);
+}
+@media (max-width: 768px) {
+  [dir="rtl"] .lms-sidebar  { transform: translateX(100%); }
+  [dir="rtl"] .lms-sidebar.open { transform: translateX(0); }
+  [dir="rtl"] .lms-topbar   { right: 0; left: 0; }
+  [dir="rtl"] .lms-main     { margin-right: 0; }
+}
+
+/* Urdu font class */
+[dir="rtl"] { font-family: var(--font-urdu), 'Noto Nastaliq Urdu', sans-serif; line-height: 2; }
+[dir="rtl"] .font-display { font-family: var(--font-urdu), 'Noto Nastaliq Urdu', sans-serif; }
+
+/* ── Focus visible styles for accessibility ── */
+:focus-visible { outline: 2px solid #00E5C8; outline-offset: 2px; border-radius: 4px; }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
