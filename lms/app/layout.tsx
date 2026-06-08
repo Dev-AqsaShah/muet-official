@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, DM_Sans, Noto_Nastaliq_Urdu } from 'next/font/google'
+import { Space_Grotesk, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Providers from '@/components/Providers'
 
@@ -15,12 +15,6 @@ const dmSans = DM_Sans({
   weight: ['300', '400', '500', '600'],
 })
 
-const notoNastaliq = Noto_Nastaliq_Urdu({
-  subsets: ['arabic'],
-  variable: '--font-urdu',
-  weight: ['400', '700'],
-})
-
 export const metadata: Metadata = {
   title: { default: 'MUET LMS Portal', template: '%s | MUET LMS' },
   description: 'MUET Student Learning Management Portal — PITP, BBSHRRDB & NFTP Programmes',
@@ -29,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${notoNastaliq.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <body style={{ fontFamily: 'var(--font-sans), sans-serif', background: '#020B18', color: '#E8F4FF' }}>
         <Providers>{children}</Providers>
       </body>

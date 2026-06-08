@@ -7,44 +7,42 @@ import {
   LayoutDashboard, BookOpen, CalendarDays, ClipboardList,
   Zap, BarChart3, Clock, Megaphone, Award, User, LogOut,
   Users, CheckSquare, Upload, PlusSquare, GraduationCap,
-  FileText, Building2, Shield, Languages,
+  FileText, Building2, Shield,
 } from 'lucide-react'
-import { useLang } from '@/components/LanguageProvider'
 
 const studentNav = [
-  { href: '/dashboard',     label: 'Dashboard',      icon: LayoutDashboard },
-  { href: '/course',        label: 'My Course',       icon: BookOpen        },
-  { href: '/attendance',    label: 'Attendance',      icon: CalendarDays    },
-  { href: '/assignments',   label: 'Assignments',     icon: ClipboardList   },
-  { href: '/quizzes',       label: 'Quizzes',         icon: Zap             },
-  { href: '/grades',        label: 'Grades',          icon: BarChart3       },
-  { href: '/schedule',      label: 'Schedule',        icon: Clock           },
-  { href: '/announcements', label: 'Announcements',   icon: Megaphone       },
-  { href: '/certificate',   label: 'Certificate',     icon: Award           },
-  { href: '/profile',       label: 'Profile',         icon: User            },
+  { href: '/dashboard',     label: 'Dashboard',       icon: LayoutDashboard },
+  { href: '/course',        label: 'My Course',        icon: BookOpen        },
+  { href: '/attendance',    label: 'Attendance',       icon: CalendarDays    },
+  { href: '/assignments',   label: 'Assignments',      icon: ClipboardList   },
+  { href: '/quizzes',       label: 'Quizzes',          icon: Zap             },
+  { href: '/grades',        label: 'Grades',           icon: BarChart3       },
+  { href: '/schedule',      label: 'Schedule',         icon: Clock           },
+  { href: '/announcements', label: 'Announcements',    icon: Megaphone       },
+  { href: '/certificate',   label: 'Certificate',      icon: Award           },
+  { href: '/profile',       label: 'Profile',          icon: User            },
 ]
 
 const instructorNav = [
-  { href: '/instructor/dashboard',       label: 'Dashboard',       icon: LayoutDashboard },
-  { href: '/instructor/students',        label: 'My Students',     icon: Users           },
-  { href: '/instructor/mark-attendance', label: 'Mark Attendance', icon: CheckSquare     },
-  { href: '/instructor/upload-material', label: 'Upload Material', icon: Upload          },
-  { href: '/instructor/create-quiz',     label: 'Create Quiz',     icon: PlusSquare      },
-  { href: '/instructor/grades',          label: 'Grade Assignments',icon: BarChart3      },
+  { href: '/instructor/dashboard',       label: 'Dashboard',        icon: LayoutDashboard },
+  { href: '/instructor/students',        label: 'My Students',      icon: Users           },
+  { href: '/instructor/mark-attendance', label: 'Mark Attendance',  icon: CheckSquare     },
+  { href: '/instructor/upload-material', label: 'Upload Material',  icon: Upload          },
+  { href: '/instructor/create-quiz',     label: 'Create Quiz',      icon: PlusSquare      },
+  { href: '/instructor/grades',          label: 'Grade Assignments', icon: BarChart3       },
 ]
 
 const adminNav = [
-  { href: '/admin/dashboard',   label: 'Dashboard',   icon: LayoutDashboard },
-  { href: '/admin/students',    label: 'Students',    icon: GraduationCap   },
-  { href: '/admin/batches',     label: 'Batches',     icon: Building2       },
-  { href: '/admin/reports',     label: 'Reports',     icon: FileText        },
-  { href: '/admin/certificates',label: 'Certificates',icon: Award           },
+  { href: '/admin/dashboard',    label: 'Dashboard',    icon: LayoutDashboard },
+  { href: '/admin/students',     label: 'Students',     icon: GraduationCap   },
+  { href: '/admin/batches',      label: 'Batches',      icon: Building2       },
+  { href: '/admin/reports',      label: 'Reports',      icon: FileText        },
+  { href: '/admin/certificates', label: 'Certificates', icon: Award           },
 ]
 
 export default function Sidebar() {
-  const pathname  = usePathname()
+  const pathname = usePathname()
   const { data: session } = useSession()
-  const { lang, toggle: toggleLang } = useLang()
   const role = (session?.user as any)?.role
 
   const nav = role === 'INSTRUCTOR' || role === 'CENTRE_ADMIN'
@@ -81,17 +79,14 @@ export default function Sidebar() {
         {nav.map(({ href, label, icon: Icon }) => {
           const active = pathname === href || pathname.startsWith(href + '/')
           return (
-            <Link
-              key={href}
-              href={href}
+            <Link key={href} href={href}
               className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all relative"
               style={{
                 color:      active ? '#00E5C8' : '#607896',
                 background: active ? 'rgba(0,229,200,0.08)' : 'transparent',
                 borderLeft: active ? '2px solid #00E5C8' : '2px solid transparent',
                 fontWeight: active ? 600 : 400,
-              }}
-            >
+              }}>
               <Icon size={16} />
               {label}
             </Link>
@@ -99,18 +94,8 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/* Language + Logout */}
-      <div className="px-3 mt-4 pt-4 space-y-0.5" style={{ borderTop: '1px solid rgba(0,229,200,0.08)' }}>
-        <button
-          onClick={toggleLang}
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm w-full transition-all"
-          style={{ color: '#607896' }}
-          onMouseEnter={e => (e.currentTarget.style.color = '#00E5C8')}
-          onMouseLeave={e => (e.currentTarget.style.color = '#607896')}
-        >
-          <Languages size={16} />
-          {lang === 'en' ? 'اردو' : 'English'}
-        </button>
+      {/* Logout */}
+      <div className="px-3 mt-4 pt-4" style={{ borderTop: '1px solid rgba(0,229,200,0.08)' }}>
         <button
           onClick={() => signOut({ callbackUrl: '/login' })}
           className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm w-full transition-all"
