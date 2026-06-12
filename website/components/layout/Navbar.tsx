@@ -1,18 +1,28 @@
 'use client'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu } from 'lucide-react'
+import { Menu, ChevronDown, LayoutDashboard } from 'lucide-react'
 import { useScrolled } from '@/hooks/useScrolled'
-import { navLinks } from '@/config/navigation'
+import { navLinks, portalLinks } from '@/config/navigation'
 import { cn } from '@/lib/utils'
 import MobileMenu from './MobileMenu'
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen]       = useState(false)
+  const [portalsOpen, setPortalsOpen] = useState(false)
+  const portalsRef = useRef<HTMLDivElement>(null)
   const scrolled  = useScrolled(60)
   const pathname  = usePathname()
+
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (portalsRef.current && !portalsRef.current.contains(e.target as Node)) setPortalsOpen(false)
+    }
+    document.addEventListener('mousedown', onClick)
+    return () => document.removeEventListener('mousedown', onClick)
+  }, [])
 
   return (
     <>
@@ -83,15 +93,42 @@ export default function Navbar() {
 
             {/* CTA + hamburger */}
             <div className="flex items-center gap-2">
-              <Link
-                href="/auth/signin"
-                className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                style={{ color: 'rgba(232,244,255,0.6)', border: '1px solid rgba(0,229,200,0.2)' }}
-                onMouseEnter={e => { const el = e.currentTarget; el.style.color = '#00e5c8'; el.style.borderColor = 'rgba(0,229,200,0.5)' }}
-                onMouseLeave={e => { const el = e.currentTarget; el.style.color = 'rgba(232,244,255,0.6)'; el.style.borderColor = 'rgba(0,229,200,0.2)' }}
-              >
-                Sign In
-              </Link>
+              <div ref={portalsRef} className="relative hidden sm:block">
+                <button
+                  onClick={() => setPortalsOpen(o => !o)}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                  style={{
+                    color: portalsOpen ? '#00e5c8' : 'rgba(232,244,255,0.6)',
+                    border: `1px solid rgba(0,229,200,${portalsOpen ? 0.5 : 0.2})`,
+                  }}
+                  onMouseEnter={e => { const el = e.currentTarget; el.style.color = '#00e5c8'; el.style.borderColor = 'rgba(0,229,200,0.5)' }}
+                  onMouseLeave={e => { if (!portalsOpen) { const el = e.currentTarget; el.style.color = 'rgba(232,244,255,0.6)'; el.style.borderColor = 'rgba(0,229,200,0.2)' } }}
+                >
+                  <LayoutDashboard size={14} />
+                  Portals
+                  <ChevronDown size={14} style={{ transform: portalsOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
+                </button>
+                {portalsOpen && (
+                  <div
+                    className="absolute right-0 mt-2 w-72 rounded-xl overflow-hidden shadow-2xl"
+                    style={{ background: '#061224', border: '1px solid rgba(0,229,200,0.2)' }}
+                  >
+                    {portalLinks.items.map(item => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        className="block px-4 py-3 transition-colors"
+                        style={{ borderBottom: '1px solid rgba(0,229,200,0.08)' }}
+                        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(0,229,200,0.06)' }}
+                        onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}
+                      >
+                        <p className="text-sm font-semibold" style={{ color: '#00e5c8' }}>{item.label}</p>
+                        <p className="text-xs mt-0.5" style={{ color: 'rgba(232,244,255,0.45)' }}>{item.desc}</p>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
               <Link
                 href="/programs"
                 className="hidden sm:inline-flex items-center px-5 py-2 rounded-lg text-sm font-bold transition-all"

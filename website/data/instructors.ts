@@ -1,3 +1,10 @@
+/**
+ * ⚠️ DUMMY DATA — REPLACE WITH REAL PROFILES
+ * This is the ONLY file to edit when real instructor data arrives:
+ * update name/bio/email/qualification, and set `avatar` to a photo
+ * placed in /public/images/instructors/.
+ * Everything (listing page, profile pages, program cards) updates automatically.
+ */
 export interface Instructor {
   slug: string
   name: string

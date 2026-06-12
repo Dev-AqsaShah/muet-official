@@ -4,14 +4,18 @@ export const projects: Project[] = [
   {
     slug: 'bbshrrdb-skills-development',
     title: 'BBSHRRDB Skills Development Programme — MUET',
-    shortDesc: 'Vocational and technical training across Sindh districts, executed by MUET under the Benazir Bhutto Shaheed Human Resource Research & Development Board.',
-    description: `Mehran University of Engineering & Technology (MUET) serves as an implementing partner for the Benazir Bhutto Shaheed Human Resource Research & Development Board (BBSHRRDB) — the Government of Sindh's flagship human resource development initiative.
+    shortDesc: 'Free government-funded vocational and IT training with monthly stipend for unemployed Sindh youth (18–35), executed by MUET under the Benazir Bhutto Shaheed Human Resource Research & Development Board.',
+    description: `Mehran University of Engineering & Technology (MUET) serves as an implementing partner for the Benazir Bhutto Shaheed Human Resource Research & Development Board (BBSHRRDB) — the Government of Sindh's flagship human resource development initiative, established through an Act of the Sindh Assembly in 2013.
 
-BBSHRRDB, established through an Act of the Sindh Assembly in 2013, was created to empower Sindh's youth with employable skill sets across 28 employment sectors and 414 trades and courses. MUET's role as an executing partner reflects the university's established capacity for large-scale, government-mandated programme delivery.
+BBSHRRDB empowers unemployed Sindh youth aged 18–35 with employable skill sets through 2 to 24 months of comprehensive vocational training across 28 employment sectors and 414+ trades and courses. Trainees receive a monthly stipend during training, plus a dislocation allowance where applicable — making the programme fully free and financially supported.
 
-Under this partnership, MUET manages training delivery, instructor deployment, trainee selection, curriculum alignment, and certification — ensuring quality and accountability in programme execution across assigned districts.
+ELIGIBILITY — Applicants must be: aged 18–35 years; holders of a valid CNIC with Sindh domicile; currently unemployed; and not previously trained under any BBSHRRDB programme (one-time training per candidate). Literacy requirements vary by course — literate, semi-literate, and course-specific qualifications are all accommodated.
 
-BBSHRRDB's national reach includes over 525,000 registered trainees, 420,000+ graduates, and 170,000+ reported as employed — making it one of Pakistan's largest human resource development programmes. MUET's association with BBSHRRDB positions the university as a key institutional partner in Sindh's workforce development agenda.`,
+ADMISSION PROCESS — Admissions open in phases announced through public advertisement (currently Phase-XV), with a 15-day application window from the advertisement date. Candidates apply online through the BBSHRRDB registration portal or via downloadable physical forms. Every application is verified digitally through the web-based FMIS system and NADRA Verisys, and candidates are placed at the nearest training institution by a merit and proximity algorithm.
+
+MUET'S ROLE — Under this partnership, MUET manages training delivery, instructor deployment, trainee selection support, curriculum alignment, attendance and assessment, and co-certified credential issuance — ensuring quality and accountability across its assigned districts.
+
+BBSHRRDB's reach includes over 525,000 registered trainees, 420,000+ graduates, and 170,000+ reported as employed — making it one of Pakistan's largest human resource development programmes. MUET's association with BBSHRRDB positions the university as a key institutional partner in Sindh's workforce development agenda.`,
     status: 'active',
     fundingBody: 'BBSHRRDB',
     fundingSource: 'Benazir Bhutto Shaheed Human Resource Research & Development Board — Government of Sindh',
@@ -20,18 +24,29 @@ BBSHRRDB's national reach includes over 525,000 registered trainees, 420,000+ gr
     district: ['Jamshoro', 'Hyderabad', 'Dadu', 'Mirpurkhas', 'Thatta'],
     objectives: [
       'Execute government-mandated vocational and technical training on behalf of BBSHRRDB',
+      'Deliver free, stipend-supported training (2–24 months) to unemployed Sindh youth aged 18–35',
       'Align MUET curriculum with BBSHRRDB-approved trades and skill standards',
+      'Support digitally verified admissions through FMIS and NADRA Verisys integration',
       'Deploy qualified instructors and maintain quality assurance across training centers',
       'Issue BBSHRRDB and MUET co-certified credentials to graduates',
       'Strengthen MUET\'s role as a preferred government training partner in Sindh',
     ],
     metrics: [
       { label: 'Funding Body Reach',   value: '525,000+', icon: 'users' },
+      { label: 'Graduates Employed',   value: '170,000+', icon: 'check-circle' },
       { label: 'Sectors Covered',      value: '28',       icon: 'layers' },
       { label: 'Trades / Courses',     value: '414+',     icon: 'book-open' },
-      { label: 'Districts (National)', value: '30',       icon: 'map-pin' },
+      { label: 'Monthly Stipend',      value: 'Paid',     icon: 'banknote' },
+      { label: 'Current Phase',        value: 'XV',       icon: 'map-pin' },
     ],
-    programs: ['technical-freelancing'],
+    programs: [
+      'web-development',
+      'python-development',
+      'database-management',
+      'graphic-designing-ui-ux',
+      'digital-marketing-seo',
+      'technical-freelancing',
+    ],
     featured: true,
   },
   {

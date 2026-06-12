@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
-import { navLinks } from '@/config/navigation'
+import { navLinks, portalLinks } from '@/config/navigation'
 
 interface MobileMenuProps {
   open: boolean
@@ -77,20 +77,30 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
                   </motion.div>
                 ))}
               </nav>
-              <div className="px-5 py-4 flex gap-3" style={{ borderTop: '1px solid rgba(0,229,200,0.1)' }}>
+              <div className="px-5 py-3" style={{ borderTop: '1px solid rgba(0,229,200,0.1)' }}>
+                <p className="text-[10px] font-bold uppercase tracking-widest mb-2" style={{ color: '#607896' }}>
+                  Portals
+                </p>
+                <div className="flex flex-col gap-1.5">
+                  {portalLinks.items.map(item => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="py-2 px-3 text-sm font-medium rounded-lg transition-colors"
+                      style={{ color: '#00e5c8', border: '1px solid rgba(0,229,200,0.18)', background: 'rgba(0,229,200,0.04)' }}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div className="px-5 py-4" style={{ borderTop: '1px solid rgba(0,229,200,0.1)' }}>
                 <Link
-                  href="/auth/signin"
-                  className="flex-1 py-2.5 text-center text-sm font-medium rounded-lg transition-colors"
-                  style={{ color: 'rgba(232,244,255,0.7)', border: '1px solid rgba(0,229,200,0.25)' }}
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/programs"
-                  className="flex-1 py-2.5 text-center text-sm font-bold rounded-lg transition-colors"
+                  href="/admissions"
+                  className="block py-2.5 text-center text-sm font-bold rounded-lg transition-colors"
                   style={{ background: 'linear-gradient(135deg, #00e5c8, #38bdf8)', color: '#020b18' }}
                 >
-                  Programmes
+                  Apply for Admission
                 </Link>
               </div>
             </div>
