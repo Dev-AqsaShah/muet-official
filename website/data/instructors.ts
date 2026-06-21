@@ -29,7 +29,7 @@ export const instructors: Instructor[] = [
     name: 'Mr. Javed Ahmed',
     title: 'Director of Training & Operations',
     role: 'head',
-    bio: `Mr. Javed Ahmed serves as the Director of Training & Operations at MUET's IT Training Centre, overseeing the delivery of all 15 certified programmes across Sindh. With over 18 years of experience in IT education and programme management, he has been instrumental in establishing MUET as the lead implementing institution for PITP, NFTP, and BBSHRRDB projects.
+    bio: `Mr. Javed Ahmed serves as the Director of Training & Operations at MUET's IT Training Centre, overseeing the delivery of the BBSHRRDB Skills Development Programme at the Main Campus. With over 18 years of experience in IT education and programme management, he has been instrumental in establishing MUET as a lead implementing institution for the BBSHRRDB programme.
 
 He holds a Master's degree in Computer Science from Mehran University and has trained over 3,000 youth across Sindh in various digital skills disciplines. Mr. Javed is widely respected for his ability to bridge the gap between academia and industry.`,
     avatar: null,

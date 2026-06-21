@@ -9,7 +9,7 @@ export const metadata = { title: 'Admin Dashboard' }
 
 export default async function AdminDashboardPage() {
   const session = await getServerSession(authOptions)
-  if (!session) redirect('/login')
+  if (!session) redirect('/admin/login')
   const user = session.user as any
   if (!['SUPER_ADMIN', 'CENTRE_ADMIN'].includes(user.role)) redirect('/dashboard')
 

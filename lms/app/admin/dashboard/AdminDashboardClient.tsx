@@ -9,7 +9,7 @@ interface Props {
   byDistrict:  { district: string;  count: number }[]
 }
 
-const PROG_COLORS: { [k: string]: string } = { PITP: '#00E5C8', BBSHRRDB: '#FBBF24', NFTP: '#38BDF8' }
+const PROG_COLORS: { [k: string]: string } = { BBSHRRDB: '#00E5C8', DEFAULT: '#38BDF8' }
 
 export default function AdminDashboardClient({ stats, byProgramme, byDistrict }: Props) {
   const maxDistrict = Math.max(...byDistrict.map(d => d.count), 1)
@@ -63,7 +63,7 @@ export default function AdminDashboardClient({ stats, byProgramme, byDistrict }:
             {byProgramme.map(({ programme, count }) => {
               const total = stats.totalStudents || 1
               const pct   = Math.round((count / total) * 100)
-              const color = PROG_COLORS[programme] ?? '#607896'
+              const color = PROG_COLORS[programme] ?? PROG_COLORS.DEFAULT
               return (
                 <div key={programme}>
                   <div className="flex justify-between text-xs mb-1.5">

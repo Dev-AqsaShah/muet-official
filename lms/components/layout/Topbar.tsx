@@ -13,6 +13,11 @@ export default function Topbar({ onMenuClick }: { onMenuClick?: () => void }) {
   const { theme, toggle } = useTheme()
   const name     = session?.user?.name ?? 'User'
   const initials = name.split(' ').map((n: string) => n[0]).join('').slice(0, 2).toUpperCase()
+  const role = (session?.user as any)?.role as string | undefined
+  const isStudent = !role || role === 'STUDENT'
+  const profileHref = role === 'INSTRUCTOR' || role === 'CENTRE_ADMIN' ? '/teacher/dashboard'
+    : role === 'SUPER_ADMIN' ? '/admin/dashboard'
+    : '/student/profile'
 
   const [notifs, setNotifs]       = useState<Notif[]>([])
   const [unread, setUnread]       = useState(0)
@@ -20,10 +25,11 @@ export default function Topbar({ onMenuClick }: { onMenuClick?: () => void }) {
   const panelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    fetch('/api/students/notifications').then(r => r.json()).then(d => {
+    if (!isStudent) return
+    fetch('/api/student/notifications').then(r => r.json()).then(d => {
       if (d.notifications) { setNotifs(d.notifications); setUnread(d.unread) }
     }).catch(() => {})
-  }, [])
+  }, [isStudent])
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -34,7 +40,7 @@ export default function Topbar({ onMenuClick }: { onMenuClick?: () => void }) {
   }, [])
 
   const markAllRead = async () => {
-    await fetch('/api/students/notifications', { method: 'PATCH' }).catch(() => {})
+    await fetch('/api/student/notifications', { method: 'PATCH' }).catch(() => {})
     setNotifs(n => n.map(x => ({ ...x, isRead: true })))
     setUnread(0)
   }
@@ -64,8 +70,8 @@ export default function Topbar({ onMenuClick }: { onMenuClick?: () => void }) {
           {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
         </button>
 
-        {/* Notifications */}
-        <div className="relative" ref={panelRef}>
+        {/* Notifications — students only */}
+        {isStudent && <div className="relative" ref={panelRef}>
           <button onClick={() => setShowPanel(s => !s)}
             className="relative w-8 h-8 rounded-xl flex items-center justify-center transition-all"
             style={{ background: showPanel ? 'rgba(0,229,200,0.12)' : 'rgba(0,229,200,0.06)', border: `1px solid ${showPanel ? 'rgba(0,229,200,0.3)' : 'rgba(0,229,200,0.12)'}`, color: '#607896' }}>
@@ -105,18 +111,18 @@ export default function Topbar({ onMenuClick }: { onMenuClick?: () => void }) {
                 ))}
               </div>
               <div className="px-4 py-2.5" style={{ borderTop: '1px solid rgba(0,229,200,0.08)' }}>
-                <Link href="/notifications" onClick={() => setShowPanel(false)}
+                <Link href="/student/notifications" onClick={() => setShowPanel(false)}
                   className="block text-center text-xs font-semibold" style={{ color: '#00E5C8' }}>
-                  View all notifications
+                  View all
                 </Link>
               </div>
             </div>
           )}
-        </div>
+        </div>}
 
         {/* Avatar */}
         <div className="flex items-center gap-2">
-          <Link href="/profile">
+          <Link href={profileHref}>
             <div className="w-8 h-8 rounded-xl flex items-center justify-center font-display font-bold text-xs cursor-pointer transition-all"
               style={{ background: 'rgba(0,229,200,0.15)', border: '1px solid rgba(0,229,200,0.3)', color: '#00E5C8' }}>
               {initials}

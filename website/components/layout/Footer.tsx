@@ -7,11 +7,11 @@ import { navLinks } from '@/config/navigation'
 
 const programLinks = [
   { label: 'Web Development',    href: '/programs/web-development' },
+  { label: 'Python Development', href: '/programs/python-development' },
   { label: 'Graphic Designing',  href: '/programs/graphic-designing-ui-ux' },
   { label: 'Digital Marketing',  href: '/programs/digital-marketing-seo' },
-  { label: 'Python Development', href: '/programs/python-development' },
-  { label: 'Data Science',       href: '/programs/data-science' },
-  { label: 'Cyber Security',     href: '/programs/cyber-security' },
+  { label: 'Database Management', href: '/programs/database-management' },
+  { label: 'E-Commerce',         href: '/programs/e-commerce' },
 ]
 
 export default function Footer() {

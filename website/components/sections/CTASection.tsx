@@ -16,13 +16,13 @@ export default function CTASection() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-xs font-bold uppercase tracking-[0.18em] mb-6" style={{ color: '#00e5c8' }}>Ready to Partner?</p>
+          <p className="text-xs font-bold uppercase tracking-[0.18em] mb-6" style={{ color: '#00e5c8' }}>Admissions Open</p>
 
           <h2
             className="font-display font-extrabold leading-none mb-6"
             style={{ fontSize: 'clamp(40px, 6vw, 72px)', letterSpacing: '-0.04em', color: '#e8f4ff' }}
           >
-            Scale Your Skills{' '}
+            Your Seat at{' '}
             <span
               style={{
                 background: 'linear-gradient(120deg, #00e5c8, #38bdf8, #fbbf24)',
@@ -31,30 +31,30 @@ export default function CTASection() {
                 backgroundClip: 'text',
               }}
             >
-              Initiative
+              MUET
             </span>
-            {' '}With MUET
+            {' '}is Waiting
           </h2>
 
           <p className="text-lg leading-relaxed mb-10 max-w-xl mx-auto font-light" style={{ color: 'rgba(232,244,255,0.55)' }}>
-            Engage MUET as your implementing partner for government-certified training across Sindh.
-            We handle centres, instructors, curriculum, and certification end-to-end.
+            Free certified IT training with a monthly stipend at MUET Main Campus, Jamshoro.
+            Apply in the current BBSHRRDB admission phase — seats are limited per batch.
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/admissions"
               className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl font-bold text-sm transition-all"
               style={{ background: 'linear-gradient(135deg, #00e5c8, #38bdf8)', color: '#020b18', boxShadow: '0 0 30px rgba(0,229,200,0.35)' }}
             >
-              Partner With MUET <ArrowRight size={16} />
+              Apply for Admission <ArrowRight size={16} />
             </Link>
             <Link
-              href="/projects"
+              href="/course"
               className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl font-medium text-sm transition-all"
               style={{ border: '1px solid rgba(0,229,200,0.3)', color: '#e8f4ff', background: 'rgba(0,229,200,0.04)' }}
             >
-              View Active Projects
+              Explore the Course
             </Link>
           </div>
         </motion.div>

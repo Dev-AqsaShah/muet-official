@@ -1,7 +1,7 @@
 export const siteConfig = {
-  name:     'MUET Training & Projects',
+  name:     'BBSHRRDB Skills Development Programme — MUET',
   fullName: 'Mehran University of Engineering & Technology',
-  tagline:  'A Trusted University Partner for Large-Scale Training Initiatives',
+  tagline:  'Free Government-Funded IT Training with Monthly Stipend — MUET Main Campus, Jamshoro',
   url:      'https://training.muet.edu.pk',
   address:  'Indus Highway, Jamshoro 76062, Sindh, Pakistan',
   phone:    '+92-22-2771197',
@@ -9,10 +9,10 @@ export const siteConfig = {
 }
 
 export const siteStats = [
-  { label: 'Government Projects',    value: '4+',     icon: 'folder-open' },
-  { label: 'Trainees Certified',     value: '5,488+', icon: 'users' },
-  { label: 'Instructors',            value: '20+',    icon: 'user-check' },
-  { label: 'Training Programs',      value: '15+',    icon: 'book-open' },
+  { label: 'IT Programs',            value: '8',        icon: 'book-open' },
+  { label: 'Graduates (Board-wide)', value: '420,000+', icon: 'users' },
+  { label: 'Instructors',            value: '12+',      icon: 'user-check' },
+  { label: 'Free + Stipend',         value: '100%',     icon: 'folder-open' },
 ]
 
 export const partners = [
@@ -27,12 +27,6 @@ export const partners = [
     logo: '/images/logos/sindh-gov.svg',
     url:  'https://sindh.gov.pk',
     fullName: 'Government of Sindh',
-  },
-  {
-    name: 'PITB',
-    logo: '/images/logos/pitb.svg',
-    url:  'https://pitb.gov.pk',
-    fullName: 'Punjab Information Technology Board',
   },
   {
     name: 'MUET',

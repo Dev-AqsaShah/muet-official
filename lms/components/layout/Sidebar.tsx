@@ -11,25 +11,25 @@ import {
 } from 'lucide-react'
 
 const studentNav = [
-  { href: '/dashboard',     label: 'Dashboard',       icon: LayoutDashboard },
-  { href: '/course',        label: 'My Course',        icon: BookOpen        },
-  { href: '/attendance',    label: 'Attendance',       icon: CalendarDays    },
-  { href: '/assignments',   label: 'Assignments',      icon: ClipboardList   },
-  { href: '/quizzes',       label: 'Quizzes',          icon: Zap             },
-  { href: '/grades',        label: 'Grades',           icon: BarChart3       },
-  { href: '/schedule',      label: 'Schedule',         icon: Clock           },
-  { href: '/announcements', label: 'Announcements',    icon: Megaphone       },
-  { href: '/certificate',   label: 'Certificate',      icon: Award           },
-  { href: '/profile',       label: 'Profile',          icon: User            },
+  { href: '/student/dashboard',     label: 'Dashboard',       icon: LayoutDashboard },
+  { href: '/student/course',        label: 'My Course',        icon: BookOpen        },
+  { href: '/student/attendance',    label: 'Attendance',       icon: CalendarDays    },
+  { href: '/student/assignments',   label: 'Assignments',      icon: ClipboardList   },
+  { href: '/student/quizzes',       label: 'Quizzes',          icon: Zap             },
+  { href: '/student/grades',        label: 'Grades',           icon: BarChart3       },
+  { href: '/student/schedule',      label: 'Schedule',         icon: Clock           },
+  { href: '/student/announcements', label: 'Announcements',    icon: Megaphone       },
+  { href: '/student/certificate',   label: 'Certificate',      icon: Award           },
+  { href: '/student/profile',       label: 'Profile',          icon: User            },
 ]
 
 const instructorNav = [
-  { href: '/instructor/dashboard',       label: 'Dashboard',        icon: LayoutDashboard },
-  { href: '/instructor/students',        label: 'My Students',      icon: Users           },
-  { href: '/instructor/mark-attendance', label: 'Mark Attendance',  icon: CheckSquare     },
-  { href: '/instructor/upload-material', label: 'Upload Material',  icon: Upload          },
-  { href: '/instructor/create-quiz',     label: 'Create Quiz',      icon: PlusSquare      },
-  { href: '/instructor/grades',          label: 'Grade Assignments', icon: BarChart3       },
+  { href: '/teacher/dashboard',       label: 'Dashboard',        icon: LayoutDashboard },
+  { href: '/teacher/students',        label: 'My Students',      icon: Users           },
+  { href: '/teacher/mark-attendance', label: 'Mark Attendance',  icon: CheckSquare     },
+  { href: '/teacher/upload-material', label: 'Upload Material',  icon: Upload          },
+  { href: '/teacher/create-quiz',     label: 'Create Quiz',      icon: PlusSquare      },
+  { href: '/teacher/grades',          label: 'Grade Assignments', icon: BarChart3       },
 ]
 
 const adminNav = [
@@ -51,6 +51,18 @@ export default function Sidebar() {
     ? adminNav
     : studentNav
 
+  const loginUrl = role === 'INSTRUCTOR' || role === 'CENTRE_ADMIN'
+    ? '/teacher/login'
+    : role === 'SUPER_ADMIN'
+    ? '/admin/login'
+    : '/student/login'
+
+  const portalLabel = role === 'INSTRUCTOR' || role === 'CENTRE_ADMIN'
+    ? 'Teacher Portal'
+    : role === 'SUPER_ADMIN'
+    ? 'Admin Dashboard'
+    : 'Student Portal'
+
   return (
     <aside className="lms-sidebar flex flex-col py-5">
       {/* Logo */}
@@ -61,7 +73,7 @@ export default function Sidebar() {
         </div>
         <div>
           <p className="font-display font-bold text-sm" style={{ color: '#00E5C8' }}>MUET LMS</p>
-          <p className="text-[10px]" style={{ color: '#607896' }}>Student Portal</p>
+          <p className="text-[10px]" style={{ color: '#607896' }}>{portalLabel}</p>
         </div>
       </div>
 
@@ -97,7 +109,7 @@ export default function Sidebar() {
       {/* Logout */}
       <div className="px-3 mt-4 pt-4" style={{ borderTop: '1px solid rgba(0,229,200,0.08)' }}>
         <button
-          onClick={() => signOut({ callbackUrl: '/login' })}
+          onClick={() => signOut({ callbackUrl: loginUrl })}
           className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm w-full transition-all"
           style={{ color: '#607896' }}
           onMouseEnter={e => (e.currentTarget.style.color = '#EF4444')}

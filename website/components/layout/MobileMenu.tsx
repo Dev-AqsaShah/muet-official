@@ -44,7 +44,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
             <div className="relative">
               <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: '1px solid rgba(0,229,200,0.1)' }}>
                 <div>
-                  <p className="font-display font-bold text-sm" style={{ color: '#00e5c8' }}>MUET Training</p>
+                  <p className="font-display font-bold text-sm" style={{ color: '#00e5c8' }}>BBSHRRDB × MUET</p>
                   <p className="text-xs" style={{ color: 'rgba(232,244,255,0.4)' }}>Mehran University</p>
                 </div>
                 <button

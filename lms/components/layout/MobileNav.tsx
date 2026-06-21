@@ -5,18 +5,18 @@ import { useSession } from 'next-auth/react'
 import { LayoutDashboard, BookOpen, CalendarDays, ClipboardList, Zap, BarChart3, Megaphone, Award, User, Users, CheckSquare, Upload, PlusSquare, GraduationCap, FileText, Building2 } from 'lucide-react'
 
 const studentTabs = [
-  { href: '/dashboard',     label: 'Home',        icon: LayoutDashboard },
-  { href: '/attendance',    label: 'Attendance',  icon: CalendarDays    },
-  { href: '/assignments',   label: 'Assignments', icon: ClipboardList   },
-  { href: '/quizzes',       label: 'Quizzes',     icon: Zap             },
-  { href: '/profile',       label: 'Profile',     icon: User            },
+  { href: '/student/dashboard',     label: 'Home',        icon: LayoutDashboard },
+  { href: '/student/attendance',    label: 'Attendance',  icon: CalendarDays    },
+  { href: '/student/assignments',   label: 'Assignments', icon: ClipboardList   },
+  { href: '/student/quizzes',       label: 'Quizzes',     icon: Zap             },
+  { href: '/student/profile',       label: 'Profile',     icon: User            },
 ]
 const instructorTabs = [
-  { href: '/instructor/dashboard',       label: 'Dashboard',  icon: LayoutDashboard },
-  { href: '/instructor/mark-attendance', label: 'Attendance', icon: CheckSquare     },
-  { href: '/instructor/upload-material', label: 'Materials',  icon: Upload          },
-  { href: '/instructor/students',        label: 'Students',   icon: Users           },
-  { href: '/instructor/grades',          label: 'Grades',     icon: BarChart3       },
+  { href: '/teacher/dashboard',       label: 'Dashboard',  icon: LayoutDashboard },
+  { href: '/teacher/mark-attendance', label: 'Attendance', icon: CheckSquare     },
+  { href: '/teacher/upload-material', label: 'Materials',  icon: Upload          },
+  { href: '/teacher/students',        label: 'Students',   icon: Users           },
+  { href: '/teacher/grades',          label: 'Grades',     icon: BarChart3       },
 ]
 const adminTabs = [
   { href: '/admin/dashboard',    label: 'Dashboard',  icon: LayoutDashboard },

@@ -7,30 +7,28 @@ const keyFacts = [
   { label: 'Established',        value: '1977',    color: '#00e5c8' },
   { label: 'Trainees Certified', value: '5,488+',  color: '#fbbf24' },
   { label: 'Districts Covered',  value: '12',      color: '#38bdf8' },
-  { label: 'Programmes Offered', value: '15+',     color: '#818cf8' },
-  { label: 'Govt Mandates',      value: '4',       color: '#00e5c8' },
-  { label: 'Training Centers',   value: '20',      color: '#fbbf24' },
+  { label: 'IT Programs',        value: '8',       color: '#818cf8' },
+  { label: 'Free + Stipend',     value: '100%',    color: '#00e5c8' },
+  { label: 'Campus',             value: 'Jamshoro', color: '#fbbf24' },
 ]
 
 const milestones = [
   { year: '1977', event: "MUET established as Sindh's premier engineering university in Jamshoro." },
-  { year: '2013', event: 'ORIC set up to manage industry & government partnerships.' },
-  { year: '2023', event: 'MUET engaged as executing partner for BBSHRRDB across Sindh.' },
-  { year: '2024', event: 'MUET designated as implementing university for PITP Phase I across 8 districts.' },
-  { year: '2024', event: "MUET becomes official NFTP center for Sindh under PITB." },
-  { year: '2025', event: 'PITP Phase I concludes with 4,484 certified graduates and PKR 19M+ freelance earnings.' },
-  { year: '2025', event: 'PITP Phase II launched — expanded to 12 districts, 20 centers, 12 IT specializations.' },
+  { year: '2013', event: 'BBSHRRDB established by an Act of the Sindh Assembly to develop human resources in Sindh.' },
+  { year: '2023', event: 'MUET engaged as an implementing partner for the BBSHRRDB Skills Development Programme.' },
+  { year: '2025', event: 'IT training tracks launched at MUET Main Campus with stipend-supported batches.' },
+  { year: '2026', event: 'Batch 5 running at Main Campus — 8 certified IT programs with online-verifiable certificates.' },
 ]
 
 const highlights = [
-  { icon: Award,       text: 'Designated implementing university for PITP — Government of Sindh mandate' },
-  { icon: Building,    text: 'Official executing partner for BBSHRRDB skills development programmes' },
-  { icon: Globe,       text: 'PITB-selected NFTP center for Sindh — National Freelance Training Programme' },
-  { icon: Shield,      text: 'MUET-issued certificates with government endorsement and online verification' },
-  { icon: TrendingUp,  text: 'End-to-end programme management: centers, instructors, curriculum, assessment' },
-  { icon: MapPin,      text: 'Multi-district delivery — 20 centers across 12 districts simultaneously' },
-  { icon: Users,       text: '82.1% programme completion rate — verified government KPI' },
-  { icon: CheckCircle2, text: 'PKR 19M+ graduate earnings in Phase I alone — measurable economic impact' },
+  { icon: Building,    text: 'Official implementing partner for the BBSHRRDB Skills Development Programme' },
+  { icon: Award,       text: 'Government of Sindh × MUET co-certified credentials with online verification' },
+  { icon: Globe,       text: 'Modern IT labs and qualified faculty at the Main Campus, Jamshoro' },
+  { icon: Shield,      text: 'Digitally verified admissions — FMIS and NADRA Verisys integration' },
+  { icon: TrendingUp,  text: 'End-to-end programme management: curriculum, attendance, assessment, certification' },
+  { icon: MapPin,      text: 'All classes at MUET Main Campus — Indus Highway, Jamshoro' },
+  { icon: Users,       text: 'Monthly stipend paid to every selected trainee — training is 100% free' },
+  { icon: CheckCircle2, text: 'Freelance career-launch support in the final month of every batch' },
 ]
 
 export default function AboutPage() {
@@ -67,9 +65,9 @@ export default function AboutPage() {
               <p className="leading-relaxed text-sm" style={{ color: 'rgba(232,244,255,0.55)' }}>
                 Established in 1977, MUET is Sindh&apos;s leading public university for engineering and
                 technology. Through its Office of Research, Innovation &amp; Commercialization (ORIC), MUET
-                serves as an implementing partner for large-scale training mandates — managing
-                centre operations, instructor deployment, curriculum delivery, certification, and
-                programme reporting at scale across Sindh.
+                serves as an implementing partner for the Government of Sindh's BBSHRRDB programme —
+                managing instructor deployment, curriculum delivery, certification, and programme
+                reporting for stipend-supported IT training at the Main Campus.
               </p>
             </div>
             <div className="rounded-3xl p-8 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(0,229,200,0.12) 0%, rgba(56,189,248,0.08) 100%)', border: '1px solid rgba(0,229,200,0.2)' }}>
@@ -80,10 +78,10 @@ export default function AboutPage() {
               </div>
               <h3 className="relative text-xl font-bold mb-3" style={{ color: '#00e5c8' }}>Execution Capacity</h3>
               <p className="relative leading-relaxed text-sm" style={{ color: 'rgba(232,244,255,0.65)' }}>
-                MUET manages complex, multi-district government training mandates simultaneously —
-                operating 20 training centers across 12 districts, deploying 52+ qualified instructors,
-                and maintaining quality assurance, reporting, and certification standards required by
-                BBSHRRDB, the Government of Sindh, and the Government of Pakistan.
+                For the BBSHRRDB Skills Development Programme, MUET delivers the complete training
+                cycle at its Main Campus in Jamshoro — qualified instructors, structured curriculum,
+                digital attendance and assessment through the MUET LMS, and co-certified credentials
+                meeting the quality standards of BBSHRRDB and the Government of Sindh.
               </p>
             </div>
           </div>

@@ -19,7 +19,7 @@ const TEAL = '#00e5c8'
 const eligibility = [
   { label: 'Age 18–35 years', detail: 'At the time of registration (PITP tracks: max 28 years)' },
   { label: 'Valid CNIC', detail: 'Verified through NADRA Verisys during application processing' },
-  { label: 'Sindh domicile / PRC', detail: 'From districts covered by the programme phase' },
+  { label: 'Sindh domicile / PRC', detail: 'Required for BBSHRRDB-funded seats' },
   { label: 'Currently unemployed', detail: 'BBSHRRDB training is reserved for unemployed youth' },
   { label: 'First-time applicant', detail: 'Only one BBSHRRDB training per candidate, ever' },
   { label: 'Qualification per course', detail: 'Matric, Intermediate, or Graduate — varies by course' },
@@ -47,12 +47,12 @@ const steps = [
   {
     icon: ClipboardList,
     title: 'Merit & Placement',
-    desc: 'A placement algorithm assigns selected candidates to the nearest training centre based on merit, district, and course availability.',
+    desc: 'Selected candidates are placed on merit through a digital selection process and allotted a seat in their chosen course at MUET Main Campus.',
   },
   {
     icon: UserCheck,
     title: 'Enrollment & Orientation',
-    desc: 'Selected candidates confirm enrollment at their assigned MUET training centre and attend an orientation session before classes begin.',
+    desc: 'Selected candidates confirm enrollment at MUET Main Campus, Jamshoro and attend an orientation session before classes begin.',
   },
   {
     icon: GraduationCap,
@@ -84,7 +84,7 @@ const faqs = [
   },
   {
     q: 'Where are the classes held?',
-    a: 'At MUET-managed training centres across the covered districts — including Jamshoro, Hyderabad, Dadu, Mirpurkhas, and Thatta. The placement algorithm assigns you to your nearest centre.',
+    a: "At MUET Main Campus, Indus Highway, Jamshoro — in the university's modern IT labs. Regular batches run Mon–Fri mornings; weekend batches run Sat–Sun.",
   },
 ]
 
@@ -132,7 +132,7 @@ export default function AdmissionsPage() {
             {[
               { icon: Banknote, label: 'Monthly Stipend', value: '100% Free + Paid' },
               { icon: CalendarDays, label: 'Application Window', value: '15 Days / Phase' },
-              { icon: MapPin, label: 'Centre Placement', value: 'Nearest to You' },
+              { icon: MapPin, label: 'Venue', value: 'MUET Main Campus' },
               { icon: GraduationCap, label: 'Certification', value: 'Govt. × MUET' },
             ].map(({ icon: Icon, label, value }) => (
               <div
@@ -257,7 +257,7 @@ export default function AdmissionsPage() {
                   Create your student account on the MUET Student Portal to register for the current admission phase.
                 </p>
                 <a
-                  href={`${portalLinks.lmsUrl}/register`}
+                  href={`${portalLinks.lmsUrl}/student/register`}
                   className="flex items-center justify-center gap-2 w-full text-center py-2.5 rounded-lg text-sm font-bold transition-all"
                   style={{ background: `linear-gradient(135deg, ${AMBER}, #f59e0b)`, color: '#020b18', boxShadow: `0 0 20px ${AMBER}30` }}
                 >

@@ -12,9 +12,10 @@ export const authOptions: NextAuthOptions = {
       credentials: {
         identifier: { label: 'Email or CNIC', type: 'text'     },
         password:   { label: 'Password',      type: 'password' },
+        portal:     { label: 'Portal',        type: 'text'     },
       },
       async authorize(credentials) {
-        const { identifier, password } = credentials as { identifier: string; password: string }
+        const { identifier, password, portal } = credentials as { identifier: string; password: string; portal?: string }
         if (!identifier || !password) return null
 
         const user = await prisma.user.findFirst({
@@ -23,6 +24,19 @@ export const authOptions: NextAuthOptions = {
         })
 
         if (!user) return null
+
+        // Each portal only accepts its own role
+        if (portal) {
+          const allowed: Record<string, string[]> = {
+            student: ['STUDENT'],
+            teacher: ['INSTRUCTOR'],
+            admin:   ['CENTRE_ADMIN', 'SUPER_ADMIN'],
+          }
+          if (allowed[portal] && !allowed[portal].includes(user.role)) {
+            throw new Error('WRONG_PORTAL')
+          }
+        }
+
         if (user.status === 'PENDING')   throw new Error('PENDING')
         if (user.status === 'REJECTED')  throw new Error('REJECTED')
         if (user.status === 'SUSPENDED') throw new Error('SUSPENDED')

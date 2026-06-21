@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Clock, Users, MapPin, CheckCircle2, Tag, ArrowLeft, CalendarDays } from 'lucide-react'
 import { getProgramBySlug, programs } from '@/data/programs'
-import { getProjectBySlug } from '@/data/projects'
 import { getInstructorsByProgram } from '@/data/instructors'
 import { formatDate, cn } from '@/lib/utils'
 import HoverLink from '@/components/shared/HoverLink'
@@ -58,7 +57,6 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
   const program = getProgramBySlug(slug)
   if (!program) notFound()
 
-  const project     = getProjectBySlug(program.projectSlug)
   const cta         = statusCTA[program.status] ?? { label: 'Contact Us', disabled: false }
   const accent      = accents[program.slug] ?? '#00e5c8'
   const instructors = getInstructorsByProgram(program.slug)
@@ -87,13 +85,13 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
             <span className="text-xs px-3 py-1 rounded-full" style={{ border: '1px solid rgba(0,229,200,0.2)', color: '#607896' }}>
               {modeLabel[program.mode] ?? program.mode}
             </span>
-            {project && (
+            {true && (
               <Link
-                href={`/projects/${project.slug}`}
+                href="/course"
                 className="text-xs px-3 py-1 rounded-full transition-colors"
                 style={{ border: '1px solid rgba(0,229,200,0.15)', color: '#607896' }}
               >
-                ↗ {project.title}
+                ↗ BBSHRRDB Skills Development Programme
               </Link>
             )}
           </div>

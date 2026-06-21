@@ -2,12 +2,12 @@
 import { motion } from 'framer-motion'
 
 const stats = [
-  { value: '5,488+', label: 'Certified Graduates',   sub: 'Phase I + Phase II' },
-  { value: '82.1%',  label: 'Completion Rate',        sub: 'Verified Govt KPI' },
-  { value: '20',     label: 'Training Centers',        sub: 'Across 12 districts' },
-  { value: '4',      label: 'Government Mandates',     sub: 'Active partnerships' },
-  { value: 'PKR 19M+', label: 'Graduate Earnings',    sub: 'Phase I alone' },
-  { value: '52+',    label: 'Qualified Instructors',   sub: 'Deployed statewide' },
+  { value: '525,000+', label: 'Youth Registered',     sub: 'BBSHRRDB board-wide' },
+  { value: '420,000+', label: 'Graduates',            sub: 'Since 2013' },
+  { value: '170,000+', label: 'Reported Employed',    sub: 'After training' },
+  { value: '8',        label: 'IT Programs',          sub: 'At MUET Main Campus' },
+  { value: '120 hrs',  label: 'Training per Course',  sub: '~2 month batches' },
+  { value: '12+',      label: 'MUET Instructors',     sub: 'Qualified faculty' },
 ]
 
 export default function StatsSection() {

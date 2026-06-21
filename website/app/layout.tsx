@@ -20,13 +20,13 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: 'MUET Training Programs',
-    template: '%s | MUET Training Programs',
+    default: 'BBSHRRDB × MUET — Skills Development Programme',
+    template: '%s | BBSHRRDB × MUET — Skills Development Programme',
   },
   description: "Mehran University of Engineering & Technology — Certified digital skills training programmes across 12 Sindh districts.",
   metadataBase: new URL('https://training.muet.edu.pk'),
   openGraph: {
-    siteName: 'MUET Training Programs',
+    siteName: 'BBSHRRDB × MUET — Skills Development Programme',
     locale: 'en_PK',
     type: 'website',
   },

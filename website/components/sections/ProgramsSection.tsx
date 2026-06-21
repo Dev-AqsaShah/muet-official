@@ -54,14 +54,14 @@ export default function ProgramsSection() {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-px" style={{ background: 'linear-gradient(90deg, transparent, #00e5c8)' }} />
-            <span className="text-xs font-bold uppercase tracking-[0.15em]" style={{ color: '#00e5c8' }}>Programme Catalogue</span>
+            <span className="text-xs font-bold uppercase tracking-[0.15em]" style={{ color: '#00e5c8' }}>BBSHRRDB Course Tracks</span>
             <div className="w-8 h-px" style={{ background: 'linear-gradient(270deg, transparent, #00e5c8)' }} />
           </div>
           <h2 className="font-display font-extrabold mb-4" style={{ fontSize: 'clamp(32px, 5vw, 54px)', color: '#e8f4ff', letterSpacing: '-0.03em' }}>
-            15 Certified IT Programmes
+            Programs at Main Campus
           </h2>
           <p className="max-w-xl mx-auto leading-relaxed" style={{ color: 'rgba(232,244,255,0.5)', fontSize: '16px' }}>
-            Free, government-approved specializations for Sindh youth. Zero cost — apply today.
+            Eight certified IT tracks under the BBSHRRDB programme — all taught at MUET Main Campus, Jamshoro, all free with monthly stipend.
           </p>
         </motion.div>
 
@@ -105,7 +105,7 @@ export default function ProgramsSection() {
 
                   <div className="mt-auto p-5 pt-3 flex items-center justify-between" style={{ borderTop: '1px solid rgba(0,229,200,0.08)' }}>
                     <div className="flex items-center gap-3 text-xs" style={{ color: '#607896' }}>
-                      <span className="flex items-center gap-1"><Clock size={10} style={{ color: iconColor }} />{program.duration}</span>
+                      <span className="flex items-center gap-1"><Clock size={10} style={{ color: iconColor }} />{program.duration.split(' (')[0]}</span>
                     </div>
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full capitalize"
                       style={{ background: st.bg, color: st.color }}>{program.status}</span>
@@ -119,13 +119,13 @@ export default function ProgramsSection() {
         {/* CTA */}
         <div className="flex items-center justify-center gap-4">
           <Link
-            href="/programs"
+            href="/course"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm transition-all"
             style={{ background: 'linear-gradient(135deg, #00e5c8, #38bdf8)', color: '#020b18', boxShadow: '0 0 24px rgba(0,229,200,0.3)' }}
           >
-            View All 15 Programmes <ArrowRight size={15} />
+            Explore the Full Course <ArrowRight size={15} />
           </Link>
-          <span className="text-xs" style={{ color: '#607896' }}>+7 more specializations</span>
+          
         </div>
       </div>
     </section>

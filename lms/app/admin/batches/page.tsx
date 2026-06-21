@@ -9,7 +9,7 @@ export const metadata = { title: 'Batch & Centre Management' }
 
 export default async function BatchesPage() {
   const session = await getServerSession(authOptions)
-  if (!session) redirect('/login')
+  if (!session) redirect('/admin/login')
   const user = session.user as any
   if (!['SUPER_ADMIN', 'CENTRE_ADMIN'].includes(user.role)) redirect('/dashboard')
 

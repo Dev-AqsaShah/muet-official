@@ -5,11 +5,10 @@ export interface NavLink {
 
 export const navLinks: NavLink[] = [
   { label: "Home",        href: "/"            },
-  { label: "Projects",    href: "/projects"    },
-  { label: "Programs",    href: "/programs"    },
+  { label: "The Course",  href: "/course"      },
   { label: "Admissions",  href: "/admissions"  },
   { label: "Instructors", href: "/instructors" },
-  { label: "News",        href: "/news"        },
+  { label: "Gallery",     href: "/gallery"     },
   { label: "About",       href: "/about"       },
   { label: "Contact",     href: "/contact"     },
 ]
@@ -20,8 +19,8 @@ const lmsUrl = process.env.NEXT_PUBLIC_LMS_URL ?? 'http://localhost:3001'
 export const portalLinks = {
   lmsUrl,
   items: [
-    { label: 'Student Portal',  href: `${lmsUrl}/login`,                 desc: 'Courses, attendance, quizzes, certificates' },
-    { label: 'Teacher Portal',  href: `${lmsUrl}/login?role=instructor`, desc: 'Classes, grading, materials, attendance' },
-    { label: 'Admin Dashboard', href: `${lmsUrl}/login?role=admin`,      desc: 'Batches, centres, reports, certificates' },
+    { label: 'Student Portal',  href: `${lmsUrl}/student/login`,                 desc: 'Courses, attendance, quizzes, certificates' },
+    { label: 'Teacher Portal',  href: `${lmsUrl}/teacher/login`, desc: 'Classes, grading, materials, attendance' },
+    { label: 'Admin Dashboard', href: `${lmsUrl}/admin/login`,      desc: 'Batches, centres, reports, certificates' },
   ],
 }

@@ -1,15 +1,16 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowRight, ChevronRight } from 'lucide-react'
 
 const stats = [
-  { n: '5,488+',   label: 'Certified Graduates', accent: '#00e5c8' },
-  { n: '82.1%',    label: 'Completion Rate',      accent: '#38bdf8' },
-  { n: '20',       label: 'Training Centers',      accent: '#fbbf24' },
-  { n: 'PKR 19M+', label: 'Graduate Earnings',     accent: '#818cf8' },
-  { n: '12',       label: 'Districts Covered',      accent: '#00e5c8' },
-  { n: '6+',       label: 'Active Programmes',      accent: '#38bdf8' },
+  { n: '100%',     label: 'Free Training',        accent: '#00e5c8' },
+  { n: 'Monthly',  label: 'Stipend Paid',          accent: '#fbbf24' },
+  { n: '8',        label: 'IT Programs',           accent: '#38bdf8' },
+  { n: '120 hrs',  label: 'Per Course',            accent: '#818cf8' },
+  { n: 'Govt × MUET', label: 'Verified Certificate', accent: '#00e5c8' },
+  { n: '18–35',    label: 'Age Eligibility',       accent: '#fbbf24' },
 ]
 
 export default function HeroSection() {
@@ -18,21 +19,28 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ background: '#020b18' }}
     >
+      {/* Real campus photo background */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/hero/muet-campus.jpg"
+          alt="MUET Main Campus, Jamshoro"
+          fill
+          priority
+          className="object-cover opacity-25"
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(105deg, #020b18 35%, rgba(2,11,24,0.75) 70%, rgba(2,11,24,0.55) 100%)' }} />
+        <div className="absolute inset-x-0 bottom-0 h-40" style={{ background: 'linear-gradient(to top, #020b18, transparent)' }} />
+      </div>
+
       {/* Glow orbs */}
       <div className="pointer-events-none absolute -top-40 -left-24 w-[560px] h-[560px] rounded-full"
         style={{ background: 'rgba(0,229,200,0.07)', filter: 'blur(120px)', animation: 'orbFloat 12s ease-in-out infinite' }} />
       <div className="pointer-events-none absolute top-1/2 -right-32 w-[480px] h-[480px] rounded-full"
-        style={{ background: 'rgba(56,189,248,0.05)', filter: 'blur(120px)', animation: 'orbFloat 12s ease-in-out infinite', animationDelay: '-4s' }} />
-      <div className="pointer-events-none absolute -bottom-20 left-1/3 w-[360px] h-[360px] rounded-full"
-        style={{ background: 'rgba(129,140,248,0.06)', filter: 'blur(120px)', animation: 'orbFloat 12s ease-in-out infinite', animationDelay: '-8s' }} />
+        style={{ background: 'rgba(251,191,36,0.04)', filter: 'blur(120px)', animation: 'orbFloat 12s ease-in-out infinite', animationDelay: '-4s' }} />
 
       {/* Dot grid */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #00e5c8 1px, transparent 0)', backgroundSize: '40px 40px' }} />
-
-      {/* Vertical accent line */}
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-px"
-        style={{ background: 'linear-gradient(to bottom, transparent, rgba(0,229,200,0.3) 40%, transparent)' }} />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-32">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-12 lg:gap-20 items-center">
@@ -46,16 +54,16 @@ export default function HeroSection() {
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8 text-[11px] font-semibold uppercase tracking-widest"
               style={{
-                background: 'rgba(0,229,200,0.08)',
-                border: '1px solid rgba(0,229,200,0.25)',
-                color: '#00e5c8',
+                background: 'rgba(251,191,36,0.08)',
+                border: '1px solid rgba(251,191,36,0.3)',
+                color: '#fbbf24',
               }}
             >
               <span
                 className="w-1.5 h-1.5 rounded-full shrink-0"
-                style={{ background: '#00e5c8', animation: 'blink 1.8s ease-in-out infinite', boxShadow: '0 0 6px #00e5c8' }}
+                style={{ background: '#fbbf24', animation: 'blink 1.8s ease-in-out infinite', boxShadow: '0 0 6px #fbbf24' }}
               />
-              Sindh&apos;s Premier IT Training Institution
+              BBSHRRDB × MUET — Government of Sindh
             </motion.div>
 
             {/* H1 */}
@@ -66,8 +74,7 @@ export default function HeroSection() {
               className="font-display font-bold leading-[1.05] mb-6"
               style={{ fontSize: 'clamp(38px, 5vw, 68px)', letterSpacing: '-0.03em', color: '#e8f4ff' }}
             >
-              Powering<br />
-              Sindh&apos;s{' '}
+              Learn IT Skills.<br />
               <span
                 style={{
                   background: 'linear-gradient(120deg, #00e5c8 0%, #38bdf8 50%, #fbbf24 100%)',
@@ -77,8 +84,9 @@ export default function HeroSection() {
                   filter: 'drop-shadow(0 0 24px rgba(0,229,200,0.35))',
                 }}
               >
-                Digital Future
+                Get Paid
               </span>
+              {' '}to Learn.
             </motion.h1>
 
             {/* Subtitle */}
@@ -87,10 +95,11 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
               className="leading-relaxed mb-10 max-w-xl"
-              style={{ color: 'rgba(232,244,255,0.55)', fontSize: '16px', fontWeight: 400 }}
+              style={{ color: 'rgba(232,244,255,0.6)', fontSize: '16px', fontWeight: 400 }}
             >
-              Mehran University of Engineering &amp; Technology delivers government-certified IT training
-              across 12 districts — executing large-scale mandates for federal and provincial funding bodies.
+              The BBSHRRDB Skills Development Programme at Mehran University of Engineering &amp; Technology —
+              free, certified IT training with a monthly stipend at the Main Campus, Jamshoro.
+              For unemployed Sindh youth aged 18–35.
             </motion.p>
 
             {/* CTAs */}
@@ -101,7 +110,7 @@ export default function HeroSection() {
               className="flex flex-wrap gap-3"
             >
               <Link
-                href="/projects"
+                href="/admissions"
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all"
                 style={{
                   background: 'linear-gradient(135deg, #00e5c8, #38bdf8)',
@@ -109,10 +118,10 @@ export default function HeroSection() {
                   boxShadow: '0 0 28px rgba(0,229,200,0.3)',
                 }}
               >
-                Explore Projects <ArrowRight size={15} />
+                Apply for Admission <ArrowRight size={15} />
               </Link>
               <Link
-                href="/programs"
+                href="/course"
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-medium text-sm transition-all"
                 style={{
                   border: '1px solid rgba(0,229,200,0.25)',
@@ -120,7 +129,7 @@ export default function HeroSection() {
                   background: 'rgba(0,229,200,0.04)',
                 }}
               >
-                Browse Programmes <ChevronRight size={15} />
+                Explore the Course <ChevronRight size={15} />
               </Link>
             </motion.div>
 
@@ -132,7 +141,7 @@ export default function HeroSection() {
               className="mt-8 text-xs"
               style={{ color: '#607896' }}
             >
-              Funded by Government of Sindh &amp; Government of Pakistan &nbsp;·&nbsp; 100% Free Training
+              Funded by the Government of Sindh &nbsp;·&nbsp; Established by Sindh Assembly Act 2013 &nbsp;·&nbsp; Implemented by MUET
             </motion.p>
           </div>
 
@@ -151,20 +160,21 @@ export default function HeroSection() {
                 transition={{ duration: 0.5, delay: 0.4 + i * 0.08 }}
                 className="rounded-2xl p-5 relative overflow-hidden"
                 style={{
-                  background: '#061224',
+                  background: 'rgba(6,18,36,0.85)',
                   border: `1px solid ${s.accent}20`,
                   boxShadow: `0 0 24px ${s.accent}08`,
+                  backdropFilter: 'blur(8px)',
                 }}
               >
                 <div className="pointer-events-none absolute inset-0"
                   style={{ background: `radial-gradient(ellipse at 0% 0%, ${s.accent}08, transparent 70%)` }} />
                 <p
                   className="font-display font-semibold leading-none mb-1.5"
-                  style={{ fontSize: '28px', color: s.accent, textShadow: `0 0 16px ${s.accent}60` }}
+                  style={{ fontSize: '24px', color: s.accent, textShadow: `0 0 16px ${s.accent}60` }}
                 >
                   {s.n}
                 </p>
-                <p className="text-xs font-medium" style={{ color: '#607896', letterSpacing: '0.04em' }}>
+                <p className="text-xs font-medium" style={{ color: '#8aa2c0', letterSpacing: '0.04em' }}>
                   {s.label}
                 </p>
               </motion.div>
