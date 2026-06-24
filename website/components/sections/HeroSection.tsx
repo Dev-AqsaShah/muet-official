@@ -1,8 +1,15 @@
 'use client'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, ChevronRight } from 'lucide-react'
+
+const heroImages = [
+  { src: '/images/hero/muet-campus.jpg', alt: 'MUET Main Campus, Jamshoro' },
+  { src: '/images/hero/muet-gate-header.jpg', alt: 'MUET Main Gate, Jamshoro' },
+  { src: '/images/hero/gate.jpeg', alt: 'MUET Entrance, Jamshoro' },
+]
 
 const stats = [
   { n: '100%',     label: 'Free Training',        accent: '#00e5c8' },
@@ -14,22 +21,58 @@ const stats = [
 ]
 
 export default function HeroSection() {
+  const [imgIndex, setImgIndex] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setImgIndex((i) => (i + 1) % heroImages.length)
+    }, 5000)
+    return () => clearInterval(id)
+  }, [])
+
   return (
     <section
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ background: '#020b18' }}
     >
-      {/* Real campus photo background */}
+      {/* Real campus photo background — auto-cycling slideshow */}
       <div className="absolute inset-0">
-        <Image
-          src="/images/hero/muet-campus.jpg"
-          alt="MUET Main Campus, Jamshoro"
-          fill
-          priority
-          className="object-cover opacity-25"
-        />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(105deg, #020b18 35%, rgba(2,11,24,0.75) 70%, rgba(2,11,24,0.55) 100%)' }} />
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={heroImages[imgIndex].src}
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={{ opacity: 1, scale: 1.12 }}
+            exit={{ opacity: 0 }}
+            transition={{ opacity: { duration: 1.4, ease: 'easeInOut' }, scale: { duration: 5, ease: 'linear' } }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={heroImages[imgIndex].src}
+              alt={heroImages[imgIndex].alt}
+              fill
+              priority
+              className="object-cover opacity-60"
+            />
+          </motion.div>
+        </AnimatePresence>
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(105deg, #020b18 20%, rgba(2,11,24,0.55) 65%, rgba(2,11,24,0.35) 100%)' }} />
         <div className="absolute inset-x-0 bottom-0 h-40" style={{ background: 'linear-gradient(to top, #020b18, transparent)' }} />
+
+        {/* Slideshow indicator dots */}
+        <div className="absolute bottom-6 right-6 z-20 flex gap-2">
+          {heroImages.map((img, i) => (
+            <button
+              key={img.src}
+              onClick={() => setImgIndex(i)}
+              aria-label={`Show slide ${i + 1}`}
+              className="h-1.5 rounded-full transition-all"
+              style={{
+                width: i === imgIndex ? '24px' : '8px',
+                background: i === imgIndex ? '#00e5c8' : 'rgba(232,244,255,0.3)',
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Glow orbs */}

@@ -70,6 +70,29 @@ enum Priority {
   HOLIDAY
 }
 
+enum QuizKind {
+  REGULAR
+  MONTHLY_TEST
+}
+
+enum TestReviewStatus {
+  DRAFT
+  PENDING_REVIEW
+  APPROVED
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum IssueStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
 model User {
   id           String      @id @default(cuid())
   email        String      @unique
@@ -104,6 +127,7 @@ model Student {
   grades        Grade[]
   certificate   Certificate?
   notifications Notification[]
+  testIssues    TestIssue[]
   createdAt     DateTime       @default(now())
 }
 
@@ -244,6 +268,15 @@ model Quiz {
   questions    Question[]
   attempts     QuizAttempt[]
   createdAt    DateTime      @default(now())
+
+  quizKind            QuizKind         @default(REGULAR)
+  topicBrief          String?
+  aiGenerated         Boolean          @default(false)
+  reviewStatus        TestReviewStatus @default(DRAFT)
+  questionsPerStudent Int?
+  difficultyMix       Json?
+  lockdown            Boolean          @default(false)
+  issues              TestIssue[]
 }
 
 model Question {
@@ -258,6 +291,9 @@ model Question {
   marks         Int      @default(1)
   order         Int
   answers       Answer[]
+
+  difficulty Difficulty @default(MEDIUM)
+  approved   Boolean    @default(true)
 }
 
 model QuizAttempt {
@@ -271,6 +307,12 @@ model QuizAttempt {
   timeTaken     Int?
   marksObtained Float?
   answers       Answer[]
+
+  assignedQuestionIds Json?
+  violationCount      Int     @default(0)
+  flaggedForReview    Boolean @default(false)
+  invalidated         Boolean @default(false)
+  issues              TestIssue[]
 }
 
 model Answer {
@@ -348,4 +390,20 @@ model Notification {
   isRead    Boolean  @default(false)
   type      String
   createdAt DateTime @default(now())
+}
+
+model TestIssue {
+  id           String       @id @default(cuid())
+  quizId       String
+  quiz         Quiz         @relation(fields: [quizId], references: [id])
+  attemptId    String?
+  attempt      QuizAttempt? @relation(fields: [attemptId], references: [id])
+  studentId    String
+  student      Student      @relation(fields: [studentId], references: [id])
+  reason       String
+  status       IssueStatus  @default(PENDING)
+  resolvedById String?
+  adminNote    String?
+  resolvedAt   DateTime?
+  createdAt    DateTime     @default(now())
 }

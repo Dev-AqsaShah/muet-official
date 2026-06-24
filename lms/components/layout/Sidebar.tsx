@@ -7,20 +7,21 @@ import {
   LayoutDashboard, BookOpen, CalendarDays, ClipboardList,
   Zap, BarChart3, Clock, Megaphone, Award, User, LogOut,
   Users, CheckSquare, Upload, PlusSquare, GraduationCap,
-  FileText, Building2, Shield,
+  FileText, Building2, Shield, ClipboardCheck,
 } from 'lucide-react'
 
 const studentNav = [
-  { href: '/student/dashboard',     label: 'Dashboard',       icon: LayoutDashboard },
-  { href: '/student/course',        label: 'My Course',        icon: BookOpen        },
-  { href: '/student/attendance',    label: 'Attendance',       icon: CalendarDays    },
-  { href: '/student/assignments',   label: 'Assignments',      icon: ClipboardList   },
-  { href: '/student/quizzes',       label: 'Quizzes',          icon: Zap             },
-  { href: '/student/grades',        label: 'Grades',           icon: BarChart3       },
-  { href: '/student/schedule',      label: 'Schedule',         icon: Clock           },
-  { href: '/student/announcements', label: 'Announcements',    icon: Megaphone       },
-  { href: '/student/certificate',   label: 'Certificate',      icon: Award           },
-  { href: '/student/profile',       label: 'Profile',          icon: User            },
+  { href: '/student/dashboard',      label: 'Dashboard',       icon: LayoutDashboard },
+  { href: '/student/course',         label: 'My Course',        icon: BookOpen        },
+  { href: '/student/attendance',     label: 'Attendance',       icon: CalendarDays    },
+  { href: '/student/assignments',    label: 'Assignments',      icon: ClipboardList   },
+  { href: '/student/quizzes',        label: 'Quizzes',          icon: Zap             },
+  { href: '/student/monthly-tests',  label: 'Monthly Tests',    icon: ClipboardCheck  },
+  { href: '/student/grades',         label: 'Grades',           icon: BarChart3       },
+  { href: '/student/schedule',       label: 'Schedule',         icon: Clock           },
+  { href: '/student/announcements',  label: 'Announcements',    icon: Megaphone       },
+  { href: '/student/certificate',    label: 'Certificate',      icon: Award           },
+  { href: '/student/profile',        label: 'Profile',          icon: User            },
 ]
 
 const instructorNav = [
@@ -29,15 +30,17 @@ const instructorNav = [
   { href: '/teacher/mark-attendance', label: 'Mark Attendance',  icon: CheckSquare     },
   { href: '/teacher/upload-material', label: 'Upload Material',  icon: Upload          },
   { href: '/teacher/create-quiz',     label: 'Create Quiz',      icon: PlusSquare      },
+  { href: '/teacher/monthly-tests',   label: 'Monthly Tests',    icon: ClipboardCheck  },
   { href: '/teacher/grades',          label: 'Grade Assignments', icon: BarChart3       },
 ]
 
 const adminNav = [
-  { href: '/admin/dashboard',    label: 'Dashboard',    icon: LayoutDashboard },
-  { href: '/admin/students',     label: 'Students',     icon: GraduationCap   },
-  { href: '/admin/batches',      label: 'Batches',      icon: Building2       },
-  { href: '/admin/reports',      label: 'Reports',      icon: FileText        },
-  { href: '/admin/certificates', label: 'Certificates', icon: Award           },
+  { href: '/admin/dashboard',       label: 'Dashboard',     icon: LayoutDashboard },
+  { href: '/admin/students',        label: 'Students',      icon: GraduationCap   },
+  { href: '/admin/batches',         label: 'Batches',       icon: Building2       },
+  { href: '/admin/monthly-tests',   label: 'Monthly Tests',  icon: ClipboardCheck  },
+  { href: '/admin/reports',         label: 'Reports',       icon: FileText        },
+  { href: '/admin/certificates',    label: 'Certificates',  icon: Award           },
 ]
 
 export default function Sidebar() {
